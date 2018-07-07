@@ -34,15 +34,11 @@ public class date0707 {
 		
 		System.out.println();
 		
-		
-		
-		
 	}
 	
 	public static void test3(){
 		
 		//从键盘读入个数不确定的整数，并判断读入的正数和负数的个数，输入为0师，结束程序
-		
 		int i = 0;
 		int fu = 0;
 		int zheng = 0;
@@ -84,6 +80,7 @@ public class date0707 {
 		int i = 1;
 		
 		System.out.println("100y以内4的倍数");
+		
 		do{
 			if(i % 4 == 0)
 				System.out.println(i + " ");
@@ -98,6 +95,7 @@ public class date0707 {
 		//正确结束循环，提示登录成功
 		String userName;
 		String passwd;
+		
 		do{
 		
 			Scanner sc = new Scanner(System.in);
@@ -111,15 +109,14 @@ public class date0707 {
 			passwd = sc.next();
 			
 			if(userName.equals("admin") && passwd.equals("111")){
-				
 				System.out.println("登录成功");
-				break;
-			
+				break;	
 			}
 			else{
 				System.out.println("用户名或密码不正确，请重新输入");
 			}
 		}while(true);
+	
 	}
 	
 	public static void main(String[] args) {
