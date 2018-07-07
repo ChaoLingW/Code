@@ -4,6 +4,12 @@ import java.util.Scanner;
 
 import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
 
+/**
+ * 
+ * @author chaoling
+ * @date 2018年7月7日下午3:16:08
+ * @Description
+ */
 public class lianxi0707 {
 
 	public static void test1() {
