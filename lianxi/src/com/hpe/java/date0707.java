@@ -124,7 +124,7 @@ public class date0707 {
 	
 	public static void main(String[] args) {
 		
-		/*//练习一
+		//练习一
 		System.out.println("练习一");
 		test1();
 		
@@ -142,7 +142,7 @@ public class date0707 {
 		
 		//练习五
 		System.out.println("练习五");
-		test5();*/
+		test5();
 		
 		//练习六
 		System.out.println("练习六");
