@@ -130,7 +130,7 @@ public class Day0706 {
 		 */
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("请输入打车时间(格式为xx:xx)");
+		System.out.println("请输入打车时间");
 		
 		String strTime = sc.next();
 		
