@@ -90,9 +90,7 @@ public class Day0706 {
 
 	public static void question3() {
 
-		/*
-		 * 输入分数，打印等级（使用switch结构） 90-100 A 80-89 B 70-79 C 60-69 D <60 E
-		 */
+		// 输入分数，打印等级（使用switch结构） 90-100 A 80-89 B 70-79 C 60-69 D <60 E
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("请输入成绩");
@@ -144,7 +142,9 @@ public class Day0706 {
 		int fuelAdditionalFollow = 1;
 		double charge = 0;
 		
-		/*//对time进行替换处理
+		/*
+		//对time中的:进行替换处理,之后将利用Integer类将String转换为int
+		strTime = strTime.trim();
 		strTime = strTime.replace(":", "");
 		int  time = Integer.parseInt(strTime);
 		
@@ -154,6 +154,8 @@ public class Day0706 {
 		else
 			startingPrice = 7;*/
 		
+		//截取strTime中的前两位，判断第二位是否位数字，若是，则时间位前两位，若不是，则时间是第一位
+		strTime = strTime.trim();
 		String x = strTime.substring(0,1);
 		String y = strTime.substring(1,2);
 		
