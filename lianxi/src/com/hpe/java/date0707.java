@@ -1,4 +1,4 @@
-package com.hpe.java;
+﻿package com.hpe.java;
 
 import java.util.Scanner;
 
@@ -144,10 +144,7 @@ public class date0707 {
 		//练习六
 		System.out.println("练习六");
 		test6();
-		
-		
+			
 	}
 	
-	
-
 }
