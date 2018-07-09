@@ -42,7 +42,7 @@ public class ArrayTest {
 		
 		System.out.println(a0);
 		
-		System.out.println(a[5]);
+		System.out.println(a[5]);//java.lang.ArrayIndexOutOfBoundsException数组下标越界范围
 	}
 
 }
