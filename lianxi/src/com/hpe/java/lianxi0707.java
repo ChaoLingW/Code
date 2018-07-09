@@ -300,18 +300,15 @@ public class lianxi0707 {
 		}
 		else{
 			
-			/*while(i <= num){
-				
-				while(num % i == 0){
-					
+			/*
+			 int i = 2;//最小的质数
+			 //num 输入的正整数
+			 while(i <= num){
+				while(num % i == 0){	
 					num = num/i;	
-					
-					System.out.print(i + " ");
-					
+					System.out.print(i + " ");	
 				}
-				
-				i++;
-				
+				i++;	
 			}*/
 			
 			while(num >=2){
