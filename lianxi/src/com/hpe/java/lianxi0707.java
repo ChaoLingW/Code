@@ -278,40 +278,61 @@ public class lianxi0707 {
 		
 	}
 
-	public static void test10() {
-
+	public static void test10(){
+		
 		// 输入一个正整数，按照从小到大的顺序输出它的所有质数的因子
-		// （如180的质数因子为2 2 3 3 5 ）
+		
 		Scanner sc = new Scanner(System.in);
-
+	
 		System.out.println("请输入一个正整数");
-
-		int no = sc.nextInt();
+		
+		int num = sc.nextInt();
 		int i = 2;
 		int j = 2;
-
-		while (i <= no) {
+		
+		System.out.print(num + "的质数因子为：");
+		
+		if(num == 1){
+			System.out.print("无质数因子");
+		}
+		else if(num == 2){
+			System.out.print("2");
+		}
+		else{
 			
-			// 求出no内的最小的质数
-			while (i % j == 0 && i <= no) {
+			/*while(i <= num){
 				
-				// 用no/最小质数
-				while (no % i == 0) {
+				while(num % i == 0){
 					
-					no /= i;
+					num = num/i;	
+					
 					System.out.print(i + " ");
 					
 				}
-
+				
 				i++;
+				
+			}*/
+			
+			
+			while(num >=2){
+				
+				if(num % i == 0){
+					
+					num = num/i;
+					
+					System.out.print(i + " ");
+				}
+				else
+					i++;
+					
 			}
-
-			j++;
-
 		}
-
+		
+		System.out.println("结束");
+		
 	}
-
+	
 	public static void test11() {
 
 		// 正整数A和正整数B 的最小公倍数是指 能被A和B整除的最小的正整数值
@@ -382,7 +403,7 @@ public class lianxi0707 {
 
 	public static void main(String[] args) {
 
-		//练习一 
+		/*//练习一 
 		System.out.println("练习一"); 
 		test1();
 		
@@ -429,7 +450,9 @@ public class lianxi0707 {
 		//练习十二
 		System.out.println("练习十二"); 
 		test12();
-		 
+		 */
+		
+		test10();
 	}
 
 }
