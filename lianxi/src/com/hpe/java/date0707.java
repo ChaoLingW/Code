@@ -33,9 +33,12 @@ public class date0707 {
 		System.out.println("100以内4的倍数");
 		
 		while(i <= 100){
+			
 			if(i % 4 == 0)
 				System.out.print(i + " ");
+			
 			i++;
+			
 		}
 		
 		System.out.println();
@@ -50,7 +53,11 @@ public class date0707 {
 		int zheng = 0;
 	
 		while(true){
+			
 			Scanner sc = new Scanner(System.in);
+			
+			System.out.println("请输入整数");
+			
 			i = sc.nextInt();
 			if(i == 0)
 				break;
@@ -72,8 +79,10 @@ public class date0707 {
 		int sum = 0;
 		
 		do{
+			
 			sum += i;
 			i++;
+			
 		}while(i <= 100);
 		
 		System.out.println("1-100之间的和位" + sum);
@@ -88,8 +97,10 @@ public class date0707 {
 		System.out.println("100y以内4的倍数");
 		
 		do{
+			
 			if(i % 4 == 0)
 				System.out.println(i + " ");
+			
 		}while(i <= 100);
 		
 	}
@@ -115,12 +126,18 @@ public class date0707 {
 			passwd = sc.next();
 			
 			if(userName.equals("admin") && passwd.equals("111")){
+				
 				System.out.println("登录成功");
+				
 				break;	
+				
 			}
 			else{
+				
 				System.out.println("用户名或密码不正确，请重新输入");
+				
 			}
+			
 		}while(true);
 	
 	}
@@ -142,6 +159,7 @@ public class date0707 {
 		}
 		
 		System.out.println("1+2+……" + n +"的和为：" + sum);
+		
 	}
 	
 	public static void test8(){
@@ -154,6 +172,7 @@ public class date0707 {
 			if(i % 4 == 0){
 				
 				System.out.print(i + " ");
+				
 				j++;
 				
 			}
@@ -161,6 +180,7 @@ public class date0707 {
 			if(j == 5){
 				
 				System.out.println();
+				
 				j = 0;
 				
 			}
@@ -262,16 +282,19 @@ public class date0707 {
 		
 		int sum = 0;
 		double avg = 0;
+		
 		for(int i = 1; i <= 5; i++){
 			
 			Scanner sc = new Scanner(System.in);
 			
 			System.out.print("请输入第" + i + "个人的年龄：");
+			
 			int age = sc.nextInt();
 			
 			if(age < 0 || age > 130){
 				
 				System.out.println("输入错误");
+				
 				break;
 				
 			}
@@ -296,6 +319,7 @@ public class date0707 {
 			if(i % 3 ==0){
 				
 				j++;
+			
 				continue;
 				
 			}
@@ -306,9 +330,11 @@ public class date0707 {
 			if(j ==5){
 				
 				j = 1;
+				
 				System.out.println();
 				
 			}
+			
 		}
 		
 		System.out.println();
