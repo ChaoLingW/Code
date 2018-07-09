@@ -182,6 +182,10 @@ public class Zuole0709 {
 		
 	}
 	
+	public static void test5(){
+		
+	}
+	
 	public static void test6(){
 		
 		//输出1 1 2 3 5 8 13……这样的Fibonacci数列，输出该数列的前20个数字
