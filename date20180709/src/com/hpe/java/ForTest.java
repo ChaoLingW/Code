@@ -95,14 +95,16 @@ public class ForTest {
 
 		for (int ge = 0; ge < 10; ge++) {
 			for (int shi = 0; shi < 10; shi++) {
+				//百位数需要从1开始，否则会出现小于100的水仙花数
 				for (int bai = 1; bai < 10; bai++) {
 					
 					int sum = ge + shi * 10 + bai * 100;
 
 					if (sum == Math.pow(ge, 3) + Math.pow(shi, 3) + Math.pow(bai, 3))
-						System.out.print(ge + shi * 10 + bai * 100 + " ");
+						System.out.print(sum + " ");
 
 				}
+				
 			}
 
 		}
