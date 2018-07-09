@@ -314,7 +314,6 @@ public class lianxi0707 {
 				
 			}*/
 			
-			
 			while(num >=2){
 				
 				if(num % i == 0){
@@ -322,14 +321,14 @@ public class lianxi0707 {
 					num = num/i;
 					
 					System.out.print(i + " ");
+					
 				}
 				else
 					i++;
 					
 			}
+			
 		}
-		
-		System.out.println("结束");
 		
 	}
 	
