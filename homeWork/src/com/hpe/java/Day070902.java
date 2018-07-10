@@ -284,5 +284,6 @@ public class Day070902 {
 		// 练习九
 		System.out.println("练习九");
 		test9();
+		
 	}
 }
