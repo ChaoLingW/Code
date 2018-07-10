@@ -1,4 +1,4 @@
-package com.hpe.java;
+﻿package com.hpe.java;
 
 import java.util.Scanner;
 
@@ -286,4 +286,5 @@ public class Day070902 {
 		test9();
 		
 	}
+
 }
