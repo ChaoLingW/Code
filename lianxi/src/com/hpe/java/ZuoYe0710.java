@@ -2,6 +2,8 @@ package com.hpe.java;
 
 import java.util.Scanner;
 
+import sun.net.www.content.image.png;
+
 /**
  * 
  * @author chaoling
@@ -26,7 +28,7 @@ public class ZuoYe0710 {
 	}
 
 	public void select(Person[] person) {
-		int i = 0;
+		
 		Scanner sc = new Scanner(System.in);
 
 		boolean flag = true;
@@ -42,12 +44,10 @@ public class ZuoYe0710 {
 			switch (select) {
 
 			case 1:
-				insert(person, i);
-				i++;
+				insert(person);
 				break;
 			case 2:
 				delete(person);
-				i--;
 				break;
 
 			case 3:
@@ -61,6 +61,7 @@ public class ZuoYe0710 {
 				break;
 			case 0:
 				flag = false;
+				System.out.println("退出成功");
 				break;
 			default:
 				System.out.println("输入错误！请重新输入");
@@ -71,26 +72,49 @@ public class ZuoYe0710 {
 
 	}
 
-	public void insert(Person[] p, int i) {
+	public void insert(Person[] p) {
 
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("----------添加电话本----------");
 		System.out.print("姓名：");
+		
 		String name = sc.nextLine();
+		
 		System.out.print("性别：");
+		
 		String sex = sc.nextLine();
+		
 		System.out.print("年龄：");
+		
 		String age = sc.nextLine();
+		
 		System.out.print("电话：");
+		
 		String phone = sc.nextLine();
-		System.out.print("QQ：");
+		
+		System.out.print("Q Q：");
+		
 		String qq = sc.nextLine();
+		
 		System.out.print("地址：");
+		
 		String addr = sc.nextLine();
 
 		System.out.println("姓名：" + name + ",性别：" + sex + "，年龄：" + age + "，电话：" + phone + "，Q Q：" + qq + ".地址：" + addr);
-		p[i] = new Person(name, sex, age, phone, qq, addr);
+		
+		int index = 0;
+		
+		for(int i = 0 ; i < p.length;i++){
+			
+			if(p[i]== null){
+				
+				index = i;
+				break;
+			}
+		}
+		
+		p[index] = new Person(name, sex, age, phone, qq, addr);
 
 		System.out.println("添加成功");
 
@@ -99,26 +123,41 @@ public class ZuoYe0710 {
 	public void delete(Person[] person) {
 
 		boolean flag = true;
+		
 		System.out.println("--------------------删除电话本----------------");
+		
 		Scanner sc = new Scanner(System.in);
+		
 		System.out.print("请输入姓名");
+		
 		String name = sc.nextLine();
+		
 		for (int i = 0; i < person.length; i++) {
+			
 			if (person[i] != null) {
 
 				if (person[i].getName().equals(name)) {
+					
 					System.out.println("姓名：" + person[i].getName() + ",性别：" + person[i].getSex() + "，年龄："
 							+ person[i].getAge() + "，电话：" + person[i].getPhone() + "，Q Q：" + person[i].getQq() + ".地址："
 							+ person[i].getAddr());
 					System.out.println("确定吗？1（是）0（否）");
+					
+					flag = false;
 					int select = sc.nextInt();
+					
 					if (select == 1) {
-						flag = false;
+
 						person[i] = null;
+						
 						System.out.println("删除成功");
+						
 						break;
+						
 					} else {
+						
 						System.out.println("你选择了否");
+						
 						break;
 					}
 
@@ -129,72 +168,112 @@ public class ZuoYe0710 {
 		}
 
 		if (flag) {
+			
 			System.out.println("此人不存在");
-		} else {
-			/*for (int i = 0; i < person.length - 1; i++) {
+			
+		} /*else {
+			boolean flag1 = false;
+			for (int i = 0; i < person.length - 1; i++) {
 
+				//System.out.println(i);
 				if (person[i] == null) {
-					person[i] = person[i + 1];
+					flag1 = true;
+					//System.out.println(flag1);
+					
+					
 				}
+				if (flag1)
+					person[i] = person[i + 1];
 
-			}*/
-		}
+
+			}
+		}*/
 
 	}
 
 	public void alter(Person[] person) {
 
 		boolean flag = true;
+		
 		System.out.println("--------------------修改电话本----------------");
+		
 		Scanner sc = new Scanner(System.in);
+		
 		System.out.print("请输入姓名");
+		
 		String name = sc.nextLine();
 		int index = 0;
+		
 		for (int i = 0; i < person.length; i++) {
-			if (person[i]!= null) {
+			
+			if (person[i] != null) {
+				
 				if (person[i].getName().equals(name)) {
+					
 					System.out.println("姓名：" + person[i].getName() + ",性别：" + person[i].getSex() + "，年龄："
 							+ person[i].getAge() + "，电话：" + person[i].getPhone() + "，Q Q：" + person[i].getQq() + ".地址："
 							+ person[i].getAddr());
+					
 					flag = false;
 					i = index;
 					break;
+					
 				}
+				
 			}
+			
 		}
 
 		if (flag) {
+			
 			System.out.println("此人不存在");
+			
 		} else {
 			System.out.print("姓名：");
+			
 			String name1 = sc.nextLine();
+			
 			System.out.print("性别：");
+			
 			String sex = sc.nextLine();
+			
 			System.out.print("年龄：");
+			
 			String age = sc.nextLine();
+			
 			System.out.print("电话：");
+			
 			String phone = sc.nextLine();
-			System.out.print("QQ：");
+			
+			System.out.print("Q Q：");
+			
 			String qq = sc.nextLine();
+			
 			System.out.print("地址：");
+			
 			String addr = sc.nextLine();
 
 			System.out.println(
 					"姓名：" + name1 + ",性别：" + sex + "，年龄：" + age + "，电话：" + phone + "，Q Q：" + qq + ".地址：" + addr);
+			
 			person[index] = new Person(name1, sex, age, phone, qq, addr);
 
 			System.out.println("修改成功");
 
 		}
+		
 	}
 
 	public void searchAll(Person[] person) {
 
 		System.out.println("--------------------打印所有电话本----------------");
+		
 		for (Person p : person) {
+			
 			if (p != null)
 				System.out.println("姓名：" + p.getName() + ",性别：" + p.getSex() + "，年龄：" + p.getAge() + "，电话："
 						+ p.getPhone() + "，Q Q：" + p.getQq() + ".地址：" + p.getAddr());
+			
 		}
 
 	}
@@ -202,24 +281,37 @@ public class ZuoYe0710 {
 	public void searchOfName(Person[] person) {
 
 		boolean flag = true;
+		
 		System.out.println("--------------------查找电话本----------------");
+		
 		Scanner sc = new Scanner(System.in);
+		
 		System.out.print("请输入姓名");
+		
 		String name = sc.nextLine();
+		
 		for (Person p : person) {
+			
 			if (p != null) {
+				
 				if (p.getName().equals(name)) {
+					
 					System.out.println("姓名：" + p.getName() + ",性别：" + p.getSex() + "，年龄：" + p.getAge() + "，电话："
 							+ p.getPhone() + "，Q Q：" + p.getQq() + ".地址：" + p.getAddr());
+					
 					flag = false;
 					break;
+					
 				}
+				
 			}
 
 		}
 
 		if (flag) {
+			
 			System.out.println("此人不存在");
+			
 		}
 
 	}
@@ -281,7 +373,6 @@ public class ZuoYe0710 {
 			this.addr = addr;
 		}
 
-		
 		public Person(String name, String sex, String age, String phone, String qq, String addr) {
 			super();
 			this.name = name;
