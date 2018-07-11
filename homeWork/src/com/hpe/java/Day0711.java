@@ -196,16 +196,22 @@ public class Day0711 {
 		for (int i = 0; i < num; i++) {
 
 			if (i < half) {
+				
 				for (int j = 0; j < half - i; j++)
 					System.out.print(" ");
 
-				for (int j = 0; j < (i + 1) * 2 - 1; j++)
+				for (int j = 0; j < i * 2 + 1; j++)
 					System.out.print("*");
-			} else if (i == half) {
+			} 
+			
+			else if (i == half) {
+				
 				for(int j = 0; j<num;j++)
 					System.out.print("*");
 
-			} else {
+			} 
+			
+			else {
 				for (int j = 0; j < i - half; j++)
 					System.out.print(" ");
 
