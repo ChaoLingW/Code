@@ -9,22 +9,86 @@ package com.chaoling.sort;
 public class Sort {
 
 	public static void main(String[] args) {
+		
+		int[] arr = new int[] { 4, 1, 3, 6, -1, 5,2};
+		
+		//System.out.println("冒泡排序");
+		
+		//new Sort().bubbleSort(arr);
+		new Sort().insertionSort(arr);
 
 	}
-	
-	public static void DirectInsertionSort(){
-		//假设前i-1个元素是有序的，第i个元素依次从第i-1个元素比较，直到找到一个比第i个元素值小的元素，而后插入，插入位置及其后的元素依次向后移动
-	}
-	
-	public static void ShellSort(){
-		//将整个待排记录分割成若干子序列，然后分别进行直接插入排序，待整个序列中的记录基本有序时，在对全体记录进行一次直接插入排序
-		//先分组，组内直接插入排序，之后在分组，在直接插入排序
+
+	public void insertionSort(int[] arr) {
+		
+		//假定前n-1个数已经排好序，现在将第n个数插到前面的有序数列中，使得这n个数也是排好顺序的。如此反复循环，直到全部排好顺序。
+		//4, 1, 3, 6, 2, 5 
+		for(int i = 0; i < arr.length; i++){
+			
+			//int index = 0;
+			int temp;
+			if(i == 1){
+				if(arr[i] < arr[i-1]){
+					
+					temp = arr[i];
+					arr[i] = arr[i-1];
+					arr[i-1] = temp;
+					
+				}
+			}
+			
+			for(int j = i -1; j > 0; j--){
+				
+				if(arr[i]>arr[j-1] && arr[i] < arr[j]){
+					
+					temp = arr[i];
+					arr[i] = arr[i-1];
+					arr[i-1] = temp;
+					break;
+				}
+				
+			}
+			
+		}
+		
+		show(arr);
 		
 	}
 
-	public static void StraightSelectSort(){
-		//简单选择/直接选择
-		//每次选择出最小的元素进行交换，交换过程只有一次
+	public void bubbleSort(int[] arr) {
+		
+		/*
+		比较相邻的元素，如果第一个比第二个大，就交换它们两个；
+		对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。
+		最后的元素就会是最大的数。
+		针对剩余的元素重复以上的步骤。
+		持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较
+		*/
+		
+		// n个元素排序，外层小于length-1，内层小于arr.length -i -1
+		for (int i = 0; i < arr.length - 1; i++) {// 选出几个最大的 length-1
+
+			for (int j = 0; j < arr.length - i - 1; j++) {// 比较几次：length-i-1
+				if (arr[j] > arr[j + 1]) {
+					int temp = arr[j];
+					arr[j] = arr[j + 1];
+					arr[j + 1] = temp;
+				}
+			}
+
+		}
+
+		show(arr);
+
 	}
 	
+	public void show(int[] arr){
+		
+		//数组遍历
+		for (int i : arr)
+			System.out.print(i + " ");
+		
+		
+	}
+
 }
