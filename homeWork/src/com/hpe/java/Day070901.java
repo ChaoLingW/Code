@@ -250,6 +250,7 @@ public class Day070901 {
 
 	}
 
+	
 	public static void test9() {
 
 		// 求int型数据在内存中存储时1的个数
@@ -258,25 +259,24 @@ public class Day070901 {
 
 		System.out.println("请输入一个整数");
 
-		int i = sc.nextInt();
-		i = Math.abs(i);
-		int s = 0;
-		int j; //余数
+		int num = sc.nextInt();
+		num = Math.abs(num);
+		int count = 0;
+		
 
-		while (true) {
+		while (num > 0){
 
-			j = i % 2;
-			if (j == 1)
-				s++;
+			//循环除2，如果不能整除就会出现1，计数变量++
 			
-			if (i == 1 || i == 0)
-				break;
+			if (num % 2 != 1)
+				count++;
 			
-			i = i / 2;
+			//这次的商作为下次的被除数
+			num = num / 2;
 
 		}
 
-		System.out.println("在内存中存出时1的个数为：" + s);
+		System.out.println("在内存中存出时1的个数为：" + count);
 		
 	}
 
@@ -289,8 +289,7 @@ public class Day070901 {
 		System.out.println("请输入一个正整数");
 		
 		int num = sc.nextInt();
-		int i = 2;
-		int j = 2;
+		int i = 2;//除数
 		
 		System.out.print(num + "的质数因子为：");
 		
@@ -303,25 +302,36 @@ public class Day070901 {
 		else{
 			
 			/*
-			 int i = 2;//最小的质数
+			 int i = 2;//除数
 			 //num 输入的正整数
 			 while(i <= num){
-				while(num % i == 0){	
+			 
+				while(num % i == 0){
+					
 					num = num/i;	
-					System.out.print(i + " ");	
+					
+					System.out.print(i + " ");
+						
 				}
-				i++;	
+				
+				i++;
+					
 			}*/
 			
-			while(num >=2){
+			while(num >=2){//num>1
 				
+				//如果num能被i整除，输出i,将num的值设置为num/i
 				if(num % i == 0){
 					
 					num = num/i;
 					
+					/*if(num == i)
+						break;*/
+					
 					System.out.print(i + " ");
 					
 				}
+				//如果不能整除，i++
 				else
 					i++;
 					
