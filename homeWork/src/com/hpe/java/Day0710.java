@@ -169,15 +169,25 @@ public class Day0710 {
 			if (arr[i] == 0) {
 
 				count++;
-				arr[i] = arr[i + 1];
 
 			}
 
 		}
 
-		for (int i = 0; i < arr.length - count; i++) {
+		//定义一个新数组，用于保存不为0的元素-->新数组的长度 == arr.length -count(0的个数)
+		int[] arrNew = new int[arr.length-count];
+		
+		//将arr中非0的元素放到arrNew-->遍历arr,得到所有元素，如果元素不为0，才放到arrNew中
+		for (int i = 0,j = 0; i < arr.length && j < arr.length - count; i++) {
 
-			System.out.println(arr[i]);
+			//如果arr[i]不为0，才放到arrNew中
+			if (arr[i] != 0) {
+
+				arrNew[j] = arr[i];
+				j++;
+
+			}
+			System.out.println(arrNew[j]);
 
 		}
 
