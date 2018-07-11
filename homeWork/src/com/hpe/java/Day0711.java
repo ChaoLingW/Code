@@ -191,16 +191,29 @@ public class Day0711 {
 		
 			*/
 		int num = 7;
-		int row = num / 2;
-		int count;
+		int half = num / 2;
+		
 		for (int i = 0; i < num; i++) {
 
-			for (int j = 0; j < row; j++)
-				System.out.print(" ");
+			if (i < half) {
+				for (int j = 0; j < half - i; j++)
+					System.out.print(" ");
 
-			for (int x = 0; x < i + 1; x++)
-				System.out.print("*");
+				for (int j = 0; j < (i + 1) * 2 - 1; j++)
+					System.out.print("*");
+			} else if (i == half) {
+				for(int j = 0; j<num;j++)
+					System.out.print("*");
 
+			} else {
+				for (int j = 0; j < i - half; j++)
+					System.out.print(" ");
+
+				for (int j = 0; j < (num -i) * 2 - 1; j++)
+					System.out.print("*");
+
+			}
+			
 			System.out.println();
 
 		}
@@ -253,7 +266,8 @@ public class Day0711 {
 
 	@Test
 	public void select() {
-
+		
+		//输入一个整数，输出第4-7位
 		int num = 1234567;
 		int[] arr = new int[7];
 
@@ -317,7 +331,6 @@ public class Day0711 {
 	public void exchange() {
 
 		// 输入数组，最大的与第一个元素交换，最小的与最后一个元素交换，输出数组。
-
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("请输入数组长度");
@@ -348,6 +361,7 @@ public class Day0711 {
 			// 遍历数组，找到最小和最大元素的索引值并记录
 			if (arr[i] < arr[minIndex])
 				minIndex = i;
+			
 			if (arr[i] > arr[maxIndex])
 				maxIndex = i;
 
@@ -355,16 +369,19 @@ public class Day0711 {
 
 		// 交换
 		int temp;
+		
 		// 最大值放在第一个
 		temp = arr[0];
 		arr[0] = arr[maxIndex];
 		arr[maxIndex] = temp;
+		
 		// 最小值放在最后
 		temp = arr[arr.length - 1];
 		arr[arr.length - 1] = arr[minIndex];
 		arr[minIndex] = temp;
 
 		System.out.println("交换完成后");
+		
 		// 遍历
 		for (int i : arr)
 			System.out.print(i + " ");
@@ -373,7 +390,8 @@ public class Day0711 {
 
 	@Test
 	public void backShift() {
-
+		
+		//有n个整数，使其前面各数顺序向后移m个位置，最后m个数变成最前面的m个数   
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("请输入整数的个数");
@@ -403,14 +421,21 @@ public class Day0711 {
 
 		int j = 0;
 		for (int i = 0; i < arr.length; i++) {
+			
 			if (i < step) {
+				
 				arr1[i] = arr[i];
 				arr[i] = arr[i + step];
+				
 			} else if (i < arr.length - step) {
+				
 				arr[i] = arr[i + step];
+				
 			} else {
+				
 				arr[i] = arr1[j];
 				j++;
+				
 			}
 
 		}
@@ -422,53 +447,53 @@ public class Day0711 {
 	@Test
 	public void game() {
 
+		//有n个人围成一圈，顺序排号。从第一个人开始报数（从1到3报数），凡报到3的人退出圈子，问最后留下的是原来第几号的那位。   
 		Scanner sc = new Scanner(System.in);
-		
+
 		System.out.println("请输入人数");
 
 		int num = sc.nextInt();
-		
+
 		Person[] arr = new Person[num];
 
 		for (int i = 0; i < arr.length; i++) {
-			
-			arr[i] = new Person(i+1);
-			
+
+			arr[i] = new Person(i + 1);
+
 		}
 
 		int count = 0;
 		boolean flag = true;
 		int i = 0;
 		int three = 1;
-		
+
 		while (flag) {
-			
+
 			i = i % arr.length;
-			
-			if(arr[i].getFlag()){
-				
-				if(three == 3){
+
+			if (arr[i].getFlag()) {
+
+				if (three == 3) {
 					arr[i].setFlag(false);
 					three = 1;
-				}
-				else
+				} else
 					three++;
 			}
-				
+
 			i++;
 			count = 0;
-			for(Person p : arr){
-				if(p.getFlag())
-					count ++;
-			}	
-				
-			if(count == 1)
+			for (Person p : arr) {
+				if (p.getFlag())
+					count++;
+			}
+
+			if (count == 1)
 				flag = false;
-			
+
 		}
-		
-		for(Person p : arr){
-			if(p.getFlag())
+
+		for (Person p : arr) {
+			if (p.getFlag())
 				System.out.println(p.getNo());
 		}
 
@@ -482,8 +507,6 @@ public class Day0711 {
 		public boolean getFlag() {
 			return flag;
 		}
-
-		
 
 		public void setFlag(boolean flag) {
 			this.flag = flag;
