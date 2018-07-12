@@ -85,14 +85,49 @@ public class Day070902 {
 				System.out.println(a + "不是素数");
 			
 		}
-		else if(a == 2){
+		/*该情况可以不用考虑
+		 * else if(a == 2){
 			//2是素数
 			System.out.println(a + "是素数");
-		}
+		}*/
 		else
 			//1不是素数
 			System.out.println(a + "不是素数");
 		
+	}
+	
+	//方法:判断一个整数是否是质数
+	//参数：int
+	//返回值：true是质数，false不是质数
+	public static boolean isPrimeNumber(int num){
+		
+		
+		//只能被1和它本身整除
+		//定义标志，为另外一种方式
+		//boolean flag = true;
+		//考虑输入为1的情况
+		if(num == 1)
+			return false;
+			//flag = false;
+		
+		//如果从2到num-1,有一个数能整除num,那么num就不是质数（返回false）
+		//for(int i = 2; i <= num - 1; i++){
+		//另外一种for循环的方式，相比于上面的for循环，下面的for循环的可以简化比较次数，减小时间复杂度
+		for(int i = 2; i <= Math.sqrt(num); i++){//取到平方根，可以等于平方根
+			
+			//如果num%i==0,能整除，不是质数， return false
+			if(num % i == 0){
+				return false;
+				/*flag = false;
+				break;*/
+			}
+				
+			
+		}
+		
+		//是质数
+		return true;
+		//return flag;
 	}
 
 	public static void test4() {

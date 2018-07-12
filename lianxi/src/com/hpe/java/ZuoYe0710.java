@@ -1,7 +1,6 @@
 package com.hpe.java;
 
 import java.util.Scanner;
-
 import sun.net.www.content.image.png;
 
 /**
@@ -26,8 +25,61 @@ public class ZuoYe0710 {
 		System.out.println("--------------------电话本管理系统----------------");
 
 	}
-
+	
+	//方式一
 	public void select(Person[] person) {
+		
+		int i = 0;//索引
+		Scanner sc = new Scanner(System.in);
+
+		boolean flag = true;
+
+		while (flag) {
+
+			index();
+
+			System.out.println("请选择业务");
+
+			int select = sc.nextInt();
+
+			switch (select) {
+
+			case 1:
+				//插入
+				insert(person,i);
+				i++;
+				break;
+			case 2:
+				//删除
+				delete(person);
+				i--;
+				break;
+
+			/*case 3:
+				alter(person);
+				break;*/
+			case 4:
+				searchAll(person);
+				break;
+			/*case 5:
+				searchOfName(person);
+				break;*/
+			case 0:
+				flag = false;
+				System.out.println("退出成功");
+				break;
+			default:
+				System.out.println("输入错误！请重新输入");
+				break;
+			}
+
+		}
+
+	}
+
+	/*
+	 * 方式二
+	 public void select(Person[] person) {
 		
 		Scanner sc = new Scanner(System.in);
 
@@ -70,9 +122,48 @@ public class ZuoYe0710 {
 
 		}
 
-	}
+	}*/
+	
+	//方式一
+	public void insert(Person[] p, int i) {
 
-	public void insert(Person[] p) {
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("----------添加电话本----------");
+		System.out.print("姓名：");
+		
+		String name = sc.nextLine();
+		
+		System.out.print("性别：");
+		
+		String sex = sc.nextLine();
+		
+		System.out.print("年龄：");
+		
+		String age = sc.nextLine();
+		
+		System.out.print("电话：");
+		
+		String phone = sc.nextLine();
+		
+		System.out.print("Q Q：");
+		
+		String qq = sc.nextLine();
+		
+		System.out.print("地址：");
+		
+		String addr = sc.nextLine();
+
+		System.out.println("姓名：" + name + ",性别：" + sex + "，年龄：" + age + "，电话：" + phone + "，Q Q：" + qq + ".地址：" + addr);
+		
+		p[i] = new Person(name, sex, age, phone, qq, addr);
+		
+		System.out.println("添加成功");
+
+	}
+	
+	//方式二
+	/*public void insert(Person[] p) {
 
 		Scanner sc = new Scanner(System.in);
 
@@ -119,7 +210,9 @@ public class ZuoYe0710 {
 		System.out.println("添加成功");
 
 	}
-
+*/
+	
+	//方式一
 	public void delete(Person[] person) {
 
 		boolean flag = true;
@@ -171,26 +264,80 @@ public class ZuoYe0710 {
 			
 			System.out.println("此人不存在");
 			
-		} /*else {
-			boolean flag1 = false;
+		} else {
+			
 			for (int i = 0; i < person.length - 1; i++) {
 
-				//System.out.println(i);
 				if (person[i] == null) {
-					flag1 = true;
-					//System.out.println(flag1);
-					
-					
-				}
-				if (flag1)
+	
 					person[i] = person[i + 1];
+					person[i+1] = null;
 
+				}
+				
+			}
+
+		}
+		
+	}
+	
+	//方式二
+	/*public void delete(Person[] person) {
+
+		boolean flag = true;
+		
+		System.out.println("--------------------删除电话本----------------");
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("请输入姓名");
+		
+		String name = sc.nextLine();
+		
+		for (int i = 0; i < person.length; i++) {
+			
+			if (person[i] != null) {
+
+				if (person[i].getName().equals(name)) {
+					
+					System.out.println("姓名：" + person[i].getName() + ",性别：" + person[i].getSex() + "，年龄："
+							+ person[i].getAge() + "，电话：" + person[i].getPhone() + "，Q Q：" + person[i].getQq() + ".地址："
+							+ person[i].getAddr());
+					System.out.println("确定吗？1（是）0（否）");
+					
+					flag = false;
+					
+					int select = sc.nextInt();
+					
+					if (select == 1) {
+
+						person[i] = null;
+						
+						System.out.println("删除成功");
+						
+						break;
+						
+					} else {
+						
+						System.out.println("你选择了否");
+						
+						break;
+					}
+
+				}
 
 			}
-		}*/
+
+		}
+
+		if (flag) {
+			
+			System.out.println("此人不存在");
+			
+		} 
 
 	}
-
+*/
 	public void alter(Person[] person) {
 
 		boolean flag = true;

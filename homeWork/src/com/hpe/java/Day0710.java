@@ -2,6 +2,8 @@ package com.hpe.java;
 
 import java.util.Scanner;
 
+import org.junit.Test;
+
 /**
  * 
  * @author chaoling
@@ -193,32 +195,33 @@ public class Day0710 {
 
 	}
 
-	public static void test5() {
+	@Test
+	public void test5() {
 
-		// 现在给出两个数组，数组A：“1，7，9，11，13，15，17，19；数组B：“2，4，6，8，10”两个数组合并为数组C，按升序排列
+		//现在给出两个数组，数组A：“1，7，9，11，13，15，17，19；数组B：“2，4，6，8，10”两个数组合并为数组C，按升序排列
 
 		int[] a = { 1, 7, 9, 11, 13, 15, 17, 19 };
 		int[] b = { 2, 4, 6, 8, 10 };
 
 		int[] c = new int[a.length + b.length];
 		
-		int j ,k ;
+		int j,k ;
 		j = k =0;
 		
-		//归并法实现
-		for(int i : c){
+		//归并
+		for(int i = 0; i < c.length; i++ ){
 			
 			if(j < a.length  && k < b.length){
 				
 				if(a[j] < b[k]){
 					
-					i = a[j];
+					c[i] = a[j];
 					j++;
 					
 				}
 				else {
 					
-					i = b[k];
+					c[i] = b[k];
 					k++;
 					
 				}	
@@ -226,23 +229,65 @@ public class Day0710 {
 			}
 			else if(j < a.length && k == b.length  ){
 				
-				i = a[j];
+				c[i] = a[j];
 				j++;
 				
 			}
 			else{
 				
-				i = b[k];
+				c[i] = b[k];
 				k++;
 				
 			}
 			
-			System.out.println(i);
+			System.out.println(c[i]);
 			
 		}
 		
 	}
+	
+	//方法：将两个int[]合并，并升序，返回这个新数组
+	public static int[] combine(int[] a,int[] b){
+		
+		//功能
+		//定义一个新数组，将a跟b中的元素，放到新数组中
+		//新数组的长度=a.length+b.length
+		int[] c = new int[a.length+b.length];
+		
+		//初始化
+		//遍历a中的所有元素，放在c中
+		for(int i = 0; i < a.length; i++)
+			c[i] = a[i];
+		
+		//遍历b中所有元素，放在中
+		for(int i = 0; i < b.length; i++)
+			c[i+a.length] = b[i];
+		
+		//对新数组，按升序排序
+		sort(c);
 
+		//返回新数组
+		return c;
+		
+	}
+
+	//对int[]升序的方法
+	public static void sort(int[] arr){
+		
+		//冒泡排序
+		for(int i = 0; i < arr.length-1; i++){
+			for(int j = 0; j < arr.length-1-i; i++){
+				if(arr[j] > arr[j+1]){
+					int temp = arr[j];
+					arr[j] = arr[j+1];
+					arr[j+1] = temp;
+				}
+			}
+		}
+	}
+	
+	
+	
 	public static void test6() {
 
 		// 输出1 1 2 3 5 8 13……这样的Fibonacci数列，输出该数列的前20个数字
