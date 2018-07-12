@@ -169,7 +169,7 @@ public class Day0712 {
 			//外层循环每执行一次，换行
 			System.out.println();
 		}
-	}
+	}	
 }
 
 // 圆类
