@@ -209,9 +209,9 @@ class Circle {
 //人类
 class Person {
 
-	private String name;
-	private int age;
-	private String sex;
+	public String name;
+	public int age;
+	public String sex;
 
 	public Person(String name, int age, String sex) {
 
@@ -227,7 +227,7 @@ class Person {
 		super();
 
 	}
-
+	
 	public void study() {
 
 		System.out.println("studying");
