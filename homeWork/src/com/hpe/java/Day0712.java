@@ -126,7 +126,7 @@ public class Day0712 {
 		int front=0;//用于保存第i-1位Fibonacci数列的值
 		int current = 1;//用于保存第i位Fibonacci数列的值
 		for(int i = 0; i< n; i++){
-			//记录第i位第i位Fibonacci数列的值
+			//记录第i位Fibonacci数列的值
 			temp = current; 
 			//输出记录第i位Fibonacci数列的值
 			System.out.print(current + " ");
