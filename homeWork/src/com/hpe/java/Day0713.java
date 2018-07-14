@@ -131,10 +131,6 @@ public class Day0713 {
 		person90.show();
 		person91.show();
 		person92.show();
-		
-		
-		
-
 	}
-
+	
 }
