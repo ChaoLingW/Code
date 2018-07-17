@@ -11,8 +11,8 @@ public class TestEMD {
 		Scanner sc = new Scanner(System.in);
 		Employee[] ems = new Employee[10];
 		int maxIndex = -1;
-
 		boolean flag = true;
+
 		while (flag) {
 
 			System.out.println("|---------------|");
@@ -22,7 +22,6 @@ public class TestEMD {
 			System.out.println("|-----4 查询-----|");
 			System.out.println("|-----0 退出-----|");
 			System.out.println("|---------------|");
-
 			System.out.println("请选择业务");
 
 			String str = sc.nextLine();
@@ -33,7 +32,6 @@ public class TestEMD {
 			case 1:
 				maxIndex++;
 				addEmployee(ems, maxIndex);
-
 				break;
 			case 2:
 				delEmployee(ems);
@@ -59,6 +57,8 @@ public class TestEMD {
 	public static void addEmployee(Employee[] ems, int maxIndex) {
 
 		Scanner sc = new Scanner(System.in);
+		boolean flag = true;
+
 		System.out.println("请输入员工编号");
 		String ID = sc.nextLine();
 
@@ -76,14 +76,24 @@ public class TestEMD {
 
 		if (postition.equals("普通员工")) {
 			ems[maxIndex] = new CommonEmployee(ID, name, postition, holiday, salary);
-		} else if (postition.equals("经理")) {
+		} 
+		else if (postition.equals("经理")) {
 			ems[maxIndex] = new Manager(ID, name, postition, holiday, salary);
-		} else {
+		} 
+		else if (postition.equals("董事长")) {
 			ems[maxIndex] = new Director(ID, name, postition, holiday, salary);
+		} 
+		else {
+			flag = false;
 		}
-		System.out.println("增加数据成功");
-		ems[maxIndex].dispaly();
-
+		
+		if (flag) {
+			System.out.println("增加数据成功");
+			ems[maxIndex].dispaly();
+		}
+		else{
+			System.out.println("输入的职位错误");
+		}
 	}
 
 	public static void delEmployee(Employee[] ems) {
@@ -91,6 +101,10 @@ public class TestEMD {
 		Scanner sc = new Scanner(System.in);
 
 		int i = queryEmployee(ems);
+		
+		if(i == -1)
+			return;
+		
 		ems[i] = null;
 		for (i = 0; i < ems.length - 1; i++) {
 			if (ems[i] == null) {
@@ -106,8 +120,14 @@ public class TestEMD {
 	public static void updateEmployee(Employee[] ems) {
 
 		int i = queryEmployee(ems);
-		System.out.println("请重新输入员工信息");
+		boolean flag = true;
+		
+		if(i == -1)
+			return;
+		
 		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("请重新输入员工信息");
 		System.out.println("请输入员工编号");
 		String ID = sc.nextLine();
 
@@ -125,31 +145,51 @@ public class TestEMD {
 
 		if (postition.equals("普通员工")) {
 			ems[i] = new CommonEmployee(ID, name, postition, holiday, salary);
-		} else if (postition.equals("经理")) {
+		} 
+		else if (postition.equals("经理")) {
 			ems[i] = new Manager(ID, name, postition, holiday, salary);
-		} else {
+		} 
+		else if (postition.equals("董事长")){
 			ems[i] = new Director(ID, name, postition, holiday, salary);
 		}
-		System.out.println("修改数据成功");
-		ems[i].dispaly();
-
+		else{
+			flag = false;
+		}
+		
+		if(flag){
+			System.out.println("修改数据成功");
+			ems[i].dispaly();
+		}
+		else{
+			System.out.println("输入职务有误");
+		}
+		
 	}
 
 	public static int queryEmployee(Employee[] ems) {
 
 		Scanner sc = new Scanner(System.in);
+		int index = -1;
+		
 		System.out.println("请输入员工姓名");
 		String name = sc.nextLine();
-		int i = 0;
-		for (i = 0; i < ems.length; i++) {
+	
+		for (int i = 0; i < ems.length; i++) {
 			if (ems[i] != null) {
 				if (name.equals(ems[i].getName())) {
 					ems[i].dispaly();
+					index = i;
 					break;
 				}
 			}
 		}
-		return i;
+		
+		if(index == -1){
+			System.out.println("没有该职工的信息");
+		}
+		
+		return index;
+		
 	}
 
 }
