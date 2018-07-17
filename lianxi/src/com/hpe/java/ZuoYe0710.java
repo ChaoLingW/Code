@@ -55,15 +55,15 @@ public class ZuoYe0710 {
 				i--;
 				break;
 
-			/*case 3:
+			case 3:
 				alter(person);
-				break;*/
+				break;
 			case 4:
 				searchAll(person);
 				break;
-			/*case 5:
+			case 5:
 				searchOfName(person);
-				break;*/
+				break;
 			case 0:
 				flag = false;
 				System.out.println("退出成功");
