@@ -38,43 +38,31 @@ public class TelManage {
 
 	// 删除
 	public void delTel() {
-		boolean flag = true;
-		System.out.println("请输入删除的名字");
 
+		//从已经有电话本的元素中查看是否有此姓名的元素
+		System.out.println("请输入查询的名字");
+		
 		String name = sc.nextLine();
-
-		for (int i = 0; i < max; i++) {
-
-			// 判断，如果当前这个人的名字跟我输入的一致，删除
-			if (tels[i].getName().equals(name)) {
-				// 找到//删除
-				// 当前数组中最后一个有值的元素的下标为max-1
-				System.out.println(tels[i]);
-				System.out.println("确定吗？1(是)0(否)");
-				int choice = sc.nextInt();
-				sc.nextLine();
-				if (choice == 1) {
-					for (; i <= max - 2; i++) {
-						tels[i] = tels[i + 1];
-						max--;
-						System.out.println("删除成功");
-						flag = false;// 不会进入if
-						break;
-					}
-
-				} else if (choice == 0) {
-					System.out.println("你取消了删除");
-					return;
-				} else {
-					System.out.println("选择错误");
-					return;
+		int i = selectTelByName(name);
+		
+		if(i != -1){
+			//删除
+			System.out.println(tels[i]);
+			System.out.println("确定吗？1(是)0(否)");
+			int choice = sc.nextInt();
+			sc.nextLine();
+			if (choice == 1) {
+				for (; i <= max - 2; i++) {
+					tels[i] = tels[i + 1];
+					max--;
+					System.out.println("删除成功");
 				}
 
+			} else if (choice == 0) {
+				System.out.println("你取消了删除");
+			} else {
+				System.out.println("选择错误");
 			}
-		}
-		if (flag) {
-			// 如果不存在，打印此人不存在
-			System.out.println("此用户不存在");
 		}
 
 	}
@@ -85,15 +73,9 @@ public class TelManage {
 		System.out.println("---------修改电话本--------");
 		System.err.println("请输入要修改的姓名");
 
-		String str = sc.nextLine();
-		int index = -1;
-		for (int i = 0; i < max; i++) {
-
-			// 判断，如果当前这个人的名字跟我输入的一致，删除
-			if (tels[i].getName().equals(str)) {
-				index = 0;
-			}
-		}
+		String name = sc.nextLine();
+		int index = selectTelByName(name);
+		
 		if (index == -1) {
 			System.out.println("此人不存在");
 		} else {
@@ -135,18 +117,50 @@ public class TelManage {
 	}
 
 	// 根据姓名查询
+	
 	public void selectTelByName() {
 
 		System.out.println("请输入查询的名字");
 		String name = sc.nextLine();
+		selectTelByName(name);
+		
+	}
+	// 重載
+	// 参数：名字
+	// 返回值：此名字的人的小标，如果没有就返回-1
+	public int selectTelByName(String name) {
 
 		for (int i = 0; i < max; i++) {
 			// 判断，如果当前这个人的名字跟输入的一致，输出
 			if (tels[i].getName().equals(name)) {
 				System.out.println(tels[i]);
-				return;
+				//返回值这个人的下标
+				return i;
 			}
 		}
 		System.out.println("此人不存在");
+		return -1;//无此人
+	}
+	
+	//重載
+	public Telephone addT(){
+		System.out.println("姓名：");
+		String name = sc.nextLine();
+		System.out.println("性别：");
+		String sex = sc.nextLine();
+		System.out.println("年龄：");
+		int age = sc.nextInt();
+		sc.nextLine();
+		System.out.println("电话：");
+		String tel = sc.nextLine();
+		System.out.println("Q Q：");
+		String qq = sc.nextLine();
+		System.out.println("地址：");
+		String address = sc.nextLine();
+
+		Telephone telephone = new Telephone(name, sex, age, tel, qq, address);
+
+		return telephone;
+		
 	}
 }
