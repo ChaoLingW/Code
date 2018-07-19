@@ -11,23 +11,8 @@ public class TelManage {
 	// 添加
 	public void addTel() {
 		System.out.println("---------添加电话本--------");
-		System.out.println("姓名：");
-		String name = sc.nextLine();
-		System.out.println("性别：");
-		String sex = sc.nextLine();
-		System.out.println("年龄：");
-		int age = sc.nextInt();
-		sc.nextLine();
-		System.out.println("电话：");
-		String tel = sc.nextLine();
-		System.out.println("Q Q：");
-		String qq = sc.nextLine();
-		System.out.println("地址：");
-		String address = sc.nextLine();
-
-		Telephone telephone = new Telephone(name, sex, age, tel, qq, address);
-
-		System.out.println(telephone);
+		
+		Telephone telephone = addT();
 
 		// 保存到数组中
 		tels[max] = telephone;
@@ -79,25 +64,7 @@ public class TelManage {
 		if (index == -1) {
 			System.out.println("此人不存在");
 		} else {
-			System.out.println(tels[index]);
-			System.out.println("请输入信息");
-			System.out.println("姓名：");
-			String name = sc.nextLine();
-			System.out.println("性别：");
-			String sex = sc.nextLine();
-			System.out.println("年龄：");
-			int age = sc.nextInt();
-			sc.nextLine();
-			System.out.println("电话：");
-			String tel = sc.nextLine();
-			System.out.println("Q Q：");
-			String qq = sc.nextLine();
-			System.out.println("地址：");
-			String address = sc.nextLine();
-
-			Telephone telephone = new Telephone(name, sex, age, tel, qq, address);
-
-			System.out.println(telephone);
+			Telephone telephone = addT();
 
 			// 保存到数组中
 			tels[index] = telephone;
@@ -159,6 +126,8 @@ public class TelManage {
 		String address = sc.nextLine();
 
 		Telephone telephone = new Telephone(name, sex, age, tel, qq, address);
+		
+		System.out.println(telephone);
 
 		return telephone;
 		

@@ -20,43 +20,29 @@ public class Sort {
 	}
 
 	public void insertionSort(int[] arr) {
-		
+		//插入排序
 		//假定前n-1个数已经排好序，现在将第n个数插到前面的有序数列中，使得这n个数也是排好顺序的。如此反复循环，直到全部排好顺序。
 		//4, 1, 3, 6, 2, 5 
 		for(int i = 0; i < arr.length; i++){
 			
-			//int index = 0;
-			int temp;
-			if(i == 1){
-				if(arr[i] < arr[i-1]){
-					
-					temp = arr[i];
-					arr[i] = arr[i-1];
-					arr[i-1] = temp;
-					
+			if(i == 0)
+				break;
+			for(int j = i; j > 0; j-- ){
+				if(arr[j]<arr[j-1]){
+					int temp;
+					temp = arr[j];
+					arr[j]= arr[j-1];
+					arr[j-1]=temp;
 				}
 			}
-			
-			for(int j = i -1; j > 0; j--){
-				
-				if(arr[i]>arr[j-1] && arr[i] < arr[j]){
-					
-					temp = arr[i];
-					arr[i] = arr[i-1];
-					arr[i-1] = temp;
-					break;
-				}
-				
-			}
-			
 		}
-		
+		System.out.println("结束");
 		show(arr);
 		
 	}
 
 	public void bubbleSort(int[] arr) {
-		
+		//冒泡排序
 		/*
 		比较相邻的元素，如果第一个比第二个大，就交换它们两个；
 		对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。
