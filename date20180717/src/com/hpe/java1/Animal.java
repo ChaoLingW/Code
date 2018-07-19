@@ -52,6 +52,4 @@ public abstract class Animal {
 	//抽象方法：只有方法的定义，没有具体的功能
 	public abstract void shout();
 	
-	
-	
 }
