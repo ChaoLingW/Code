@@ -13,6 +13,7 @@ public class TelManage {
 	Scanner sc = new Scanner(System.in);
 	
 	Map<String, Telephone> map = new HashMap<>();
+	
 	// 添加
 	public void addTel() {
 		System.out.println("---------添加电话本--------");
@@ -21,6 +22,7 @@ public class TelManage {
 
 		// 保存到列表中
 		map.put(telephone.getName(), telephone);
+		
 		System.out.println("添加成功");
 
 	}
@@ -67,10 +69,11 @@ public class TelManage {
 		boolean flag = map.containsKey(name);
 		
 		if (flag) {
-			
-			Telephone telephone = map.get(name);
+			//更新
+			//1.删除
 			map.remove(name);
-			telephone = addT();
+			Telephone telephone = addT();
+			//2.添加
 			map.put(telephone.getName(), telephone);
 			System.out.println("修改成功");
 
@@ -83,7 +86,7 @@ public class TelManage {
 
 	// 查询全部
 	public void selectAllTel() {
-		// 遍历tel数组
+		// 遍历map
 		Set<String> keySet = map.keySet();
 		Iterator<String> iterator = keySet.iterator();
 		
@@ -100,9 +103,14 @@ public class TelManage {
 
 		System.out.println("请输入查询的名字");
 		String name = sc.nextLine();
-		Telephone telephone = map.get(name);
-		System.out.println(telephone);
 		
+		if(map.containsKey(name)){
+			Telephone telephone = map.get(name);
+			System.out.println(telephone);
+		}
+		else{
+			System.out.println("无此人");
+		}
 	}
 	
 	
