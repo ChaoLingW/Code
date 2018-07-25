@@ -43,8 +43,8 @@ public class Day0724 {
 		FileInputStream fis = null;
 		try {
 			fis = new FileInputStream("test.txt");
-			byte[] b = new byte[1000];//用于保存每次读取的字节
-			int len;//用于保存每次读取的长度
+			byte[] b = new byte[1000];
+			int len;
 			while ((len = fis.read(b)) != -1) {
 				String str = new String(b, 0, len);
 				System.out.print(str);
