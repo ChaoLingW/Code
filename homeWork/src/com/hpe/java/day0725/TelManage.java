@@ -66,7 +66,7 @@ public class TelManage {
 
 		//遍历list
 		for(Telephone telephone :list)
-			System.out.println(telephone);
+			telephone.display();
 
 	}
 
@@ -79,7 +79,7 @@ public class TelManage {
 		Telephone telephone = isExistence();
 		//不为空，存在，输出结果
 		if(telephone != null)
-			System.out.println(telephone);
+			telephone.display();
 				
 	}
 
@@ -107,8 +107,8 @@ public class TelManage {
 
 		Telephone telephone = new Telephone(name, sex, age, tel, qq, address);
 
-		System.out.println(telephone);
-
+		telephone.display();
+		
 		return telephone;
 
 	}
@@ -153,18 +153,19 @@ public class TelManage {
 		try {
 			br = new BufferedReader(new FileReader("tel.txt"));
 
-			Telephone telephone = null;//保存读出的数据
+			//保存读出的数据
 			String str = null;
 			while ((str = br.readLine()) != null) {
 				//拆分字符串
 				String[] arr = str.split(",");
 				//构造Telephone实例
-				telephone.setName(arr[0]);
+				Telephone telephone = new Telephone(arr[0], arr[1], Integer.parseInt(arr[2]), arr[3],arr[4], arr[5]);
+				/*telephone.setName(arr[0]);
 				telephone.setSex(arr[1]);
 				telephone.setAge(Integer.parseInt(arr[2]));
 				telephone.setTel(arr[3]);
 				telephone.setQq(arr[4]);
-				telephone.setAddress(arr[5]);
+				telephone.setAddress(arr[5]);*/
 				//添加到列表中
 				list.add(telephone);
 			}
@@ -190,7 +191,7 @@ public class TelManage {
 		String name = sc.nextLine();
 		
 		String str = null;
-		Telephone telephone = null;
+		Telephone telephone = new Telephone();
 		//遍历查找
 		for(int i = 0;i < list.size(); i++){
 			//获取list中的每个字符串
@@ -202,10 +203,9 @@ public class TelManage {
 			}
 		}
 		//不存在，输出此人不存在
-		if(str == null)
-			System.out.println("此人不存在");
+		System.out.println("此人不存在");
 		//返回 此时返回值为null
-		return telephone;
+		return null;
 	}
 
 }

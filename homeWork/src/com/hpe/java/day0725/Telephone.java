@@ -83,6 +83,10 @@ public class Telephone {
 				+ "," + address;
 	}
 	
+	public void display(){
+		System.out.println("姓名:" + name + " 性别:" + sex + " 年龄:" + age + " 电话:" + tel + " Q  Q:" + qq
+				+ " 地址:" + address);
+	}
 	
 	
 }

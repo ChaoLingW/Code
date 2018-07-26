@@ -51,6 +51,7 @@ public class TelTest {
 			case 0:
 				//退出
 				//退出时将本次所有的操作一次性写入，并且只写入一次
+				//若不执行退出操作则会丢失本次程序运行的操作
 				telManage.writer();
 				System.out.println("谢谢使用");
 				System.exit(0);
