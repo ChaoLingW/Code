@@ -79,8 +79,8 @@ public class Telephone {
 
 	@Override
 	public String toString() {
-		return "Telephone [name=" + name + ", sex=" + sex + ", age=" + age + ", tel=" + tel + ", qq=" + qq
-				+ ", address=" + address + "]";
+		return name + "," + sex + "," + age + "," + tel + "," + qq
+				+ "," + address;
 	}
 	
 	

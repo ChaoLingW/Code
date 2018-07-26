@@ -8,6 +8,8 @@ public class TelTest {
 
 		Scanner sc = new Scanner(System.in);
 		TelManage telManage = new TelManage();
+		//每次方法运行，在开始部分，先读取，只读一次
+		telManage.reader();
 		
 		while(true){
 			
@@ -48,6 +50,8 @@ public class TelTest {
 				
 			case 0:
 				//退出
+				//退出时将本次所有的操作一次性写入，并且只写入一次
+				telManage.writer();
 				System.out.println("谢谢使用");
 				System.exit(0);
 				break;

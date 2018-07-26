@@ -16,16 +16,13 @@ import com.sun.org.apache.bcel.internal.generic.CPInstruction;
 public class TelManage {
 
 	Scanner sc = new Scanner(System.in);
-	List<String> list = new ArrayList<>();
+	List<Telephone> list = new ArrayList<>();
 
 	// 添加
 	public void addTel() {
 		System.out.println("---------添加电话本--------");
-
-		Telephone telephone = addT();
-		selectAllTel(null);
-		list.add(telephone.toString());
-		writer(list);
+		//获取添加信息并添加到list中
+		list.add(addT());
 
 		System.out.println("添加成功");
 
@@ -37,101 +34,74 @@ public class TelManage {
 		// 从已经有电话本的元素中查看是否有此姓名的元素
 		System.out.println("请输入要删除的名字");
 
-		String name = sc.nextLine();
-
-		int index = selectAllTel(name);
-
-		if (index != -1) {
-
-			list.remove(index);
-			writer(list);
+		//判断是否存在
+		Telephone telephone= isExistence();
+		//存在
+		if (telephone!= null) {
+			//移除
+			list.remove(telephone);
 			System.out.println("刪除成功");
-		} else {
-			System.out.println("此人不存在");
 		}
-
 	}
 
 	// 修改
 	public void updateTel() {
+		
 		System.out.println("---------修改电话本--------");
 		System.err.println("请输入要修改的姓名");
 
-		String name = sc.nextLine();
-
-		int index = selectAllTel(name);
-
-		if (index != -1) {
-
-			Telephone telephone = addT();
-			list.set(index, telephone.toString());
-			writer(list);
+		//判断此人是否存在
+		Telephone telephone = isExistence();
+		//存在
+		if (telephone != null) {
+			//获取修改信息
+			//修改对应的list
+			list.set(list.indexOf(telephone), addT());
 			System.out.println("修改成功");
-		} else {
-			System.out.println("此人不存在");
 		}
-
 	}
 
 	// 查询全部
 	public void selectAllTel() {
 
-		BufferedReader br = null;
-		String res = null;
-
-		try {
-			br = new BufferedReader(new FileReader("tel.txt"));
-
-			String str;
-			while ((str = br.readLine()) != null) {
-
-				System.out.println(str);
-
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (br != null)
-				try {
-					br.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-		}
+		//遍历list
+		for(Telephone telephone :list)
+			System.out.println(telephone);
 
 	}
 
 	// 根据姓名查询
-
 	public void selectTelByName() {
 
 		System.out.println("请输入查询的名字");
-		String name = sc.nextLine();
-
-		int index = selectAllTel(name);
-
-		if (index != -1)
-			System.out.println(list.get(index));
-		else {
-			System.out.println("此人不存在");
-		}
+		
+		//判断此人是否存在，用res接收返回值
+		Telephone telephone = isExistence();
+		//不为空，存在，输出结果
+		if(telephone != null)
+			System.out.println(telephone);
+				
 	}
 
-	// 重載
+	// 获取控制台输入的个人信息
 	public Telephone addT() {
+		
 		System.out.println("姓名：");
 		String name = sc.nextLine();
+		
 		System.out.println("性别：");
 		String sex = sc.nextLine();
+		
 		System.out.println("年龄：");
 		int age = sc.nextInt();
 		sc.nextLine();
+		
 		System.out.println("电话：");
 		String tel = sc.nextLine();
+		
 		System.out.println("Q Q：");
 		String qq = sc.nextLine();
+		
 		System.out.println("地址：");
 		String address = sc.nextLine();
 
@@ -144,16 +114,17 @@ public class TelManage {
 	}
 
 	// 写入
-	public void writer(List<String> list) {
+	public void writer() {
 
 		BufferedWriter bw = null;
+		
 		try {
 			bw = new BufferedWriter(new FileWriter("tel.txt", false));
-
-			Iterator<String> iterator = list.iterator();
+			//遍历list 并对中的每个对象写入到文本中
+			Iterator<Telephone> iterator = list.iterator();
 			
 			while(iterator.hasNext()){
-				bw.write(iterator.next());
+				bw.write(iterator.next().toString());
 				bw.newLine();
 				bw.flush();
 			}
@@ -171,25 +142,31 @@ public class TelManage {
 
 	}
 
-	// 查找
-	public int selectAllTel(String name) {
+	// 读出
+	public void reader() {
 
 		BufferedReader br = null;
-		int index = -1;
-		int count = 0;
-		list.clear();
+		//只用一次读入的话是不需要对列表清除数据的
+		//若多次读的话必须清除list的数据，否则会出想重复数据
+		//list.clear();
 		
 		try {
 			br = new BufferedReader(new FileReader("tel.txt"));
 
-			String str;
+			Telephone telephone = null;//保存读出的数据
+			String str = null;
 			while ((str = br.readLine()) != null) {
-				list.add(str);
-				if (name != null) {
-					if (str.indexOf(name) != -1)
-						index = count;
-				}
-				count++;
+				//拆分字符串
+				String[] arr = str.split(",");
+				//构造Telephone实例
+				telephone.setName(arr[0]);
+				telephone.setSex(arr[1]);
+				telephone.setAge(Integer.parseInt(arr[2]));
+				telephone.setTel(arr[3]);
+				telephone.setQq(arr[4]);
+				telephone.setAddress(arr[5]);
+				//添加到列表中
+				list.add(telephone);
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -203,7 +180,32 @@ public class TelManage {
 					e.printStackTrace();
 				}
 		}
-		return index;
+	}
+	
+	//判断此人是否存在
+	//返回值   存在 返回此人所在行的字符串
+	//		不存在 返回null
+	public Telephone isExistence(){
+		
+		String name = sc.nextLine();
+		
+		String str = null;
+		Telephone telephone = null;
+		//遍历查找
+		for(int i = 0;i < list.size(); i++){
+			//获取list中的每个字符串
+			telephone = list.get(i);
+			//判断，name
+			if(telephone.getName().equals(name)){
+				//存在就返回这个字符串
+				return telephone; 
+			}
+		}
+		//不存在，输出此人不存在
+		if(str == null)
+			System.out.println("此人不存在");
+		//返回 此时返回值为null
+		return telephone;
 	}
 
 }
