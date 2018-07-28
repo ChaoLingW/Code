@@ -1,0 +1,178 @@
+package com.hpe.java.day0725;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class TelManage {
+
+	Scanner sc = new Scanner(System.in);
+
+	// 添加
+	public void addTel() {
+		System.out.println("---------添加电话本--------");
+		
+		Telephone telephone = addT();
+		writer(telephone);
+
+		System.out.println("添加成功");
+
+	}
+
+	// 删除
+	public void delTel() {
+
+		//从已经有电话本的元素中查看是否有此姓名的元素
+		System.out.println("请输入查询的名字");
+		
+		String name = sc.nextLine();
+
+	}
+
+	// 修改
+	public void updateTel() {
+
+		System.out.println("---------修改电话本--------");
+		System.err.println("请输入要修改的姓名");
+
+		String name = sc.nextLine();
+	}
+
+	// 查询全部
+	public String selectAllTel() {
+		
+		BufferedReader br = null;
+		String res = null;
+		
+		try {
+			br = new BufferedReader(new FileReader("tel.txt"));
+			
+			String str;
+			while ((str = br.readLine()) != null) {
+				
+				System.out.println(str);
+				
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally{
+			if(br != null)
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+		}
+		
+		return res;
+	}
+
+	// 根据姓名查询
+	
+	public void selectTelByName() {
+
+		System.out.println("请输入查询的名字");
+		String name = sc.nextLine();
+		
+		String str = selectAllTel(name);
+		
+		if(str != null)
+			System.out.println(str);
+		else{
+			System.out.println("没有查到这这个人");
+		}
+		
+	}
+	
+	
+	//重載
+	public Telephone addT(){
+		System.out.println("姓名：");
+		String name = sc.nextLine();
+		System.out.println("性别：");
+		String sex = sc.nextLine();
+		System.out.println("年龄：");
+		int age = sc.nextInt();
+		sc.nextLine();
+		System.out.println("电话：");
+		String tel = sc.nextLine();
+		System.out.println("Q Q：");
+		String qq = sc.nextLine();
+		System.out.println("地址：");
+		String address = sc.nextLine();
+
+		Telephone telephone = new Telephone(name, sex, age, tel, qq, address);
+		
+		System.out.println(telephone);
+
+		return telephone;
+		
+	}
+	
+	//写入
+	public void writer(Telephone t){
+		
+		BufferedWriter br = null;
+		
+		String str = t.toString();
+		try {
+			br = new BufferedWriter(new FileWriter("tel.txt"));
+			
+			br.write(str);
+			br.newLine();
+			br.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if(br != null)
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+		}
+		
+	}
+	
+	
+	public String selectAllTel( String name) {
+		
+		BufferedReader br = null;
+		String res = null;
+		
+		try {
+			br = new BufferedReader(new FileReader("tel.txt"));
+			
+			String str;
+			while ((str = br.readLine()) != null) {
+				if(name != null){
+					if(str.indexOf(name) != -1)
+					res = str;
+				}
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally{
+			if(br != null)
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+		}
+		return res;
+	}
+	
+	
+	
+	
+	
+}

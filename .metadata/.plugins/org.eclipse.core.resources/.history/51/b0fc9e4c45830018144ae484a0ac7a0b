@@ -1,0 +1,55 @@
+package com.hpe.java;
+
+public class ForTest1 {
+
+	public static void main(String[] args) {
+		
+		//test1();
+		test2();
+		
+	}
+	
+	//for循环嵌套
+	
+	public static void test1(){
+		
+		for(int i = 0; i < 3; i++){
+			
+			for(int j = 0; j < 3; j++){
+				
+				System.out.println("i: " + i + ",j: " + j);
+				
+			}
+			
+		}
+		
+	}
+	
+	//使用for循环嵌套找出100-999之间的水仙花数
+	public static void test2(){
+		
+		System.out.println("100-999之间的水仙花数");
+		
+		for(int bai = 1; bai <= 9; bai ++){//百位
+			
+			for(int shi = 0; shi <=9; shi ++){//十位
+				
+				for(int ge = 0; ge <= 9; ge ++){//个位
+					
+					//计算数值
+					int num = ge + shi * 10 + bai * 100;
+					
+					if(num == Math.pow(bai, 3) + Math.pow(shi, 3) + Math.pow(ge, 3))
+						System.out.print(num + " ");
+					
+				}
+			}
+		}
+		
+	}
+	
+	public static void test(){
+		
+	}
+	
+}

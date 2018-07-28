@@ -1,0 +1,15 @@
+package com.hpe.java;
+
+import org.junit.Test;
+
+public class FileReaderWirterTest {
+
+	@Test
+	public void testFileReader(){
+		
+		
+		
+	}
+	
+	
+}

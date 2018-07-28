@@ -1,0 +1,19 @@
+package com.emp.java2;
+
+public class Test {
+	public static void main(String[] args) {
+		System.out.println("题三");
+		StudentHomework2[] student = new StudentHomework2[5];
+		student[0] = new StudentHomework2("001", "刘一", "男", 10, 88);
+		student[1] = new StudentHomework2("002", "陈二", "女", 11, 65);
+		student[2] = new StudentHomework2("003", "张三", "男", 12, 33);
+		student[3] = new StudentHomework2("004", "李四", "女", 13, 75);
+		student[4] = new StudentHomework2("005", "王五", "男", 14, 95);
+		//输出每个学生的信息		
+		for (StudentHomework2 s : student) 
+			System.out.println(s.toString());
+		//计算并输出这五个学生Java语言成绩的平均值，以及计算并输出他们Java语言成绩的最大值和最小值。（思路：对象数组）
+		StudentHomework2.value(student);
+		
+	}
+}

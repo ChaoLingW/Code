@@ -1,0 +1,29 @@
+package com.hpe.java;
+
+import com.emp.java.CommonEmployee;
+import com.emp.java.Manager;
+import com.hpe.java1.Car;
+import com.hpe.java1.Motorbike;
+import com.hpe.java1.Vehicle;
+import com.hpe.java4.Employee;
+
+public class Test1 {
+
+	//创建Manager类的对象，并调用work()
+	Employee manager = new Manager();
+	manager.work();
+	
+	//创建CommonEmployee类的对象，并调用work()
+	Employee commonEmployee = new CommonEmployee();
+	commonEmployee.work();
+	
+	//创建Car类的对象，并调用wheelsNum和run
+	Vehicle car = new Car();
+	car.wheelsNum();
+	car.run();
+	
+	//创建Motorbike类的对象，并调用wheelsNum和run
+	Vehicle motorbike = new Motorbike();
+	motorbike.wheelsNum();
+	motorbike.run();
+}

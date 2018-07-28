@@ -1,0 +1,34 @@
+1.	找出下面程序的错误，写出输出语句的输出结果
+String str1 = 4;    		//对String类型的变量进行赋值时，值必须用””括起来
+String str2 = 3.5f + “”;	//正确
+System.out .println(3+4+“Hello!”); 	//  7Hello!
+System.out.println(“Hello!”+3+4);     //   Hello!34
+System.out.println(‘a’+1+“Hello!”);    //    98Hello!
+System.out.println(“Hello”+‘a’+1);     //    Helloa1
+2.	能否编译通过
+1）short  s = 5;
+   s = s-2;       //不能  //s-5是int型
+2） byte b = 3;
+   	b = b + 4;    //不能  //b+4是intx=型
+    b = (byte)(b+4);
+3）char c = ‘a’;
+   int  i = 5;
+   double d = .314;
+   double result = c+i+d;  //能
+4） byte b = 5;
+    short s = 3;	
+   short t = s + b;  //不能
+
+//char short byte类型在运算首先转换为int
+3.	描述一下JDK、JRE、JVM三者的关系。
+JDK包括JRE，JRE包括JVM
+4.	解释一下path环境变量的作用，为什么安装jdk要配置环境变量。
+为了使系统可以在找到程序（例如Java/javac）的运行路径！
+5.	解释一下Java的跨平台性是如何实现的。
+Java源代码.java文件首先需要进行编译生成.class文件，然后对.class文件翻译成机器码。字节码不能直接执行，必须翻译成机器码才能运行，而对字节码文件翻译时是通过JVM进行的。不同平台下的翻译出来的字节码文件是相同的，但经过该平台的JVM翻译出来的机器码是不相同的。因此Java程序是可以跨平台执行的，但该平台必须安装对应的JVM。
+6.	定义String类型的变量str，并给其初始值“12”，将其转化int类型并复制给变量x；
+然后定义int类型的变量y并复制10，最后像控制台打印这两个输的和。
+String str = "12";
+int x = Integer.parseInt(str);
+int y = 10;
+System.out.println(x+y);

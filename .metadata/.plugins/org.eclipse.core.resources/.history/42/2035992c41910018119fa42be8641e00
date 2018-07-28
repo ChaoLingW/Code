@@ -1,0 +1,139 @@
+package com.hpe.view;
+
+import java.util.Scanner;
+
+import com.hpe.po.Telephone;
+import com.hpe.service.TelManage;
+import com.hpe.service.TelService;
+
+public class TelUi {
+	
+	static Scanner sc = new Scanner(System.in);
+	static TelService telService = new TelService();
+	
+	public static void main(String[] args) {
+
+		
+		
+		while(true){
+			
+			menu();
+			
+			int choice = sc.nextInt();
+			
+			//判断输入
+			switch(choice){
+			
+			case 1:
+				//添加
+				addTel();
+				break;
+				
+			case 2:
+				//删除
+				delTel();
+				break;
+				
+			case 3:
+				//修改
+				updateTel();
+				break;
+				
+			case 4:
+				//查询全部
+				selectAllTel();
+				break;
+				
+			case 5:
+				//根据姓名查询
+				selectTelByName();
+				break;
+				
+			case 0:
+				//退出
+				System.out.println("谢谢使用");
+				System.exit(0);
+				break;
+			
+			default:
+				System.out.println("输入有误，请重新输入");
+				break;
+			
+			}
+			
+		}
+	}
+
+	
+
+	//显示菜单
+	private static void menu() {
+		System.out.println("----------------电话本管理系统----------------");
+		System.out.println("1.添加\t2.删除\t3.修改\t4.查询所有\t5.根据姓名查询\t0.退出");
+		System.out.println("----------------电话本管理系统----------------");
+		System.out.print("请选择业务：");
+	}
+
+	private static void addTel() {
+		//完成添加的显示
+		System.out.println("---------添加电话本--------");
+		//调用addT()实现对信息的输入，并保存到Telephone对象中
+		Telephone telephone = createTel();
+		System.out.println(telephone);
+		
+		//调用TelService中addTel(),传入Telephone，接收返回值;
+		int addRes = telService.addTel(telephone);
+		if(addRes == -1)
+			System.out.println("此人已存在");
+		else(addRes == 0)
+			System.out.println("添加成功");
+		
+	}
+	
+	
+
+
+
+	private static void delTel() {
+		
+	}
+
+	private static void updateTel() {
+		
+	}
+	
+	private static void selectAllTel() {
+		
+	}
+	
+	private static void selectTelByName() {
+		
+	}
+	
+	private static Telephone createTel() {
+		
+		System.out.println("姓名：");
+		String name = sc.nextLine();
+		
+		System.out.println("性别：");
+		String sex = sc.nextLine();
+		
+		System.out.println("年龄：");
+		int age = sc.nextInt();
+		sc.nextLine();
+		
+		System.out.println("电话：");
+		String tel = sc.nextLine();
+		
+		System.out.println("Q Q：");
+		String qq = sc.nextLine();
+		
+		System.out.println("地址：");
+		String address = sc.nextLine();
+
+		Telephone telephone = new Telephone(name, sex, age, tel, qq, address);
+		
+		return telephone;
+	}
+	
+}

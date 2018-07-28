@@ -1,0 +1,25 @@
+package com.hpe.java.day0724;
+
+import java.io.FileOutputStream;
+
+import org.junit.Test;
+
+public class Day0724 {
+	
+	
+	@Test
+	public void test1(){
+		
+		String str = "七夕\n作者：徐凝\n一道鹊桥横渺渺，\n千声玉佩过玲玲。\n别离还有经年客，\n怅望不如河鼓星。";
+		byte[] bytes = str.getBytes();
+		
+		FileOutputStream fos = new FileOutputStream("test.txt");
+		
+		
+	}
+	
+	
+	
+	
+
+}

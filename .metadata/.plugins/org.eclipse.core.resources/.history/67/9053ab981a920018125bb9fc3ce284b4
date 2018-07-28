@@ -1,0 +1,106 @@
+package com.hpe.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.hpe.po.Employee;
+
+public class EmdService {
+	
+	List<Employee> emp = new ArrayList<>();
+	
+	/**
+	 * 
+	 * @Description: 添加操作 将employee对象添加到emp中
+	 * @param employee
+	 * @return  boolean   
+	 * @throws
+	 */
+	public boolean addEmployee(Employee employee) {
+
+		return emp.add(employee);
+
+	}
+
+	public static void delEmployee(Map<String, Employee> map) {
+
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("请输入要删除人的姓名");
+
+		String name = sc.nextLine();
+
+		boolean flag = map.containsKey(name);
+
+		if (flag) {
+			map.remove(name);
+			System.out.println("删除数据成功");
+		} else {
+			System.out.println("没有这个人");
+		}
+
+	}
+
+	public static void updateEmployee(Map<String, Employee> map) {
+
+		Scanner sc = new Scanner(System.in);
+		System.out.println("请输入要修改的人的姓名");
+
+		String name = sc.nextLine();
+
+		boolean flag = map.containsKey(name);
+
+		if (flag) {
+			System.out.println("请重新输入员工信息");
+
+			Employee employee = map.get(name);
+			if (!employee.equals(null)) {
+				employee = add();
+				System.out.println("修改数据成功");
+			}else{
+				System.out.println("输入失败");
+			}
+		} else {
+			System.out.println("修改数据失败");
+		}
+
+	}
+
+	public static void queryEmployee(Map<String, Employee> map) {
+
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("请输入员工姓名");
+		String name = sc.nextLine();
+
+		boolean flag = map.containsKey(name);
+
+		if (flag) {
+			Employee employee = map.get(name);
+			employee.dispaly();
+
+		} else {
+			System.out.println("没有这个人");
+		}
+
+	}
+	
+	
+	/**
+	 * @Description: 根据姓名判断是否存在 存在则返回对应的索引，不存在返回-1
+	 * @param @param name  
+	 * @return @param name
+	 * @throws
+	 */
+	public int isExist(String name) {
+
+		for(Employee employee : emp)
+			if(employee.getName().equals(name))
+				return emp.indexOf(employee);
+		
+		return -1;
+	}
+
+	
+
+}
