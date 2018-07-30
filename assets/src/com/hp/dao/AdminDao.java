@@ -23,4 +23,5 @@ public interface AdminDao {
 	 * @throws SQLException
 	 */
 	public Admin select(Admin admin);
+	
 }

@@ -55,4 +55,5 @@ public interface UserDao {
 	 * @throws SQLException
 	 */
 	public boolean add(User user);
+	
 }
