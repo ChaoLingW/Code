@@ -16,28 +16,30 @@
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/date20180719" type="4"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/date20180720" type="4"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/date20180724" type="4"/>
+<item elementID="=date20180730-1" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=date20180730-2" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 </workingSet>
-<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1531219404055_3" label="practice" name="practice">
-<item elementID="=uptelmanagelist" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=homeWork" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=lianxi" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=telmanagelio" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=homework0728" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=homework0725" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=homework0724" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=homework0723" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=homework0720" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=homework0719" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=homework0716" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=homework0717" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=homework0713" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=homework0705" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=homework0706" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=homework0709" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=homework0710" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=homework0711" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=homework0712" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=homework0714" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1531219404055_3" label="practice" name="practice"/>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1532840192382_5" label="homework" name="homework">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0728" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0724" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0720" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0719" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0717" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0713" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0711" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0706" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0725" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0716" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0714" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0712" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0710" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0709" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0705" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0723" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1532920959101_5" label="project" name="project">
+<item elementID="=assets" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 </workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1530772430381_0" label="Window Working Set" name="Aggregate for window 1530772430381"/>
 <mruList name="date"/>

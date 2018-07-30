@@ -1,4 +1,4 @@
-package com.hpe.java;
+﻿package com.hpe.java;
 
 public class MethodTest {
 
@@ -50,8 +50,6 @@ public class MethodTest {
 	
 	public void aaa(int a,String s){
 		
-	}
-	
-	
+	}	
 
 }

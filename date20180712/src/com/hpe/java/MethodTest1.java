@@ -76,14 +76,4 @@ public class MethodTest1 {
 		System.out.println();
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }
