@@ -23,8 +23,8 @@ public class UserService {
 	public int addUser(User user){
 		
 		//判断此用户名的用户是否存在 -->查询-->根据姓名查询
-		/*if(userDao.selectByName(user.getUserName()) != null)
-			return -1;*/
+		if(userDao.selectByName(user.getUserName()) != null)
+			return -1;
 		return userDao.addUser(user);
 	}
 
