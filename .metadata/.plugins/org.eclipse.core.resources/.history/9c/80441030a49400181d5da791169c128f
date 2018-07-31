@@ -1,0 +1,19 @@
+package com.hpe.dao.impl;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import com.hpe.dao.IAccountDao;
+
+public class AccountImplTest {
+
+	
+	@Test
+	public void testUpdataAccount() {
+		IAccountDao accountDao = new AccountImpl();
+		
+		accountDao.updataAccount(1, 2, 10);
+	}
+
+}

@@ -1,0 +1,10 @@
+package com.hpe.java;
+
+public class UserManage {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

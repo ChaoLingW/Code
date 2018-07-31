@@ -1,0 +1,5 @@
+package com.hp.util;
+
+public class DBUtil {
+
+}

@@ -1,0 +1,4 @@
+driver=com.mysql.jdbc.Driver
+url=jdbc:mysql://localhost:3306/bigdata2?useUnicode=true&characterEncoding
+user=root
+password=mysql

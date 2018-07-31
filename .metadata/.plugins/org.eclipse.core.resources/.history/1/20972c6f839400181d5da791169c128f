@@ -1,0 +1,53 @@
+package com.hp.service;
+
+import java.util.List;
+
+import com.hp.po.Bank;
+import com.hp.po.User;
+
+/**
+ * @Description:Admin业务处理接口
+ * @author chaoling
+ * @date 2018年7月31日
+ */
+public interface IAdminService {
+
+	/**
+	 * @Description: 查询所有的普通用户
+	 * @return list  
+	 * @throws
+	 */
+	List<User> selectAllUser();
+	
+	/**
+	 * @Description: 添加银行
+	 * @param bank 待加的银行的信息
+	 * @return -1该银行已存在； 0 添加失败； 1 添加成功  
+	 * @throws
+	 */
+	int addBank(Bank bank);
+	
+	/**
+	 * @Description: 根据银行id修改银行信息
+	 * @param bank 待修改银行的信息
+	 * @return true 修改成功； false 修改失败  
+	 * @throws
+	 */
+	boolean updateBankByBankId(Bank bank);
+	
+	/**
+	 * @Description: 根据银行id删除银行信息，删除的同时，删除asset表中的改银行的记录
+	 * @param bankId 待删除银行的id
+	 * @return true 删除成功；false 删除失败  
+	 * @throws
+	 */
+	boolean deleteBankByBankId(int BankId);
+
+	/**
+	 * @Description: 查询所有的银行的信息
+	 * @return banks bank表中所有的记录  
+	 * @throws
+	 */
+	List<Bank> selectAllBank();
+	
+}

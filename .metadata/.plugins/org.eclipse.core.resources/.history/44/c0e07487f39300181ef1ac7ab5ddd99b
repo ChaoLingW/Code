@@ -1,0 +1,26 @@
+package com.hp.dao;
+
+import com.hp.po.Admin;
+/**
+ * @Description:Admin表操作的接口
+ * @author chaoling
+ * @date 2018年7月30日
+ */
+public interface AdminDao {
+
+	/**
+	 * 
+	 * @Description: TODO
+	 * @return     
+	 * @throws
+	 */
+	public int login();
+	/**
+	 * 
+	 * @Description: TODO
+	 * @param admin
+	 * @return     
+	 * @throws
+	 */
+	public int select(Admin admin);
+}

@@ -1,0 +1,55 @@
+package com.hpe.dao.impl;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import com.hpe.dao.IAccountDao;
+import com.hpe.util.JdbcUtil;
+
+public class AccountImpl implements IAccountDao{
+
+	@Override
+	public int updataAccount(int outAccount, int inAccount, int money) {
+		
+		Connection connection = JdbcUtil.getConnection();
+		
+		String sql1 = "update account set accountmoney = accountmoney - 10 ? where accountid = ?";
+		String sql2 = "update account set accountmoney = accountmoney + 10 ? where accountid = ?";
+		
+		PreparedStatement pstmt = null;
+		
+		
+		try {
+			//1.设置手动提交（开启事物）；
+			connection.setAutoCommit(false);
+			
+			
+			pstmt = connection.prepareStatement(sql1);
+			pstmt.setInt(1, money);
+			pstmt.setInt(2, outAccount);
+			
+			pstmt.executeUpdate();
+			
+			pstmt = connection.prepareStatement(sql2);
+			pstmt.setInt(1, money);
+			pstmt.setInt(2, inAccount);
+			
+			pstmt.executeUpdate();
+			
+			//2.提交事物
+			connection.commit();
+		} catch (Exception e) {
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		} finally {
+			JdbcUtil.close(null, pstmt, connection);
+		}
+		
+		return 0;
+	}
+
+}

@@ -1,0 +1,52 @@
+package com.hp.dao;
+
+import java.util.List;
+
+import com.hp.po.Bank;
+
+/**
+ * @Description:对bank表进行操作
+ * @author chaoling
+ * @date 2018年7月30日
+ */
+public interface BankDao {
+	
+	/**
+	 * @Description: 对bank表执行插入操作
+	 * @param bank
+	 * @return true 添加成功; false 添加失败  
+	 * @throws
+	 */
+	public boolean add(Bank bank);
+	
+	/**
+	 * @Description: 对bank表执行删除操作
+	 * @param bank
+	 * @return true 删除成功; false 删除失败   
+	 * @throws
+	 */
+	public boolean delete(Bank bank);
+	
+	/**
+	 * @Description: 对bank表执行更新/修改操作
+	 * @param bank
+	 * @return true 更新成功; false 更新失败
+	 * @throws
+	 */
+	public boolean update(Bank bank);
+	
+	/**
+	 * @Description: 查询bank表中的所有记录
+	 * @return List<bank> 存储所有的记录，为空时且size()为0时表示表为空  
+	 * @throws
+	 */
+	public List<Bank> selectAll();
+	
+	/**
+	 * @Description: 根据id对bank表查询
+	 * @return bank 若存在返回对应的这条记录，否则返回null
+	 * @throws
+	 */
+	public Bank selectById();
+
+}

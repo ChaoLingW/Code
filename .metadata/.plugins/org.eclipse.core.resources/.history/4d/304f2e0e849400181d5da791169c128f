@@ -1,0 +1,13 @@
+package com.hp.service;
+
+public interface IUserService {
+	
+	/**
+	 * @Description: 普通用户登录
+	 * @param user
+	 * @return   
+	 * @throws
+	 */
+	int loginUser(User user);
+
+}

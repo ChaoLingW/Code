@@ -1,0 +1,52 @@
+package com.teljdbc.util;
+
+import java.sql.SQLException;
+
+import javax.sql.DataSource;
+
+import org.apache.commons.dbutils.QueryRunner;
+
+public class DBUtil {
+
+	private QueryRunner qr;
+
+	public int update(String sql, Object[] params){
+		
+		int res = 0;
+		
+		try {
+			res = qr.update(sql, params);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public DBUtil() {
+		super();
+		
+		DataSource ds = DBDataScoure.getDataSource();
+		qr = new QueryRunner(ds);
+	}
+	
+	
+	
+	
+	
+	
+}

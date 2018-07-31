@@ -1,0 +1,5 @@
+package com.teljdbc.dao;
+
+public class Connection {
+
+}

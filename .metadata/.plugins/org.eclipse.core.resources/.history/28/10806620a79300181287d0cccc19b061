@@ -1,0 +1,53 @@
+package com.hpe.java;
+
+import java.util.Scanner;
+
+public class UserManage {
+
+	static Scanner sc = new Scanner(System.in);
+
+	public static void main(String[] args) {
+
+		while (true) {
+
+			System.out.println("-----------用户管理----------");
+			System.out.println("1.添加\t2.删除\t3.修改\t4查询\t5.查询全部\t0.退出");
+			System.out.println("请选择业务：");
+
+			String choice = sc.nextLine();
+
+			switch (choice) {
+			case "1":
+
+				break;
+
+			case "2":
+
+				break;
+
+			case "3":
+
+				break;
+
+			case "4":
+
+				break;
+
+			case "5":
+
+				break;
+
+			case "0":
+				System.out.println("谢谢使用");
+				System.exit(0);
+				break;
+				
+			default:
+				System.out.println("输入有误");
+				break;
+			}
+		}
+
+	}
+
+}

@@ -1,0 +1,53 @@
+package com.hp.dao.impl;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.hp.dao.AdminDao;
+import com.hp.po.Admin;
+import com.hp.util.DBUtil;
+
+public class AdminDaoImpl implements AdminDao{
+
+	@Override
+	public int login() {
+		
+		
+		
+		
+		
+	}
+
+	/*
+	 * 对admin表的
+	 * @param admin
+	 * @return
+	 */
+	@Override
+	public int select(Admin admin) {
+		
+		Connection connection = null;
+		String sql = "select * from where adminName = ?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int res = 0;
+		
+		try {
+			connection = DBUtil.getConnection();
+			pstmt = connection.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(!rs.next())
+				res = -1;
+			String adminPassword = rs.getString(3);
+			if(adminPassword.equals(admin.getAdminPassword()))
+				res = 1;
+			res = 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+}

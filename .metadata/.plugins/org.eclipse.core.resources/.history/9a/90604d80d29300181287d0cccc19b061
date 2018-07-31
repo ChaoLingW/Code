@@ -1,0 +1,22 @@
+/**
+ * 2018年7月30日
+ * TODO
+ */
+package com.hpe.dao;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+/**@Description: TODO
+ * @author chaoling
+ * @date 2018年7月30日下午4:28:06
+ */
+public class UserDaoTest {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

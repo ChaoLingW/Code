@@ -1,0 +1,32 @@
+package com.hp.dao;
+
+import java.util.List;
+
+import com.hp.po.User;
+
+/**
+ * @Description:对user表操作的接口
+ * @author chaoling
+ * @date 2018年7月30日
+ */
+public interface UserDao {
+	
+	/**
+	 * @param userName
+	 * @param userPassword
+	 * @return true 修改成功  false 修改失败
+	 * @throws 
+	 */
+	public boolean updateByNameToPassword(String userName,String userPassword);
+
+	/**
+	 * @Description: 查询所有用户
+	 * @return List<User> 当为null且size()为0时说明user表为空   
+	 * @throws
+	 */
+	public List<User> seleteAll();
+	
+	
+	
+	
+}

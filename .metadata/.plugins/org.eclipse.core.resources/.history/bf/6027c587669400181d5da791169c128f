@@ -1,0 +1,17 @@
+package com.hpe.dao;
+
+import com.hpe.po.User;
+
+public interface IUserDao {
+
+	//添加
+	public int addUser(User user);
+	
+	//根据用户名删除
+	
+	//根据用户名修改
+	
+	//根据用户名查询
+	
+	//查询全部
+}

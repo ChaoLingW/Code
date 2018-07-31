@@ -1,0 +1,9 @@
+package com.hp.dao;
+/**
+ * @Description:对bank表进行操作
+ * @author chaoling
+ * @date 2018年7月30日
+ */
+public interface BankDao {
+
+}
