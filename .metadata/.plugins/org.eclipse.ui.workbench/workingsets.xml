@@ -32,7 +32,7 @@
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0709" type="4"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0705" type="4"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0723" type="4"/>
-<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0730" type="4"/>
+<item elementID="=homework0730" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0728" type="4"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0724" type="4"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0720" type="4"/>
@@ -42,6 +42,7 @@
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0725" type="4"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0714" type="4"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0710" type="4"/>
+<item elementID="=homework0731" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 </workingSet>
 <workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1532920959101_5" label="project" name="project">
 <item elementID="=assets" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
