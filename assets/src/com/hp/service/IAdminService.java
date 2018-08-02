@@ -16,15 +16,9 @@ public interface IAdminService {
 	/**
 	 * @Description: 管理员登录
 	 * @param user
-	 * @return  -1 该用户不存在  0 密码错误 -1 登录成功
+	 * @return  -1 该用户不存在  0 密码错误 >0 对应的adminId
 	 * @throws
 	 */
 	int loginAdmin(Admin admin);
-	/**
-	 * @Description: 查询所有的普通用户
-	 * @return list  
-	 * @throws
-	 */
-	List<User> selectAllUser();
-	
+		
 }

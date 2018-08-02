@@ -21,31 +21,109 @@ import org.apache.commons.dbutils.handlers.BeanHandler;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 /**
- * @Description:
+ * @Description: 对数据源的操作类
  * @author chaoling
  * @date 2018年7月30日
  */
 public class DBUtil {
+	
+	private static DataSource dataSource = new ComboPooledDataSource();
+	private static ThreadLocal<Connection> tl = new ThreadLocal<Connection>();
+	private static QueryRunner qr = new QueryRunner(dataSource);
 
-	private static QueryRunner qr;
 
-	static {
-		DataSource ds = DBDataSource.getDataSource();
-		qr = new QueryRunner(ds);
+	/**
+	 * @Description: 获取数据源
+	 * @return  数据源 
+	 */
+	public static DataSource getDataSource() {
+		return dataSource;
 	}
 
 	/**
-	 * @Description: 执行更新操作
+	 * @Description: 获取连接
+	 * @return 连接
+	 * @throws SQLException   
+	 * @throws
+	 */
+	public static Connection getConnection() throws SQLException {
+		Connection con = tl.get();
+		if (con == null) {
+			return dataSource.getConnection();
+		}
+		return con;
+	}
+
+	/**
+	 * @Description: 开启事务
+	 * @throws SQLException   
+	 */
+	public static void beginTranscation() throws SQLException {
+		Connection con = tl.get();
+		if (con != null) {
+			throw new SQLException("事务已经开启，在没有结束当前事务时，不能再开启事务！");
+		}
+		con = dataSource.getConnection();
+		con.setAutoCommit(false);
+		tl.set(con);
+	}
+
+	/**
+	 * @Description: 提交事务
+	 * @throws SQLException   
+	 */
+	public static void commitTransaction() throws SQLException {
+		Connection con = tl.get();
+		if (con == null) {
+			throw new SQLException("当前没有事务，所以不能提交事务！");
+		}
+		con.commit();
+		con.close();
+		tl.remove();
+	}
+
+	/**
+	 * @Description: 回滚事务
+	 * @throws SQLException   
+	 */
+	public static void rollbackTransaction() throws SQLException {
+		Connection con = tl.get();
+		if (con == null) {
+			throw new SQLException("当前没有事务，所以不能回滚事务！");
+		}
+		con.rollback();
+		con.close();
+		tl.remove();
+	}
+
+	/**
+	 * @Description: 执行更新操作(多个条件)
 	 * @param sql
 	 * @param params
 	 * @return row 受影响的行数
-	 * @throws SQLException
 	 */
-	public static int update(String sql, Object[] params) {
+	public static int update(String sql, Object[] params)  {
 
 		int row = 0;
 		try {
 			row = qr.update(sql, params);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return row;
+	}
+
+	/**
+	 * @Description: 执行更新操作(一个条件)
+	 * @param sql
+	 * @param params
+	 * @return row 受影响的行数
+	 */
+	public static int update(String sql, Object param)  {
+
+		int row = 0;
+		try {
+			row = qr.update(sql, param);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -58,7 +136,6 @@ public class DBUtil {
 	 * @param rsh 
 	 * @param params 
 	 * @return 存在就返回所有的记录，否则返回null
-	 *  @throws SQLException
 	 */
 	public static <T> T query(String sql, ResultSetHandler<T> rsh, Object[] params) {
 
@@ -78,7 +155,6 @@ public class DBUtil {
 	 * @param rsh
 	 * @param param
 	 * @return 如果存在这条记录返回对应的实体类对象，否则为null  
-	 * @throws SQLException
 	 */
 	public static <T> T query(String sql, ResultSetHandler<T> rsh, Object param) {
 
@@ -91,5 +167,4 @@ public class DBUtil {
 		}
 		return result;
 	}
-
 }

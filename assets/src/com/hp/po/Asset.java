@@ -11,7 +11,7 @@ public class Asset {
 
 	private int bankId;
 	private int cardNum;
-	private double carMoney;
+	private double cardMoney;
 	private Date careteDate; 
 	private int userId;
 	
@@ -31,12 +31,12 @@ public class Asset {
 		this.cardNum = cardNum;
 	}
 	
-	public double getCarMoney() {
-		return carMoney;
+	public double getCardMoney() {
+		return cardMoney;
 	}
 	
-	public void setCarMoney(double carMoney) {
-		this.carMoney = carMoney;
+	public void setCardMoney(double cardMoney) {
+		this.cardMoney = cardMoney;
 	}
 	
 	public Date getCareteDate() {
@@ -55,11 +55,11 @@ public class Asset {
 		this.userId = userId;
 	}
 
-	public Asset(int bankId, int cardNum, double carMoney, Date careteDate, int userId) {
+	public Asset(int bankId, int cardNum, double cardMoney, Date careteDate, int userId) {
 		super();
 		this.bankId = bankId;
 		this.cardNum = cardNum;
-		this.carMoney = carMoney;
+		this.cardMoney = cardMoney;
 		this.careteDate = careteDate;
 		this.userId = userId;
 	}
@@ -70,7 +70,7 @@ public class Asset {
 
 	@Override
 	public String toString() {
-		return "Asset [bankId=" + bankId + ", cardNum=" + cardNum + ", carMoney=" + carMoney + ", careteDate="
+		return "Asset [bankId=" + bankId + ", cardNum=" + cardNum + ", cardMoney=" + cardMoney + ", careteDate="
 				+ careteDate + ", userId=" + userId + "]";
 	}
 }

@@ -21,85 +21,48 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
  */
 public class JdbcUtil {
 
-	//创建数据源
-	private static DataSource dataSource = new ComboPooledDataSource(); 
-	
-	//获取数据源
-	public static DataSource getDataSource(){
+	private static DataSource dataSource = new ComboPooledDataSource();
+	private static ThreadLocal<Connection> tl = new ThreadLocal<Connection>();
+
+	public static DataSource getDataSource() {
 		return dataSource;
 	}
-	
-	
-	/**
-	 * @Description: 连接数据库，并返回数据库连接
-	 * @return connection
-	 * @throws SQLException
-	 */
-	public static Connection getConnection() {
-		Connection connection = null;
-		
-		try {
-			connection = dataSource.getConnection();
-		} catch (SQLException e) {
-			e.printStackTrace();
+
+	public static Connection getConnection() throws SQLException {
+		Connection con = tl.get();
+		if (con == null) {
+			return dataSource.getConnection();
 		}
-		return connection;
+		return con;
 	}
 
-	/**
-	 * @Description: 关闭Connection
-	 * @param connection
-	 * @throws SQLException
-	 */
-	public static void close(Connection connection) {
-
-		if (connection != null)
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+	public static void beginTranscation() throws SQLException {
+		Connection con = tl.get();
+		if (con != null) {
+			throw new SQLException("事务已经开启，在没有结束当前事务时，不能再开启事务！");
+		}
+		con = dataSource.getConnection();
+		con.setAutoCommit(false);
+		tl.set(con);
 	}
 
-	/**
-	 * @Description: 关闭Statement
-	 * @param statement
-	 * @throws SQLException
-	 */
-	public static void close(Statement statement) {
-
-		if (statement != null)
-			try {
-				statement.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+	public static void commitTransaction() throws SQLException {
+		Connection con = tl.get();
+		if (con == null) {
+			throw new SQLException("当前没有事务，所以不能提交事务！");
+		}
+		con.commit();
+		con.close();
+		tl.remove();
 	}
 
-	/**
-	 * @Description: 关闭ResultSet
-	 * @param resultSet
-	 * @throws SQLException
-	 */
-	public static void close(ResultSet resultSet) {
-
-		if (resultSet != null)
-			try {
-				resultSet.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+	public static void rollbackTransaction() throws SQLException {
+		Connection con = tl.get();
+		if (con == null) {
+			throw new SQLException("当前没有事务，所以不能回滚事务！");
+		}
+		con.rollback();
+		con.close();
+		tl.remove();
 	}
-
-	/**
-	 * @Description: 关闭，释放资源 @param resultSet @param statement @param
-	 *               connection @throws
-	 */
-	public static void close(ResultSet resultSet, Statement statement, Connection connection) {
-
-		close(resultSet);
-		close(statement);
-		close(connection);
-	}
-
 }
