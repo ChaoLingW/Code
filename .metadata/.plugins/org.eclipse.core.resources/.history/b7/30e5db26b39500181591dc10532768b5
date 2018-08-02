@@ -1,0 +1,151 @@
+package com.hp.view;
+
+import java.util.Scanner;
+
+import com.hp.po.User;
+import com.hp.service.IAssetServie;
+import com.hp.service.IUserService;
+import com.hp.service.impl.AssetService;
+import com.hp.service.impl.UserService;
+
+public class UserUI {
+
+	Scanner sc = new Scanner(System.in);
+	private static User user = new User();
+	private IUserService userService = new UserService();
+	private IAssetServie assetServie = new AssetService();
+
+	public void user() {
+
+		System.out.println("************** 用户界面*************");
+		System.out.println("************** 1. 登录 *************");
+		System.out.println("************** 2. 注册 *************");
+		System.out.println("请选择");
+		String chioce = sc.nextLine();
+		User user = null;
+		if (chioce.equals("1")) {
+			user = login();
+		} else if (chioce.equals("2")) {
+			register();
+			return;
+		} else {
+			System.out.println("选择错误");
+			return;
+		}
+
+		while (true) {
+			
+			menu(user.getUserName());
+			chioce = sc.nextLine();
+
+			switch (chioce) {
+			case "1":
+				selectAsset();
+
+				break;
+			case "2":
+				addAsset();
+				break;
+			case "3":
+				takeAndSave();
+				break;
+			case "4":
+				selectAllAsset();
+				break;
+			case "5":
+				updatePassword();
+				break;
+			case "6":
+				System.out.println("谢谢使用");
+				return;
+			default:
+				System.out.println("选择错误");
+				break;
+			}
+		}
+
+	}
+
+	private User login() {
+
+		System.out.println("请输入用户名");
+		String userName= sc.nextLine();
+		System.out.println("请输入密码");
+		String userPassword = sc.nextLine();
+		user = new User(0, userName, userPassword, null, null, null, null, null);
+		int userId = userService.loginUser(user);
+		
+		if(userId == -1)
+			System.out.println("用户名不存在");
+		else if(userId == 0)
+			System.out.println("密码错误");
+		else
+			user.setUserId(userId);
+		
+		return user;
+	}
+
+	private void register() {
+
+		System.out.println("请输入用户名");
+		String userName = sc.nextLine();
+		System.out.println("请输入密码");
+		String userPassword = sc.nextLine();
+		System.out.println("请输入真实姓名");
+		String realName = sc.nextLine();
+		System.out.println("请输入性别");
+		String sex = sc.nextLine();
+		System.out.println("请输入电话号码");
+		String tel = sc.nextLine();
+		System.out.println("请输入身份证号");
+		String idCard = sc.nextLine();
+		System.out.println("请输入联系地址");
+		String address = sc.nextLine();
+		user = new User(0, userName, userPassword, realName, sex, tel, idCard, address);
+		
+		int res = userService.registerUser(user);
+		
+		if(res == -1)
+			System.out.println("该用户名已存在");
+		else if(res == 0)
+			System.out.println("注册失败");
+		else
+			System.out.println("注册成功");
+		
+	}
+
+	private void menu(String userName) {
+
+		System.out.println("------------个人资产管理系统------------");
+		System.out.println("******[欢迎您，用户-" + user.getUserName() + "]*******");
+		System.out.println("1.查看资产\t2.添加新资产\t3.存取资产\t4.查看总资产\t5.修改密码\t6.返回登录主菜单");
+		System.out.println("------------个人资产管理系统------------");
+		System.out.println("请选择业务");
+	}
+
+	private void selectAsset() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void addAsset() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void takeAndSave() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void selectAllAsset() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void updatePassword() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

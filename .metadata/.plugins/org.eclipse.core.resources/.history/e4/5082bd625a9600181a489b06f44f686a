@@ -1,0 +1,331 @@
+package com.hp.view;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
+
+import com.hp.po.Asset;
+import com.hp.po.Bank;
+import com.hp.po.User;
+import com.hp.service.IAssetServie;
+import com.hp.service.IBankService;
+import com.hp.service.IUserService;
+import com.hp.service.impl.AssetService;
+import com.hp.service.impl.BankService;
+import com.hp.service.impl.UserService;
+import com.hp.vo.AssetInfo;
+import com.mysql.fabric.xmlrpc.base.Data;
+/**
+ * @Description:实现用户界面的类
+ * @author chaoling
+ * @date 2018年8月2日
+ */
+public class UserUI {
+
+	Scanner sc = new Scanner(System.in);
+	private static User user = new User();
+	private IUserService userService = new UserService();
+	private IAssetServie assetServie = new AssetService();
+	private IBankService bankService = new BankService();
+
+	/**
+	 * @Description: user界面入口函数 
+	 */
+	public void user() {
+
+		System.out.println("************** 用户界面*************");
+		System.out.println("************** 1. 登录 *************");
+		System.out.println("************** 2. 注册 *************");
+		System.out.println("请选择");
+		
+		String chioce = sc.nextLine();
+		User user = null;
+		
+		//判断用户输入 注册/登录
+		if (chioce.equals("1")) {
+			
+			user = login();
+			
+			//如果user== null 表示不允许登录，即密码与用户名不匹配
+			if(user == null)
+				return;
+			
+		} else if (chioce.equals("2")) {
+			//注册
+			register();
+			return;
+		} else {
+			//选择错误
+			System.out.println("选择错误");
+			return;
+		}
+
+		while (true) {
+			
+			//显示主界面
+			menu();
+			//获取选择
+			chioce = sc.nextLine();
+
+			switch (chioce) {
+			case "1":
+				//查询全部资产
+				selectAsset();
+				break;
+			case "2":
+				//添加资产
+				addAsset();
+				break;
+			case "3":
+				//提取/存入
+				takeAndSave();
+				break;
+			case "4":
+				selectAllAsset();
+				break;
+			case "5":
+				updatePassword();
+				break;
+			case "6":
+				System.out.println("谢谢使用");
+				return;
+			default:
+				System.out.println("选择错误");
+				break;
+			}
+		}
+
+	}
+	
+	/**
+	 * @Description: TODO
+	 * @return   
+	 */
+	private User login() {
+
+		System.out.println("请输入用户名");
+		String userName = sc.nextLine();
+		System.out.println("请输入密码");
+		String userPassword = sc.nextLine();
+		
+		user = new User(0, userName, userPassword, null, null, null, null, null);
+		int userId = userService.loginUser(user);
+
+		if (userId == -1) {
+			System.out.println("用户名不存在");
+			return null;
+		} else if (userId == 0) {
+			System.out.println("密码错误");
+			return null;
+		} else
+			user.setUserId(userId);
+		return user;
+	}
+
+	/**
+	 * @Description: 实现注册功能  
+	 */
+	private void register() {
+
+		System.out.println("请输入用户名");
+		String userName = sc.nextLine();
+		System.out.println("请输入密码");
+		String userPassword = sc.nextLine();
+		System.out.println("请输入真实姓名");
+		String realName = sc.nextLine();
+		System.out.println("请输入性别");
+		String sex = sc.nextLine();
+		System.out.println("请输入电话号码");
+		String tel = sc.nextLine();
+		System.out.println("请输入身份证号");
+		String idCard = sc.nextLine();
+		System.out.println("请输入联系地址");
+		String address = sc.nextLine();
+		
+		user = new User(0, userName, userPassword, realName, sex, tel, idCard, address);
+		int res = userService.registerUser(user);
+
+		if (res == -1)
+			System.out.println("该用户名已存在");
+		else if (res == 0)
+			System.out.println("注册失败");
+		else
+			System.out.println("注册成功");
+
+	}
+
+	private void menu() {
+
+		System.out.println("------------个人资产管理系统------------");
+		System.out.println("******[欢迎您，用户-" + user.getUserName() + "]*******");
+		System.out.println("1.查看资产\t2.添加新资产\t3.存取资产\t4.查看总资产\t5.修改密码\t6.返回登录主菜单");
+		System.out.println("------------个人资产管理系统------------");
+		System.out.println("请选择业务");
+		
+	}
+
+	private void selectAsset() {
+
+		System.out.println("------------查看所有资产------------");
+		
+		List<AssetInfo> assets = assetServie.selectAllAssetByUserId(user);
+		
+		if (assets == null){
+			System.out.println("暂无记录");
+			return;
+		}
+			
+		for (AssetInfo asset : assets)
+			System.out.println(asset);
+		
+	}
+
+	private void addAsset() {
+		
+		System.out.println("------------添加新资产------------");
+		
+		List<Bank> banks = bankService.selectAll();
+		
+		if (banks == null) {
+			System.out.println("暂无银行");
+			return;
+		}
+		
+		for (Bank bank : banks)
+			System.out.println(bank);
+
+		System.out.println("请输入银行id");
+		String strBankId = sc.nextLine();
+		int bankId = Integer.parseInt(strBankId);
+		System.out.println("请输入卡号");
+		String strCardNum = sc.nextLine();
+		int cardNum = Integer.parseInt(strCardNum);
+		System.out.println("请输入金额");
+		double cardMoney = sc.nextDouble();
+		sc.nextLine();
+
+		Asset asset = new Asset(bankId, cardNum, cardMoney, new Date(), user.getUserId());
+		int res = assetServie.addNewAsset(asset);
+
+		if (res == -1)
+			System.out.println("该银行不存在");
+		else if (res == 2)
+			System.out.println("该银行已存在该卡号");
+		else if (res == 1)
+			System.out.println("添加新资产成功");
+		else
+			System.out.println("添加新资产失败");
+
+	}
+
+	private void takeAndSave() {
+
+		System.out.println("------------存取资产------------");
+		System.out.println("请输入存入或者提取资产， 1/提取 2/存入");
+		String chioce = sc.nextLine();
+		if (chioce.equals("1"))
+			take();
+		else if (chioce.equals("2"))
+			save();
+		else
+			System.out.println("选择错误");
+
+	}
+
+	private void take() {
+
+		System.out.println("------------提取------------");
+		System.out.println("您目前的资产如下");
+		
+		List<AssetInfo> assets = assetServie.selectAllAssetByUserId(user);
+
+		if (assets != null)
+			for (AssetInfo asset : assets)
+				System.out.println(asset);
+
+		System.out.println("请输入银行Id");
+		int bankId = sc.nextInt();
+		sc.nextLine();
+		System.out.println("请输入银行卡号");
+		int cardNum = sc.nextInt();
+		sc.nextLine();
+		System.out.println("请输入提取金额");
+		double cardMoney = sc.nextDouble();
+		sc.nextLine();
+		
+		Asset asset = new Asset(bankId, cardNum, cardMoney, null, user.getUserId());
+		int res = assetServie.updateOfTake(asset);
+
+		if (res == -1)
+			System.out.println("您并不存在此资产");
+		else if (res == 2)
+			System.out.println("此资产不足");
+		else if (res == 1)
+			System.out.println("恭喜您，提取资产成功");
+		else
+			System.out.println("提取资产失败");
+	}
+
+	private void save() {
+		
+		System.out.println("------------存入------------");
+		System.out.println("您目前的资产如下");
+		
+		List<AssetInfo> assets = assetServie.selectAllAssetByUserId(user);
+
+		if (assets != null)
+			for (AssetInfo asset : assets)
+				System.out.println(asset);
+
+		System.out.println("请输入银行Id");
+		int bankId = sc.nextInt();
+		sc.nextLine();
+		System.out.println("请输入银行卡号");
+		int cardNum = sc.nextInt();
+		sc.nextLine();
+		System.out.println("请输入存入金额");
+		double cardMoney = sc.nextDouble();
+		sc.nextLine();
+		
+		Asset asset = new Asset(bankId, cardNum, cardMoney, null, user.getUserId());
+		int res = assetServie.updateOfSave(asset);
+
+		if (res == -1)
+			System.out.println("您并不存在此资产");
+		else if (res == 1)
+			System.out.println("恭喜您，存入资产成功");
+		else
+			System.out.println("存入资产失败");
+	}
+
+	private void selectAllAsset() {
+
+		System.out.println("------------查看总资产------------");
+
+		double sumAsset = assetServie.selectSumAsset(user);
+		
+		System.out.println(user.getUserName() + ",您的总资产为:" + sumAsset);
+	}
+
+	private void updatePassword() {
+
+		System.out.println("请输入原密码");
+		String oldUserPassword = sc.nextLine();
+		System.out.println("请输入新密码");
+		String newUserPassword = sc.nextLine();
+
+		if (!user.getUserPassword().equals(oldUserPassword))
+			System.out.println("密码输入有误");
+		else {
+			user.setUserPassword(newUserPassword);
+			if (userService.updataUserPassword(user))
+				System.out.println("修改密码成功");
+			else {
+				System.out.println("修改密码失败");
+				user.setUserPassword(oldUserPassword);
+			}
+		}
+	}
+
+}

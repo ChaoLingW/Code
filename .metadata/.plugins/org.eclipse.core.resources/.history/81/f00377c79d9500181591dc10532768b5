@@ -1,0 +1,46 @@
+package com.hp.service.impl;
+
+import java.util.List;
+
+import com.hp.po.Bank;
+import com.hp.service.IBankService;
+
+public class BankService implements IBankService {
+
+	@Override
+	public boolean addBank(Bank bank) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean deleteBankByBankId(int bankId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updateBankByBankId(Bank bank) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<Bank> selectAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean selectByBankId(int bankId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Bank selectByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

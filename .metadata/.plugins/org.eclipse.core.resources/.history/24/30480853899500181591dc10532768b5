@@ -1,0 +1,53 @@
+package com.hp.dao.impl;
+
+import java.util.List;
+
+import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
+
+import com.hp.dao.IUserDao;
+import com.hp.po.User;
+import com.hp.util.DBUtil;
+
+public class UserDao implements IUserDao {
+
+	@Override
+	public User loginUser() {
+	
+		return seleteUserByUserName(user);
+	}
+
+	@Override
+	public int updateByNameToPassword(User user) {
+		
+		String sql = "update uset set userPassword =? where userName = ?";
+		Object[] params = {user.getUserPassword(),user.getUserName()};
+		return DBUtil.update(sql, params);
+	}
+
+	@Override
+	public List<User> seleteAllUser() {
+		
+		String sql = "select * from user";
+		return DBUtil.query(sql, new BeanListHandler<>(User.class), null);
+	}
+
+	@Override
+	public User seleteUserByUserName(User user) {
+		
+		String sql = "select * from user where userName = ?";
+		
+		return DBUtil.query(sql, new BeanHandler<>(User.class), user.getUserName());
+	}
+
+	@Override
+	public int addUser(User user) {
+		
+		String sql = "insert into user (userName,userPassword,realName,sex,tel,idCard,address)"
+				+ " values(?,?,?,?,?,?,?)";
+		Object[] params = {user.getUserName(),user.getUserPassword(),user.getRealName(),user.getSex(),user.getTel(),user.getIdCard(),user.getAddress()};
+		
+		return DBUtil.update(sql, params);
+	}
+
+}

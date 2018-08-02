@@ -1,0 +1,208 @@
+package com.hp.view;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.hp.po.Admin;
+import com.hp.po.Bank;
+import com.hp.po.User;
+import com.hp.service.IAdminService;
+import com.hp.service.IBankService;
+import com.hp.service.IUserService;
+import com.hp.service.impl.AdminService;
+import com.hp.service.impl.BankService;
+import com.hp.service.impl.UserService;
+
+/**
+ * @Description:管理员显示
+ * @author chaoling
+ * @date 2018年7月30日
+ */
+public class AdminUI {
+
+	private IAdminService adminService = new AdminService();
+	private IBankService bankService = new BankService();
+	private IUserService userService = new UserService();
+	private Scanner sc = new Scanner(System.in);
+	private Admin admin = new Admin();
+
+	/**
+	 * @Description: 管理员登录界面的入口
+	 */
+	public void admin() {
+
+		System.out.println("------------个人资产管理系统------------");
+
+		admin = login();
+
+		if (admin.getAdminId() < 1)
+			return;
+
+		while (true) {
+
+			menu();
+
+			String chioce = sc.nextLine();
+
+			switch (chioce) {
+
+			case "1":
+				selectAllUser();
+				break;
+			case "2":
+				addBank();
+				break;
+			case "3":
+				updateBank();
+				break;
+			case "4":
+				deleteBank();
+				break;
+			case "5:":
+				selectAllBank();
+				break;
+			case "6":
+				System.out.println("谢谢使用");
+				return;
+			default:
+				System.out.println("输入错误，请重新输入！");
+				break;
+			}
+		}
+
+	}
+
+	private Admin login() {
+
+		System.out.println("************** 管理员登录 *************");
+		System.out.println("请输入用户名");
+		String adminName = sc.nextLine();
+		System.out.println("请输入密   码");
+		String adminPassword = sc.nextLine();
+
+		admin = new Admin(0, adminName, adminPassword);
+
+		int adminId = 0;
+		adminId = adminService.loginAdmin(admin);
+
+		if (adminId == -1)
+			System.out.println("此用户不存在");
+		else if (adminId == 0)
+			System.out.println("密码错误");
+		else
+			System.out.println("登录成功");
+
+		admin.setAdminId(adminId);
+
+		return admin;
+	}
+
+	private void menu() {
+
+		System.out.println("------------个人资产管理系统------------");
+		System.out.println("******[欢迎您，管理员-" + admin.getAdminName() + "]*******");
+		System.out.println("1.查看所有用户\t2.添加银行\t3.修改银行\t4.删除银行\t5.查看所有银行\t6.返回登录主菜单");
+		System.out.println("------------个人资产管理系统------------");
+		System.out.println("请选择业务");
+
+	}
+
+	private void selectAllUser() {
+
+		System.out.println("------------查看所有用户------------");
+
+		List<User> users = userService.selectAllUser();
+
+		if (users == null)
+			return;
+
+		for (User user : users)
+			System.out.println(user);
+
+	}
+
+	private void addBank() {
+
+		System.out.println("------------添加银行------------");
+		System.out.println("请输入银行名：");
+		String bankName = sc.nextLine();
+		System.out.println("请输入银行电话：");
+		String bankTel = sc.nextLine();
+
+		Bank bank = new Bank(0, bankName, bankTel);
+
+		int res = bankService.addBank(bank);
+
+		if (res == -1)
+			System.out.println("该银行已存在，请确认后添加");
+		else if (res == 0)
+			System.out.println("添加银行成功");
+		else
+			System.out.println("添加银行失败");
+
+	}
+
+	private void updateBank() {
+
+		System.out.println("------------修改银行------------");
+		System.out.println("请输入要修改的银行编号");
+		String strBankId = sc.nextLine();
+		int bankId = Integer.parseInt(strBankId);
+
+		if (bankService.selectByBankId(bankId) != null) {
+
+			System.out.println("请输入新的银行名");
+			String bankName = sc.nextLine();
+			System.out.println("请输入新的银行电话");
+			String bankTel = sc.nextLine();
+
+			Bank bank = new Bank(bankId, bankName, bankTel);
+
+			if (bankService.updateBankByBankId(bank))
+				System.out.println("修改银行信息成功");
+
+			System.out.println("修改银行信息失败");
+		} else
+			System.out.println("银行不存在");
+
+	}
+
+	private void deleteBank() {
+
+		System.out.println("------------删除银行------------");
+		System.out.println("请输入要删除的银行编号");
+		String strBankId = sc.nextLine();
+		int bankId = Integer.parseInt(strBankId);
+
+		Bank bank = bankService.selectByBankId(bankId);
+		if (bank != null) {
+
+			System.out.println(bank);
+			System.out.println("确认删除吗？ y/n");
+			String chice = sc.nextLine();
+			if (chice.equals("y")) {
+
+				if (bankService.deleteBankByBankId(bankId))
+					System.out.println("删除成功");
+				System.out.println("删除失败");
+			} else if (chice.equals("n"))
+				System.out.println("你选择了取消");
+			else
+				System.out.println("输入错误");
+		} else
+			System.out.println("银行不存在");
+	}
+
+	private void selectAllBank() {
+
+		System.out.println("------------查看所有银行------------");
+
+		List<Bank> banks = bankService.selectAll();
+		if (banks == null)
+			System.out.println("暂无记录");
+
+		for (Bank bank : banks)
+			System.out.println(bank);
+	}
+
+}

@@ -1,0 +1,11 @@
+package com.hpe.dao;
+
+public interface IAccountDao {
+
+	//更新账户钱数的操作
+	
+	int updataAccount(int outAccount,int inAccount, int money);
+	
+	//账户id,钱数
+	int updataAccount(int account, int money);
+}

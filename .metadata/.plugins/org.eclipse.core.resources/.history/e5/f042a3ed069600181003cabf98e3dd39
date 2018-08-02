@@ -1,0 +1,41 @@
+package com.hpe.java2;
+
+//模拟卖票，三个窗口卖票100
+
+class Window extends Thread{
+	
+	int ticket = 100;
+
+	@Override
+	public void run() {
+
+		
+		//卖票(循环-->票数大于0)
+		while(true){
+			if(ticket>0){
+				//卖票
+				System.out.println(Thread.currentThread().getName() + "售票，票号：" + ticket);
+				
+				ticket--;
+				
+				
+			}else
+				break;
+		}
+	
+	
+	
+	}
+}
+
+
+
+
+public class WindowTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

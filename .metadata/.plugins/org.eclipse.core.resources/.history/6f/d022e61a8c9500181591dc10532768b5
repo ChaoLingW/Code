@@ -1,0 +1,59 @@
+package com.hp.dao.impl;
+
+import java.util.List;
+
+import org.apache.commons.dbutils.handlers.BeanListHandler;
+
+import com.hp.dao.IAssetDao;
+import com.hp.po.Asset;
+import com.hp.po.Bank;
+import com.hp.util.DBUtil;
+
+/**
+ * @Description:对Asset表的操作，实现IAssetDao
+ * @author chaoling
+ * @date 2018年8月1日
+ */
+public class AssetDao implements IAssetDao {
+
+	@Override
+	public List<Asset> selectAllAssetByUserName(int userId) {
+		
+		String sql = "select * from asset where userId = ?";
+		return DBUtil.query(sql, new BeanListHandler<>(Asset.class), userId);
+	}
+	
+	@Override
+	public int addAsset(Asset asset) {
+		
+		String sql = "insert into asset values(?,?,?,?,?)";
+		Object[] params = {asset.getBankId(),asset.getCardNum(),asset.getCarMoney(),asset.getCareteDate(),asset.getUserId()};
+		
+		return DBUtil.update(sql, params);
+	}
+
+	@Override
+	public int updateAsset(Asset asset) {
+		
+		String sql = "update asset set cardMoney = cardMoney + ? where bankId = ? and cardNum = ? and userId = ?";
+		Object[] params = {asset.getCarMoney(),asset.getBankId(),asset.getCardNum(),asset.getUserId()};
+		return DBUtil.update(sql, params);
+	}
+
+	@Override
+	public double selectSumAsset(int userId) {
+
+		String sql = "select sum(cardMoney) from asset where userId = ?";
+		
+		return DBUtil.update(sql, userId);
+	}
+
+	@Override
+	public int selectCardNumByBankId(Asset asset) {
+
+		String sql = "select caedNum from asset where bankId = ? and useId = ?";
+		Object[] params = {asset.getBankId(),asset.getUserId()};
+		return DBUtil.update(sql, params);
+	}
+
+}

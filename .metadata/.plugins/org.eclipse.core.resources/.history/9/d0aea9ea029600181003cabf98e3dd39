@@ -1,0 +1,27 @@
+package com.hpe.java1;
+
+//创建多线程的第二种方式：实现Runnable接口
+//创建一个子线程：子线程中打印1-100之间的数
+
+//1.创建一个实现Runnable接口的类
+class MyThread2 implements Runnable{
+
+	//2.重写run方法，run方法中的代码是子线程实现的功能
+	@Override
+	public void run() {
+
+		for(int i = 1; i <= 100; i++)
+			System.out.println(Thread.currentThread().getName() + ":"+ i);
+	}
+	
+}
+
+
+
+public class RunnableTest {
+
+	public static void main(String[] args) {
+
+	}
+
+}

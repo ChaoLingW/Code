@@ -1,0 +1,13 @@
+package com.hpe.java3;
+
+public class Snippet {
+	public static void main(String[] args) {
+		if (ticket > 0) {
+						// 卖票
+						System.out.println(Thread.currentThread().getName() + "售票，票号：" + ticket);
+						ticket--;// 票数减一
+					} else
+						break;
+	}
+}
+

@@ -1,0 +1,129 @@
+package com.hp.view;
+
+import java.util.Scanner;
+
+import com.hp.po.Admin;
+import com.hp.service.IAdminService;
+import com.hp.service.IBankService;
+import com.hp.service.impl.AdminService;
+import com.hp.service.impl.BankService;
+
+/**
+ * @Description:管理员显示
+ * @author chaoling
+ * @date 2018年7月30日
+ */
+public class AdminUI {
+
+	private IAdminService adminService = new AdminService();
+	private IBankService bankService = new BankService();
+	Scanner sc = new Scanner(System.in);
+
+	/**
+	 * @Description: 管理员登录的入口
+	 */
+	public void admin() {
+
+		System.out.println("------------个人资产管理系统------------");
+
+		Admin admin = login();
+		if (admin.getAdminId() < 1)
+			exit();
+
+		while (true) {
+
+			menu(admin.getAdminName());
+
+			String chioce = sc.nextLine();
+
+			switch (chioce) {
+
+			case "1":
+				selectAllUser();
+				break;
+			case "2":
+				addBank();
+				break;
+			case "3":
+				updateBank();
+				break;
+			case "4":
+				deleteBank();
+				break;
+			case "5:":
+				selectAllBank();
+				break;
+			case "6":
+				exit();
+				break;
+			default:
+				System.out.println("输入错误，请重新输入！");
+				break;
+			}
+		}
+
+	}
+
+	private Admin login() {
+
+		System.out.println("************** 管理员登录 *************");
+		System.out.println("请输入用户名");
+		String adminName = sc.nextLine();
+		System.out.println("请输入密   码");
+		String adminPassword = sc.nextLine();
+
+		Admin admin = new Admin(0, adminName, adminPassword);
+
+		int adminId = adminService.loginAdmin(admin);
+
+		if (adminId == -1)
+			System.out.println("此用户不存在");
+		else if (adminId == 0)
+			System.out.println("密码正确");
+		else
+			System.out.println("登录成功");
+
+		admin.setAdminId(adminId);
+
+		return admin;
+	}
+
+	private void menu(String adminName) {
+
+		System.out.println("------------个人资产管理系统------------");
+		System.out.println("******[欢迎您，管理员-" + adminName + "]*******");
+		System.out.println("1.查看所有用户\t2.添加银行\t3.修改银行\t4.删除银行\t5.查看所有银行\t6.返回登录主菜单");
+		System.out.println("------------个人资产管理系统------------");
+		System.out.println("请选择业务");
+	}
+
+	private void selectAllUser() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void addBank() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void updateBank() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void deleteBank() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void selectAllBank() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void exit() {
+		System.exit(0);
+	}
+
+}

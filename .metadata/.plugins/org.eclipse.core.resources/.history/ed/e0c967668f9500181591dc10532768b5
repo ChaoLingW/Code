@@ -1,0 +1,40 @@
+package com.hp.service.impl;
+
+import java.util.List;
+
+import com.hp.dao.IUserDao;
+import com.hp.dao.impl.UserDao;
+import com.hp.po.User;
+import com.hp.service.IUserService;
+
+public class UserService implements IUserService {
+
+	private IUserDao userDao = new UserDao();
+	
+	@Override
+	public int loginUser(User user) {
+		
+		userDao.seleteUserByUserName(user)
+		
+		return 0;
+	}
+
+	@Override
+	public int registerUser(User user) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean isExitsByUserName(String userName) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<User> selectAllUser() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

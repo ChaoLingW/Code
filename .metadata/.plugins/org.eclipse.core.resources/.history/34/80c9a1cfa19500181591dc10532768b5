@@ -1,0 +1,81 @@
+package com.hp.service.impl;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.hp.dao.IAssetDao;
+import com.hp.dao.IBankDao;
+import com.hp.dao.impl.AssetDao;
+import com.hp.dao.impl.BankDao;
+import com.hp.po.Bank;
+import com.hp.service.IBankService;
+import com.hp.util.DBUtil;
+
+/**
+ * @Description:银行业务的操作类，实现IBankService
+ * @author chaoling
+ * @date 2018年8月1日
+ */
+public class BankService implements IBankService {
+
+	private IBankDao bankDao = new BankDao();
+	private IAssetDao assetDao = new AssetDao();
+	@Override
+	public boolean addBank(Bank bank) {
+		
+		int res = bankDao.addBank(bank);
+		if(res > 0)
+			return true;
+		return false;
+	}
+
+	@Override
+	public boolean deleteBankByBankId(int bankId) {
+		
+		try {
+			DBUtil.beginTranscation();
+			assetDao.deleteByBankId(bankId);
+			bankDao.deleteBankByBankId(bankId);
+			DBUtil.commitTransaction();
+			return true;
+		} catch (SQLException e) {
+			try {
+				DBUtil.rollbackTransaction();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}
+		
+		return false;
+	}
+
+	@Override
+	public boolean updateBankByBankId(Bank bank) {
+		
+		return false;
+	}
+
+	@Override
+	public List<Bank> selectAll() {
+		
+		List<Bank> res = bankDao.selectAll();
+		
+		if(res != null && res.size()!=0)
+			return res;
+		
+		return null;
+	}
+
+	@Override
+	public boolean selectByBankId(int bankId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Bank selectByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

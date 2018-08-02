@@ -1,0 +1,50 @@
+package com.hp.service.impl;
+
+import java.util.List;
+
+import com.hp.po.Admin;
+import com.hp.po.Asset;
+import com.hp.po.User;
+import com.hp.service.IAdminService;
+import com.hp.service.IAssetServie;
+
+public class AssetService implements IAssetServie {
+
+	@Override
+	public List<Asset> selectAllAssetByUserName(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean selectCardNumByBankId(int BankId, String cardNum) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int addAsset(Asset asset, User user) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean updateAssetBefore(int bankId, String CardNum, String userName) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updateAsset(Asset asset) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public double selectSumAsset(User user) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	
+}

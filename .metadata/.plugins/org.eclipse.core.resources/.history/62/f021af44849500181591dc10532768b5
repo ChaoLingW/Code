@@ -1,0 +1,10 @@
+package com.hp.service.impl;
+
+import com.hp.po.Admin;
+import com.hp.service.IAdminService;
+import com.hp.service.IAssetServie;
+
+public class AssetService implements IAssetServie {
+
+	
+}
