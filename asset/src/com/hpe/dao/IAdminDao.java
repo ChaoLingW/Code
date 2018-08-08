@@ -1,5 +1,7 @@
 package com.hpe.dao;
 
+import java.sql.SQLException;
+
 import com.hpe.po.Admin;
 
 /**
@@ -11,9 +13,10 @@ public interface IAdminDao {
 
 	/**
 	 * @Description: 根据用户名及密码查询
-	 * @param admin
-	 * @return   
-	 * @throws
+	 * @param admin 
+	 * @return admin  返回对应的记录
+	 * @throws SQLException
 	 */
-	Admin selectAdminByNameAndPwd(Admin admin);
+	Admin selectAdminByNameAndPwd(Admin admin) throws SQLException;
+
 }

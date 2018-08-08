@@ -59,7 +59,6 @@ public class AssetDao implements IAssetDao {
 
 		// 根据userId查询sum(cardMoney)
 		String sql = "select sum(cardMoney) from asset where userId = ?";
-		System.out.println(sql);
 		Object obj = DBUtil.query(sql, new ScalarHandler<>(), userId);
 		return (double) obj;
 

@@ -14,7 +14,7 @@ public class PersonTest {
 		
 		//如何得到属性值 --> 对象名.属性的方式
 		
-		int age = p.age;
+		int age = p.getAge();
 		String name = p.name;
 		String sex = p.sex;
 		

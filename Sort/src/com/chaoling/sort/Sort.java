@@ -14,7 +14,7 @@ public class Sort {
 		
 		//System.out.println("冒泡排序");
 		
-		//new Sort().bubbleSort(arr);
+		new Sort().bubbleSort(arr);
 		new Sort().insertionSort(arr);
 
 	}
@@ -53,7 +53,6 @@ public class Sort {
 		
 		// n个元素排序，外层小于length-1，内层小于arr.length -i -1
 		for (int i = 0; i < arr.length - 1; i++) {// 选出几个最大的 length-1
-
 			for (int j = 0; j < arr.length - i - 1; j++) {// 比较几次：length-i-1
 				if (arr[j] > arr[j + 1]) {
 					int temp = arr[j];
@@ -61,7 +60,6 @@ public class Sort {
 					arr[j + 1] = temp;
 				}
 			}
-
 		}
 
 		show(arr);
