@@ -1,0 +1,43 @@
+package cn.forward;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/sa")
+public class ServletA extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		doPost(request, response);
+
+	}
+
+	/**
+	 * 请求的转发
+	 * 特点：
+	 * 	1.客户端请求次数问题：客户端只发起一次请求
+	 *  2.地址栏问题：地址未变(原因：只请求了一次)
+	 *  3.数据共享问题：共享request
+	 *  4./问题：当前web应用的根路径开始，不带/就是相对路径，建议带/
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		System.out.println("ServletA");
+		// 请求转发到ServletB
+		// 1.使用request调用getRequestDispacher(path)
+		RequestDispatcher dispatcher = request.getRequestDispatcher("sb");
+		
+		// 2.执行转发,调用forward方法
+		dispatcher.forward(request, response);
+	}
+
+}

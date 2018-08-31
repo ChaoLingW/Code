@@ -1,0 +1,3 @@
+#Tomcat publish data
+#Sat Sep 01 00:22:39 GMT+08:00 2018
+org.eclipse.jst.jee.server\:loginDemo=G\:\\apache-tomcat-8.0.9\\webapps\\loginDemo

@@ -1,0 +1,60 @@
+package com.hpe.servlet;
+
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.hpe.bean.User;
+import com.hpe.service.IUserService;
+import com.hpe.service.impl.UserServiceImpl;
+
+/**
+ * TODO 修改用户的控制类
+ * 
+ * @author chaoling
+ */
+@WebServlet("/UpdateUserServlet")
+public class UpdateUserServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+	private IUserService userService = new UserServiceImpl();
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		doPost(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		// 假设已经获取到user
+		// 获取时间
+		User user = new User();
+		LocalDateTime now = LocalDateTime.now();
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		String date = now.format(dtf);
+		// 设置user的修改时间
+		user.setUpdateDate(date);
+
+		// 调用
+		boolean res = userService.updateUser(user);
+
+		if (res) {
+			// 修改成功
+
+		} else {
+			// 修改失败
+
+		}
+
+	}
+
+}

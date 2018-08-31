@@ -1,0 +1,8 @@
+package com.hpe.Dao;
+
+import com.sun.xml.internal.fastinfoset.algorithm.BASE64EncodingAlgorithm;
+
+public class LoginDao {
+
+	BeseDao<User> base = new BASE64EncodingAlgorithm()
+}

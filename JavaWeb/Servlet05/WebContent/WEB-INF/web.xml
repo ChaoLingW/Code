@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>Servlet05</display-name>
+  
+  <filter>
+    <filter-name>EncodingFilter</filter-name>
+    <filter-class>cn.filter.EncodingFilter</filter-class>
+  	<init-param>
+  		<param-name>Encoding</param-name>
+  		<param-value>utf-8</param-value>
+  	</init-param>
+  
+  
+  </filter>
+  <filter-mapping>
+    <filter-name>EncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+    <filter-name>OneFilter</filter-name>
+    <filter-class>cn.filter.OneFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>utf-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>OneFilter</filter-name>
+    <url-pattern>/one</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>TwoFilter</filter-name>
+    <filter-class>cn.filter.TwoFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>TwoFilter</filter-name>
+    <url-pattern>/one</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+    <filter-name>AutoFilter</filter-name>
+    <filter-class>cn.filter.AutoFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AutoFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>LoginFilter</filter-name>
+    <filter-class>cn.filter.LoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/jsps/*</url-pattern>
+  </filter-mapping>
+</web-app>

@@ -1,0 +1,7 @@
+<classpath>
+  <container id="homework0814!org.eclipse.jst.j2ee.internal.web.container">
+    <entry id="D:/Code/JavaWeb/homework0814/WebContent/WEB-INF/lib/commons-dbutils-1.6.jar">
+      <source-attachment-path>D:/资料/java/commons-dbutils-1.6-src.zip</source-attachment-path>
+    </entry>
+  </container>
+</classpath>
