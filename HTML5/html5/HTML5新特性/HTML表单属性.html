@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        autocomplete 属性 
+        autofocus 属性 //自动获取焦点
+        formenctype 属性
+        pattern	//正则表达式
+        placeholder //填充
+        required //非空
+    -->
+    
+    <form action="" method="get">
+    	
+    	<label for="username">用户名</label>
+    	<input type="text" name="username" id="username" autofocus="autofocus" autocomplete="on"/><br />
+    	
+    	<label >国家名</label>
+    	<input type="text" name="city" id="city" value="" pattern="[a-zA-Z]{3}" required="required"/>
+    	
+    	<input type="submit" />
+    </form>
+    
+</body>
+</html>

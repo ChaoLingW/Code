@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>HTML DOM - 改变CSS</title>
+		<!--
+        HTML DOM 允许 JavaScript 改变 HTML 元素的样式。
+        如需改变 HTML 元素的样式，请使用这个语法：
+        document.getElementById(id).style.property=新样式
+        -->
+		<script src="jquery-3.1.1.js"></script>
+		<script>
+			// 将p1颜色改为红色.p2改为蓝色  p2背景改为灰色
+			function getCss() {
+				var p1 = document.getElementById("p1");
+				p1.style.color = "red";
+				var p2 = document.getElementById("p2");
+				p2.style.color = "blue";
+				p2.style.backgroundColor = "gainsboro";
+			}
+
+			//找元素$("#p1")
+			//设置样式css("color","red")
+			$("#p1").css("color", "red");
+			//隐藏和显示文本(hidden visible)
+			function show(obj) {
+				var p1 = document.getElementById("text");
+				var state = p1.style.visibility;
+
+				if(state == "hidden") {
+					p1.style.visibility = "visible";
+					obj.innerText = "隐藏文本"
+
+				} else {
+					p1.style.visibility = "hidden";
+					obj.innerText = "显示文本"
+				}
+
+			}
+		</script>
+	</head>
+
+	<body>
+		<p id="p1">慧与-济宁产业基地</p>
+		<p id="p2">慧与-济宁产业基地</p>
+		<button id="btnOK" onclick="getCss()">改变CSS</button>
+		<p id="text">慧与济宁产业基地</p>
+		<button class="btn" onclick="show(this);">隐藏文本</button>
+	</body>
+
+</html>

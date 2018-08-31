@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>事件绑定</title>
+    <meta charset="utf-8" />
+    <!--
+        文档装载完成后，如果打算为元素绑定事件来完成某些操作，
+        则可以使用bind（）方法来对匹配元素进行特定事件的绑定， bind（）方法的调用格式为：
+        bind(type,[data], fn);
+        第1 个参数是事件类型，类型包括： blur、focus 、load 、click、mousedown 、mouseup 、mouseover 、mouseout   、change 、select、submit 等， 当然也可以是自定义名称。
+        第2 个参数为可选参数，作为event.data 属性值传递给事件对象的额外数据对象。
+        第3 个参数则是用来绑定的处理函数。
+
+        unbind()方法为元素取消事件绑定，unbind()方法的格式如下：
+        $(selctor).unbind([type],[data]);
+        unbind()方法是元素bind()方法的反向操作，从每个匹配的元素中删除绑定的事件。
+        当没有参数时候删除所有的绑定事件。如果提供了事件类型的参数则删除指定的绑定事件。
+        如果指定了事件类型，第二个参数指定了函数名称则删除事件类型中与第二个参数名称对应的事件。
+
+        bind()方法可以为任何元素绑定事件。
+        但对于一些常用的事件，jQuery还提供了更加简便的事件方法来完成相就的操作，下表列举了几个常用事件方法：
+        $(selector).click(function) 触发或将函数绑定到被选元素的点击事件
+        $(selector).focus(function) 触发或将函数绑定到被选元素的获得焦点事件
+        $(selector). blur(function) 触发或将函数绑定到被选元素的失去焦点事件
+        $(selector).mouseover(function) 触发或将函数绑定到被选元素的鼠标悬停事件
+        $(selector).mouseout(function) $(selector).mouseout(function)
+        -->
+
+    <script src="../js/jquery-3.1.1.js"></script>
+    <script>
+        $(document).ready(function () {
+        	//绑定单击事件，改变字体颜色
+			$("#btn1").bind("click",function(){
+				$(this).css("color","red");
+			})
+			
+			$("#btn1").click(function(){
+				$(this).css("color","red");
+			})
+			//p1鼠标移入移出事件
+			/*$("#p1").mouseover(function(){
+				
+			}).mouseout(function(){
+				
+			})*/
+			$("#p1").bind("mouseover",function(){
+				
+				$(this).css({"color":"red","background":"yellow"});
+				
+			}).bind("mouseout",function(){
+				$(this).css({"color":"yellow","background":"red"});
+			})
+
+			//change事件 onchange
+			//当用于 select 元素时，change 事件会在选择某个选项时发生。当用于 text field 或 text area 时，该事件会在元素失去焦点时发生。
+			$("#userName").bind("change",function(){
+				alert($(this).val());
+			})
+        });
+    </script>
+</head>
+<body>
+    <h3>事件绑定</h3>
+    <p>慧与-济宁产业基地</p>
+    <button id="btn1">绑定单击事件</button>
+    <button id="btn2">改变字体颜色</button><br />
+    <!-- 鼠标移入移出事件 -->
+    <p id="p1">慧与-济宁产业基地</p>
+    <input type="text" id="userName" name="name" value="用户名" />
+</body>
+</html>

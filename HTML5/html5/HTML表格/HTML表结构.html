@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Document</title>
+		<style>
+        table,th,td{
+            border-collapse: collapse;
+        }
+    </style>
+	</head>
+
+	<body>
+		<!--
+        HTML表结构:从语义结构上划分表格为：表头、表主体、表尾
+        thead标签标识表格头部元素
+        tbody标签标识表格表体元素
+        tfoot标签标识表格表尾部分
+        cellpadding:表格中内容和单元格之间的距离
+        cellspacing:表格中单元格和单元格之间的距离
+        width:指定表格宽度
+        height:指定表格高度
+        align:表格的位置
+    -->
+		<table border="1" width="500" align="center" cellspacing="0" cellpadding="10">
+
+			<thead>
+				<tr>
+					<th>姓名</th>
+					<th>性别</th>
+					<th>年龄</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td width="33%">张三</td>
+					<td width="33%">男</td>
+					<td>11</td>
+				</tr>
+
+				<tr>
+					<td>李四</td>
+					<td>女</td>
+					<td>12</td>
+				</tr>
+
+				<tr>
+					<td>王五</td>
+					<td>男</td>
+					<td>13</td>
+				</tr>
+			</tbody>
+
+			<tfoot align="right">
+				<tr>
+					<td></td>
+					<td></td>
+					<td>2018.8.6</td>
+				</tr>
+			</tfoot>
+		</table>
+
+	</body>
+
+</html>

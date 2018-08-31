@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Document</title>
+	</head>
+
+	<body>
+		<!--表单元素：指不同类型的input元素。表单最重要的作用是获取用户信息。需要在表单中加入表单项。
+            语法：<input type="元素类型名称"/>
+            常用的元素类型type:
+            text:单行文本框 (用户名)
+            textarea:多行文本框
+            password:密码文本框
+            submit:提交按钮
+            image:图片按钮
+            reset:重置按钮，重设表单内容。
+            button:普通按钮
+            hidden:隐藏元素
+            radio:单元按钮
+            checkbox:复选框
+            file:文件域
+            select:列表框
+        -->
+
+		<form action="HTML-form.html" method="get">
+
+			<!--单行文本框-->
+			用户名:<input type="text" name="username" id="user" placeholder="请输入用户名" /><br />
+			<!--密码框-->
+			密&nbsp;&nbsp;码:<input type="password" name="password" id="password" /><br />
+
+			<!--单选按钮-->
+			性别：<input type="radio" name="sex" value="1" checked="checked" />男
+			<input type="radio" name="sex" id="sex" value="0" />女<br />
+			<!--选择列表-->
+
+			城市:
+			<select name="city" >
+				<option value="001">济宁</option>
+				<option value="002" selected="selected">枣庄</option>
+				<option value="003">菏泽</option>
+			</select><br />
+			
+			<!--复选框-->
+			兴趣：
+			<input type="checkbox" name="hobby" value="football" />足球
+			<input type="checkbox" name="hobby" id="hobby" value="basketball" />篮球
+			<input type="checkbox" name="hobby" id="hobby" value="pingpang" />乒乓球
+			<br />
+
+			<!--多行文本框-->
+			备注：
+			<textarea cols = "20" rows = "2" name = "remark"></textarea><br />			
+			<!--文件域-->
+			照片：
+			<input type="file" name="photo" id="photo" value="" />
+			<br />
+			<!--隐藏元素-->
+			
+			<input type="hidden" name="hide" id="hide" value="hidden" />
+			<br />
+
+			<!--提交按钮-->
+			<input type="submit" name="submint" id="submint" value="注册" />
+		
+
+			<input type= "image" name="img" id="img" src="image/login.png" />
+			<!--重置按钮-->
+			<input type="reset" name="reset" id="reset" /><br />	
+			<!--普通按钮-->
+			<input type="button" name="btn" id="btn" value="普通按钮" />
+			<button type="button">普通按钮2</button>
+			
+			</form>
+
+	</body>
+
+</html>

@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>表格展开折叠</title>
+    <style>
+        .main {
+            width: 500px;
+            margin: 10px auto;
+        }
+
+        table {
+            width: 400px;
+            text-align: center;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 5px;
+            border: 1px solid black;
+        }
+        /* 偶数行样式*/
+        .even {
+            background-color: #FFF38F;
+        }
+
+        /* 奇数行样式*/
+        .odd {
+            background-color: #FFFFEE;
+        }
+
+        .selected {
+            background: #FF6500;
+            color: #fff;
+        }
+    </style>
+    <script src="../js/jquery-3.1.1.js"></script>
+    <script>
+        //siblings()函数用于选取每个匹配元素的所有同辈元素(不包括自己)，并以jQuery对象的形式返回。
+        //toggleClass() 对设置或移除被选元素的一个或多个类进行切换。
+        $(document).ready(function () {
+            $("tbody tr.parent").click(function () {//获取父行
+                $(this).toggleClass("selected")//添加删除高亮
+                       .siblings('.child_' + this.id).toggle();//隐藏显示行
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="main">
+        <table>
+            <thead>
+                <tr>
+                    <th><input type="checkbox" name="choice" value="" /></th>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>年龄</th>
+                    <th>地址</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="parent" id="row1">
+                    <td colspan="5">前端开发</td>
+                </tr>
+                <tr class="child_row1">
+                    <td><input type="checkbox" name="choice" value="" /></td>
+                    <td>张三</td>
+                    <td>男</td>
+                    <td>20</td>
+                    <td>山东济宁</td>
+                </tr>
+                <tr class="child_row1">
+                    <td><input type="checkbox" name="choice" value="" /></td>
+                    <td>李四</td>
+                    <td>女</td>
+                    <td>21</td>
+                    <td>山东济南</td>
+                </tr>
+                <tr  class="parent" id="row2">
+                    <td colspan="5">后台开发</td>
+                </tr>
+                <tr class="child_row2">
+                    <td><input type="checkbox" name="choice" value="" /></td>
+                    <td>王五</td>
+                    <td>男</td>
+                    <td>18</td>
+                    <td>山东青岛</td>
+                </tr>
+                <tr class="child_row2">
+                    <td><input type="checkbox" name="choice" value="" /></td>
+                    <td>赵六</td>
+                    <td>女</td>
+                    <td>21</td>
+                    <td>山东泰安</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</body>
+</html>

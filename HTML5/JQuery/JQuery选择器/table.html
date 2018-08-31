@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="text/javascript">
+			
+			$(function(){
+				$("tr:odd").css("background","greenyellow");
+				$("tr:even").css("background","yellowgreen");
+				
+				$("td").click(function(){
+					alert($(this).text());
+				})
+			})
+			
+			
+		</script>
+		
+	</head>
+	<body>
+		
+		<table width="400" style="margin: 0 auto;">
+		<tr>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+			<td>8</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+			<td>8</td>
+		</tr>
+		
+		</table>
+		
+		
+		
+		
+	</body>
+</html>

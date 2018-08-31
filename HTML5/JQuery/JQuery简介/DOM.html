@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>DOM</title>
+	<meta charset="utf-8" />
+    <script src="../js/jquery-3.1.1.js"></script>
+    <script>
+        //如何获得p元素的内容
+        /*
+            jQuery 对象就是通过jQuery 包装DOM 对象后产生的对象。
+            jQuery 对象是jQuery 独有的。如果一个对象是jQuery 对象，那么就可以使用jQuery 里的方法。
+            
+            注意事项：
+            1.在jQuery对象中，无法使用DOM对象的任何方法
+              $(“#id”).innerHTML;
+            2.在DOM对象中，也无法使用jQuery对象的任何方法
+              document.getElementById(“#id”).html();
+
+        */
+    </script>
+</head>
+<body>
+    <h1>DOM对象</h1>
+    <p id="testP">你喜欢吃什么水果?</p>
+    <ul>
+        <li>苹果</li>
+        <li>香蕉</li>
+        <li>橘子</li>
+    </ul>
+</body>
+</html>

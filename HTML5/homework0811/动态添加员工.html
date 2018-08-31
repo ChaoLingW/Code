@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>动态添加员工jQuery</title>
+
+		<script src="jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="动态添加员工.js" type="text/javascript" charset="utf-8"></script>
+
+		<style>
+			body * {
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			#empAdd,#empInfo {
+				width: 600px;
+				margin: 10px auto;
+				padding: 10px 0px;
+				text-align: center;
+			}
+			
+			#empAdd fieldset {
+				height: 100px;
+			}
+			
+			.btn {
+				margin-top: 5px;
+				width: 60px;
+			}
+			
+			table {
+				border-collapse: collapse;
+				width: 500px;
+				margin: 0 auto;
+				text-align: center;
+			}
+			
+			thead {
+				background-color: #e6e5e5;
+			}
+			
+			td,
+			th {
+				border: 1px solid #808080;
+				width: 100px;
+				height: 30px;
+			}
+			
+			#foot {
+				width: 100px;
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="empAdd">
+			<fieldset>
+				<legend><strong>添加员工</strong></legend>
+
+				<label>姓名:</label>
+				<input type="text" size="15" id="UserName" name="username" value="" />
+				<label>年龄:</label>
+				<input type="text" size="15" id="UserAge" name="age" value="" />
+				<label>职位:</label>
+				<select id="position">
+					<option value="0">程序员</option>
+					<option value="1">设计师</option>
+					<option value="2">项目经理</option>
+				</select>
+				<br /><br />
+				<div>
+					<input type="button" class="btn" id="btnAdd" value="添加" />
+					<input type="reset" class="btn" id="btnReset" value="重置"/>
+				</div>
+			</fieldset>
+		</div>
+		<div id="empInfo">
+			<fieldset>
+				<legend><strong>员工管理</strong></legend>
+
+				<table>
+					<thead>
+						<tr>
+							<th><input type="checkbox" id="ckAll" value="0" ></th>
+							<th>姓名</th>
+							<th>年龄</th>
+							<th>职位</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+				<div id="control">
+					<button class="btn" id="btnDelete" >删除信息</button>
+				</div>
+			</fieldset>
+		</div>
+
+	</body>
+
+</html>

@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>getAttribute获取属性</title>
+    <!--getAttribute方法只有一个参数，我们要查询的属性的名字。
+    该方法不属于document对象，只能通过元素节点对象调用。比如与getElementById方法合用：-->
+    <script>
+    	// 将a的target属性赋给P1,将class=container的title赋给P2
+      	
+      	function getAttr(){
+      		
+      		//将a的target属性赋给p1
+      		var a1 = document.getElementsByTagName("a")[0];
+      		var t1 = a1.getAttribute("target");
+      		document.getElementById("p1").innerText = t1;
+      		
+      	document.getElementById("p2").innerText
+      	= document.getElementsByClassName("container")[0].getAttribute("title");
+      		
+      	}
+    </script>
+</head>
+<body>
+    <a href="http://www.baidu.com" target="_blank">百度</a>
+    <a href="http://www.sohu.com" target="_parent">搜狐</a>
+    <a href="http://www.sina.com" target="_blank">新浪</a>
+    <a href="http://www.csdn.com" target="_blank">CSDN</a>
+   	
+    <div class="container" title="main">
+    </div>
+    <p id="p1"></p>
+    <p id="p2"></p>
+     <button onclick="getAttr()">获取属性</button>
+</body>
+</html>

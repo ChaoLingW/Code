@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>显示和隐藏</title>
+    <!--
+        show（）方法和hide（）方法是jQuery 中最基本的动画方法。
+        在HTML 文档里，为一个元素调用hide()方法，会将该元素的display 样式改为“none''。
+        当把元素隐藏后，可以使用show（）方法将元素的display 样式设置为先前的显示状态
+       （“block ”或“ inline ”或其他除了“none ”之外的值）。
+        
+        show（）方法和hide（）方法在不带任何参数的情况下，相当于css（”display'',"none/ block/inline），
+        作用是立即隐藏或显示匹配的元素，不会有任何动画。
+        如果希望在调用show（）方法时，元素慢慢地显示出来，可以为show（）方法指定一个速度参数，
+        例如，指定一个速度关键字“ slow 、normal、 fast”。应时间为0.6秒、0.4秒和0.2秒 
+        也可设置整数指定执行时间数字计数级别是毫秒 slow 、normal、 fast实际上相当于600、400、200的值，
+        用来设定整个显示/隐藏过程消耗多少毫秒。
+        如：("p").show(1000);该示例使p元素中1秒内显示完毕。也能添加回调事件函数。
+        -->
+
+    <script src="../js/jquery-3.1.1.js"></script>
+    <script>
+        $(document).ready(function () {
+         	// 隐藏和显示
+         	$("#btnShow").click(function(){
+         		$("h3:first").show();
+         	});
+         	
+         	$("#btnHide").click(function(){
+         		$("h3:first").hide();
+         	});
+         	
+         	//带有动画的显示和隐藏
+         	$("#btnShow1").click(function(){
+         		$("h3:last").show(1000,function(){
+         			alert("显示完毕");
+         		});
+         	});
+         	
+         	$("#btnHide1").click(function(){
+         		$("h3:last").hide(1000).show(200);
+         	});
+         	
+        });
+    </script>
+</head>
+<body>
+    <h3>显示和隐藏</h3>
+    <p>显示这段文字</p>
+    <button id="btnShow">显示</button>
+    <button id="btnHide">隐藏</button>
+    <h3>带有动画的显示和隐藏</h3>
+    <button id="btnShow1">动画显示</button>
+    <button id="btnHide1">动画隐藏</button>
+
+</body>
+</html>

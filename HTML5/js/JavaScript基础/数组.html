@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>数组</title>
+		<script>
+			//声明一个数组
+
+			var arr1 = new Array(5);
+
+			//数组的长度
+			alert(arr1.length);
+			//可以同时声明数组并且同时指定元素的值
+			var arr2 = new Array(11, 19, 0, 89, true, "yyy", function() {}, arr1);
+			alert(arr2.length);
+			arr2[8] = 20;
+			alert(arr2[8] + ":" + arr2.length);
+
+			//也可以使用简略的语法声明数组并赋值
+			var arr3 = [11, 10, 8, 6, 5];
+
+			//声明数组，并且指定数组的长度。
+			var arr4 = new Array(4);
+			arr4[0] = 0;
+			arr4[1] = 1;
+			arr4[2] = 2;
+			arr4[3] = 3;
+
+			arr4[4] = 4;
+			alert(arr4.length);
+
+			//数组排序(sort,reverse)
+			// 从小到大排序
+			var arr5 = [3, 1, 0, -1, 8];
+			arr5.sort();
+			document.write(arr5);
+			// 从大到小排序
+			arr5.reverse();
+			document.write(arr5); //反转，不一定是从大到小顺序
+			/*数组元素的添加
+			  JavaScript提供了数组添加方法:push()*/
+			arr5.push(9);
+			//数组元素的删除pop
+			arr5.pop();
+			//循环遍历数组
+
+			//for 循环
+			for(var i = 0; i < arr5.length; i++)
+				alert(arr5[i] + "i");
+			//对象数组
+			var car1 = {
+				brand: "bmw",
+				color: "white",
+				price: 100,
+			}
+
+			var car2 = {
+				brand: "changan",
+				color: "black",
+				price: 10,
+			}
+
+			var car3 = {
+				brand: "buick",
+				color: "green",
+				price: 20,
+			}
+
+			var cars = new Array(car1, car2, car3);
+
+			//for循环
+			for(i = 0; i < cars.length; i++) {
+				alert(cars[i].brand + "@");
+			}
+
+			for(i = 0; i < cars.length; i++) {
+				alert(cars[i]["brand"] + "@@");
+			}
+		</script>
+	</head>
+
+	<body>
+
+	</body>
+
+</html>

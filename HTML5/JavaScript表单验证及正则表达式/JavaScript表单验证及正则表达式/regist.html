@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+
+		<script type="text/javascript">
+			/*表单验证:
+			概念：在数据被送往服务器前对 HTML 表单中的这些输入数据进行验证
+			常见验证类型:1.非空验证2.内容验证(长度验证/内容格式验证(正则表达式))*/
+			/*正则表达式:
+			概念：使用单个字符串来描述、匹配一系列符合某个句法规则的字符串
+			格式：var reg=/表达式/;reg.test(相关变量);
+			
+			元字符：    .匹配除换行符以外的任意字符
+					\w 匹配字母或数字或下划线
+					\s 匹配任意的空白符
+					\d 匹配数字 
+					\b 匹配单词的开始或结束
+					^ 匹配字符串的开始
+					$ 匹配字符串的结束
+			重复次数：* 重复零次或更多次
+					+ 重复一次或更多次
+					? 重复零次或一次
+					{n} 重复n次
+					{n,} 重复n次或更多次
+					{n,m} 重复n到m次
+			字符转义：如果你想查找元字符本身的话，比如你查找.,或者*,
+					就出现了问题：你没办法指定它们，因为它们会被解
+					释成别的意思。这时你就得使用\来取消这些字符的特殊意义。
+					因此，你应该使用\.和\*。当然，要查找\本身，你也得用\\.
+			
+			
+			*/
+			
+		/*js校验表单后提交表单的三种方法总结
+        1.<input type=submit name="submit1" value="注册" onclick="return check(this.form)">
+        2.<form action="login" method="post" onsubmit="return check(this)">
+        3.input type=button name="submit1" value="登陆" onclick="check(this.form)">
+          form.submit();
+     	*/
+			
+			
+		</script>
+
+	</head>
+	<body>
+
+		<form id="form1" name="form1" method="get" action="http://www.baidu.com">
+	<table width="571" height="159" border="1">
+		<tr>
+			<td width="86">用户名：</td>
+			<td width="240"><label><input type="text" name="txtUsername" id="txtUsername" /></label></td>
+			<td width="256">
+				<div id="div_name_hint"></div>
+			</td>
+		</tr>
+		<tr>
+			<td>密码：</td>
+			<td><label><input type="password" name="txtPassword" id="txtPassword"/></label></td>
+			<td>
+				<div id="div_pwd_hint"></div>
+			</td>
+		</tr>
+		<tr>
+			<td>确认密码：</td>
+			<td><label><input type="password" name="txtConfirm" id="txtConfirm" /></label></td>
+			<td>
+				<div id="div_confirm_hint"></div>
+			</td>
+		</tr>
+		<tr>
+			<td>QQ:</td>
+			<td><label><input type="text" name="txtQQ" id="txtQQ" /></label></td>
+			<td>
+				<div id="div_qq_hint"></div>
+			</td>
+		</tr>
+		<tr>
+			<td>邮箱：</td>
+			<td><label><input type="text" name="txtEmail" id="txtEmail" /></label></td>
+			<td>
+				<div id="div_email_hint"></div>
+			</td>
+		</tr>
+	</table>
+	<p>
+		<label>
+      <input type="submit" name="button" id="button" value="提交" />
+    </label>
+		<label>
+      &nbsp; 
+      <input type="reset" name="button2" id="button2" value="重置" />
+    </label>
+	</p>
+</form>
+
+	</body>
+
+</html>

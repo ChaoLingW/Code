@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>DOM简介</title>
+    <!--
+        HTML DOM (文档对象模型)
+        当网页被加载时，浏览器会创建页面的文档对象模型（Document Object Model）。
+         文档中的每一个元素都是一个对象。利用DOM提供的方法能得到任何一个对象。
+        通过可编程的对象模型，JavaScript 获得了足够的能力来创建动态的 HTML。
+        JavaScript 能够改变页面中的所有 HTML 元素
+        JavaScript 能够改变页面中的所有 HTML 属性
+        JavaScript 能够改变页面中的所有 CSS 样式
+        JavaScript 能够对页面中的所有事件做出反应
+
+        查找 HTML 元素
+        通常，通过 JavaScript，您需要操作 HTML 元素。
+        为了做到这件事情，您必须首先找到该元素。有三种方法来做这件事：
+        通过 id 找到 HTML 元素 document.getElementById("txtName")
+        通过标签名找到 HTML 元素 getElementsByTagName("p");
+        通过类名找到 HTML 元素 document.getElementsByClassName("p1")
+       
+
+      
+        -->
+ 	<script>
+ 		
+ 		window.onload = function(){
+ 			
+ 			//得到第一个p的内容，并输出
+ 			var arr = document.getElementsByTagName("p")
+ 			var content = arr[0].innerText;
+ 			document.write(content);
+ 		}
+ 		
+ 		
+ 		
+ 	</script>
+ 
+</head>
+<body>
+    <p>白日依山尽</p>
+    <p>黄河入海流</p>
+</body>
+</html>

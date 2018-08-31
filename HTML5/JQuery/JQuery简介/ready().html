@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+   	<script type="text/javascript" src="../js/jquery-3.1.1.js" ></script>
+    <script>
+        //等待DOM元素都加载完毕，类似window.onload  
+        //$=jQuery
+        /*
+            $(document).ready()和Window.onload区别
+            1.执行时间 
+            window.onload必须等到页面内包括图片的所有元素加载完毕后才能执行。 
+            $(document).ready()是DOM结构绘制完毕后就执行，不必等到加载完毕。 
+            2.编写个数不同
+            window.onload不能同时编写多个，如果有多个window.onload方法，只会执行一个 
+            $(document).ready()可以同时编写多个，并且都可以得到执行 
+            3.简写方法
+	        window.onload没有简化写法 
+	        $(document).ready(function(){})可以简写成$(function(){});
+            4.总结
+		            以浏览器装载文档为例，在页面加载完毕后，浏览器会通过 Javascript 为 DOM 元素添加事件。
+		            在常规的 Javascript 代码中，通常使用 window.onload 方法，
+		            而在 Jquery 中，使用的是 $(document).ready() 方法。 
+            $(document).ready() 方法是事件模块中最重要一个函数，可以极大的提高 Web 应用程序的速度。
+        */
+       
+    	window.onload = function(){
+    		alert(1);
+    	}
+    	
+    	window.onload = function(){
+    		alert(2);
+    	}
+    	
+    	$(document).ready(function(){
+    		alert(3)
+    	})
+    	
+    	$(document).ready(function(){
+    		alert(4)
+    	})
+    	
+    	$(function(){
+    		alert(5);
+    	})
+       
+    </script>
+</head>
+<body>
+
+</body>
+</html>

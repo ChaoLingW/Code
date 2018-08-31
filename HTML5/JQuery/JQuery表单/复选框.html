@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>复选框</title>
+		<!--
+        比如用attr("checked")获取checkbox的checked属性时选中的时候可以取到值,
+        值为"checked"但没选中获取值就是undefined。
+        jq提供新的方法“prop”来获取这些属性，就是来解决这个问题的，
+        以前我们使用attr获取checked属性时返回"checked"和"",现在使用prop方法获取属性则统一返回true和false。
+        什么时候使用attr()，什么时候使用prop()？
+        
+        1.添加属性名称该属性就会生效应该使用prop();
+        2.是有true,false两个属性使用prop();
+        3.其他则使用attr();
+
+        -->
+		<script src="../js/jquery-3.1.1.js"></script>
+		<script>
+			$(document).ready(function() {
+
+				//全选/全不选
+				$("#selectAll").change(function() {
+
+					//$("input[name='items']").prop("checked",this.checked);
+					$("input[name='items']").prop("checked", $(this).prop("checked"));
+
+				});
+
+				//全选
+				$("#checkedAll").click(function() {
+
+					$("input[name='items']").prop("checked", true);
+
+				});
+
+				//全部不选
+				$("#checkedNo").click(function() {
+
+					$("input[name='items']").prop("checked", false);
+
+				});
+
+				//反选
+				$("#checkRev").click(function() {
+
+					/*$("input[name='items']").each(function(){
+						
+						//this-->每一次遍历得到的dom对象
+						this.checked=!this.checked;
+						
+					});*/
+					
+					/*$.each($("input[name='items']"), function() {
+						this.checked=!this.checked;
+					});*/
+					
+					$.each($("input[name='items']"), function(index,obj) {
+						obj.checked=!obj.checked;
+					});
+
+				});
+
+				//选中值
+				$("#checkValue").click(function() {
+
+					var hobbys = "";
+					
+					$.each($("input[name='items']"),function(){
+						
+						if(this.checked)
+						{
+							hobbys+=this.value;
+						}
+						
+					})
+					
+					alert(hobbys);
+				});
+				
+			});
+		</script>
+		<style>
+			.container {
+				margin: 0px auto;
+				width: 500px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<label>你爱好的运动是？</label>
+			<p>
+				<input type="checkbox" name="items" value="足球" />足球
+				<input type="checkbox" name="items" value="篮球" />篮球
+				<input type="checkbox" name="items" value="排球" />排球
+				<input type="checkbox" name="items" value="台球" />台球
+			</p>
+			<p>
+				<input type="checkbox" id="selectAll" value="0" />全选
+				<input type="button" id="checkedAll" value="全选" />
+				<input type="button" id="checkedNo" value="全不选" />
+				<input type="button" id="checkRev" value="反选" />
+				<input type="button" name="name" id="checkValue" value="获得选中值" />
+			</p>
+		</div>
+	</body>
+
+</html>

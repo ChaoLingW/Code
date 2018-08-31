@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>setAttribute设置属性</title>
+    <!--
+        setAttribute方法允许我们用属性节点的值做修改。
+        与getAttribute一样，setAttribute也只能用于元素节点。
+        setAttribute()方法需要我们向它传递两个参数：obiect.setAttribute(attribute,value)
+        -->
+      <script src="jquery-3.1.1.js"></script>
+    <script>
+      	function setAttr(){
+      		//将title=hobby 改为like
+      		var div = document.getElementById("divHobby");
+      		div.setAttribute("title","like");
+      	}
+      	
+      	function changeLink(){
+      		var link = document.getElementById("link");
+      		
+      		var address = link.value;
+      		document.getElementById("baidu").setAttribute("href",address);
+      		link.value = "";
+      	}
+    </script>
+</head>
+<body onload="setAttr()">
+    <div id="divHobby" title="hobby">
+        <ul>
+            <li>游泳</li>
+            <li>上网</li>
+            <li>拳击</li>
+            <li>音乐</li>
+        </ul>
+    </div>
+    <a id="baidu" href="#">百度</a>
+    <br />
+    <input type="text" id = "link" /><br />
+    <input type="button" id="btn" value="更改连接地址"  onclick = "changeLink()"/>
+</body>
+</html>

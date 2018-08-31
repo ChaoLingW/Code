@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>伪类选择器</title>
+		<!--动态伪类选择器：根据条件的改变匹配元素，是相对于文档的固定状态来说的。
+        :link选择器 选择未访问链接元素
+        :visited选择器 选择已访问的链接元素
+        :hover选择器 鼠标悬停在其上的元素
+        :active选择器 被用户激活的元素，通常意味着用户即将点击该元素-->
+
+		<meta charset="utf-8" />
+		<style type="text/css">
+			a:link{
+				color: orangered;
+			}
+			a:hover{
+				color: green;
+			}
+			a:active{
+				color: yellow;
+			}
+			a:visited{
+				color: pink;
+			}
+		</style>
+	</head>
+
+	<body>
+		<nav>
+			<ul>
+				<li>
+					<a href="http://www.163.com">新闻资讯</a>
+				</li>
+				<li>
+					<a href="http://www.qq.com">娱乐八卦</a>
+				</li>
+				<li>
+					<a href="http://www.sina.com">体育竞技</a>
+				</li>
+			</ul>
+		</nav>
+	</body>
+
+</html>

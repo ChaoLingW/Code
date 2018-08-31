@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title></title>
+		<meta charset="utf-8" />
+		<script>
+			function showInfo() {
+				//弹出对话框，其中的内容时段落p中的内容
+				//1.获取p
+				var ele = document.getElementById("p1");
+				//2.得到p中内容
+				//对于非表单元素，内容使用innerHTML，innerText来获取
+				var content = ele.innerHTML;
+				//3.弹出对话框
+				alert(content);
+			}
+
+			function setInfo() {
+				//1.获取元素
+				var ele = document.getElementById("p1");
+				//2.设置p中的元素
+				//ele.innerText = "北京欢迎你";
+				ele.innerHTML="<span style='color: red;'>北京欢迎你</span>"
+			}
+			
+			function showUserName(){
+				//1.获取元素
+				var ele =document.getElementById("username");
+				//2.获取表单元素
+				alert(ele.value);
+			}
+			
+			function setUserName(){
+				//1.获取元素
+				var ele =document.getElementById("username");
+				//2.获取表单元素
+				ele.value=123
+			}
+		</script>
+
+	</head>
+
+	<body>
+
+		<p id="p1"><span>我爱北京天安门</span></p>
+
+		<input type="button" id="btn1" value="显示p中的内容" onclick="showInfo()" />
+		<input type="button" id="btn2" value="设置p中的内容" onclick="setInfo()" />
+		
+		<input type="text" name="username" id = "username" value="" />
+		<input type="button" name="btn3" id="btn3" value="显示用户名" onclick="showUserName()" />
+		<input type="button" name="btn4" id="btn4" value="设置用户名" onclick="setUserName()" />
+	</body>
+
+</html>

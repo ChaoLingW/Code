@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+
+	<style type="text/css">
+		table {
+			width: 500px;
+			margin: 0 auto;
+			font-size: 10px;
+		}
+		
+		.decorate {
+			background-color: #ABC4E4;
+			text-align: center;
+			border: none;
+			height: 3px;
+		}
+		
+		.fristTd {
+			width: 80px;
+			text-align: right;
+		}
+		
+		.lastTd {
+			width: 150px;
+		}
+		
+		.tf {
+			text-align: center;
+		}
+		
+		.borth {
+			width: 40px;
+		}
+		
+		.red {
+			color: red;
+		}
+	</style>
+
+	<script type="text/javascript">
+		/**
+		 * 初始化
+		 */
+		function iniState() {
+			//默认获得输入焦点
+			document.getElementById("userName").focus();
+			//生成验证码
+			getValidateCode();
+		}
+
+		/**
+		 * 生成验证码
+		 */
+		function getValidateCode() {
+
+			var vCode = "0000";
+			vCode = String(Math.round(Math.random() * 10000));
+			while(vCode.length < 4) {
+				vCode = "0" + vCode;
+			}
+			//alert(vCode);
+			document.getElementById("validate").innerHTML = vCode;
+		}
+
+		/**
+		 * 功能：显示错误信息函数
+		 * 参数：eId:要显示div的id,msg:要显示的信息内容
+		 */
+		function showErrorMsg(eId, msg) {
+			document.getElementById(eId).innerHTML = msg;
+			document.getElementById(eId).style.display = "";
+		}
+
+		/**
+		 * 功能：隐藏错误提示信息
+		 * 参数：eId要隐藏的div的id
+		 */
+		function clearMsg(eId) {
+			document.getElementById(eId).style.display = "none";
+		}
+
+		/**
+		 * 用户名验证
+		 * @param eId
+		 * @param value
+		 */
+		function verifyUserName(eId, value) {
+			var msg = "";
+			var strUserName = value.trim();
+			if(strUserName.length < 6 || strUserName.length > 20) {
+				msg = "用户名必须6-20位";
+				showErrorMsg(eId, msg);
+				return false;
+			}
+			//构建正则表达式验证
+			var pattern = /^[a-zA-Z]{1}[a-zA-Z0-9_]{5,19}$/;
+			if(pattern.test(strUserName)) {
+				clearMsg(eId);
+				return true;
+			} else {
+				msg = "用户名只能以字母开头";
+				showErrorMsg(eId, msg);
+				return false;
+			}
+		}
+
+		/**
+		 * 密码验证
+		 * @param eId
+		 * @param value
+		 */
+		function verifyPassword(eId, value) {
+			var msg = "";
+			var strPassword = value.trim();
+			//alert(strUserName.length);
+			if(strPassword.length < 6 || strPassword.length > 20) {
+				msg = "密码必须6-20位";
+				showErrorMsg(eId, msg);
+				return false;
+			}
+			//构建正则表达式验证
+			var pattern = /^[a-zA-Z0-9_]{6,20}$/;
+			if(pattern.test(strPassword)) {
+				clearMsg(eId);
+				return true;
+			} else {
+				msg = "密码格式错误";
+				showErrorMsg(eId, msg);
+				return false;
+			}
+		}
+
+		/**
+		 * 确认密码功能
+		 * @param eId
+		 * @param value
+		 */
+		function verifyRelPassword(eId, value) {
+			var msg = "";
+			var strRelPassword = value.trim();
+			var strPassword = document.getElementById("password").value.trim();
+			if(strRelPassword != strPassword) {
+				msg = "两次密码不一致";
+				showErrorMsg(eId, msg);
+				return false;
+			}
+			return true;
+		}
+
+		/**
+		 * 提示信息功能
+		 * @param  eId
+		 * @param  value
+		 */
+		function verifyAnswer(eId, value) {
+			var msg = "";
+			var strAnswer = value.trim();
+			if(strAnswer.length < 3 || strAnswer.length > 32) {
+				msg = "必须3-32位";
+				showErrorMsg(eId, msg);
+				return false;
+			}
+			//构建正则表达式验证
+			var pattern = /^\w{3,32}$/;
+			if(pattern.test(strAnswer)) {
+				clearMsg(eId);
+				return true;
+			} else {
+				msg = "提示信息格式错误";
+				showErrorMsg(eId, msg);
+				return false;
+			}
+		}
+
+		/**
+		 * 邮箱格式验证
+		 * @param {Object} eId
+		 * @param {Object} value
+		 */
+		function verifyEmail(eId, value) {
+			var msg = "";
+			var strEmial = value.trim();
+
+			//构建正则表达式验证
+			var pattern = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;
+			if(pattern.test(strEmial)) {
+				clearMsg(eId);
+				return true;
+			} else {
+				msg = "邮箱格式错误";
+				showErrorMsg(eId, msg);
+				return false;
+			}
+		}
+
+		/**
+		 * 验证码比对
+		 * @param {Object} eId
+		 * @param {Object} value
+		 */
+		function verifyValidateCode(eId, value) {
+			var msg = "";
+			var strValidateCode = value.trim();
+			var validateCode = document.getElementById("validate").innerText.trim();
+			if(strValidateCode != validateCode) {
+				msg = "验证码错误";
+				showErrorMsg(eId, msg);
+				return false;
+			}
+			return true;
+
+		}
+
+		/**
+		 * 
+		 */
+		function checkAccept(eId, fId) {
+			var msg = "";
+
+			if(fId.checked) {
+				msg = "请接受服务协议";
+				showErrorMsg(eId, msg);
+				return false;
+			}
+			return true;
+		}
+
+		/**
+		 * 提交前验证
+		 */
+		function verifyInput() {
+			//alert("1230");
+			var form = document.formRegister;
+			if(verifyUserName('userName_error', form.userName.value) &&
+				verifyPassword('password_error', form.password.value) &&
+				verifyRelPassword('relPassword_error', form.relPassword.value) &&
+				verifyAnswer('tipsAnswer_error', form.Answer.value) &&
+				verifyEmail('email_error', form.email.value)&& 
+				verifyValidateCode('validateCode_error', form.validateCode.value)&&
+				checkAccept('agree_error','agree')
+			) {
+				alert("注册成功");
+				form.submit();
+				return(true);
+			} else {
+				alert("注册失败，请按红色提示信息修改！");
+				return(false);
+			}
+
+		}
+	</script>
+
+	<body onload="iniState()">
+
+		<form action="http://baidu.com" method="get" name="formRegister">
+			<table>
+				<thead>
+					<tr>
+						<td colspan="6" class="decorate">
+							用户注册
+						</td>
+					</tr>
+					<tr>
+						<td colspan="6">
+							<hr class="decorate" />
+						</td>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td class="fristTd">
+							用户名:
+						</td>
+
+						<td>
+							<input type="text" name="userName" id="userName" onblur="verifyUserName('userName_error',value)" onfocus="clearMsg('userName_error')" />
+
+						</td>
+
+						<td colspan="3">
+							<div id="userName_error" class="red">
+
+							</div>
+							<!--提示用户名的错误信息-->
+						</td>
+
+						<td class="lastTd">
+							英文字母阿拉伯数字下划线组合，长度为6-20位，只能以字母开头
+						</td>
+
+					</tr>
+
+					<tr>
+						<td class="fristTd">
+							输入密码:
+						</td>
+						<td>
+							<input type="password" name="password" id="password" onfocus="clearMsg('password_error')" onblur="verifyPassword('password_error',value)" />
+						</td>
+						<td colspan="3">
+							<div id="password_error" class="red">
+
+							</div>
+							<!--提示密码错误信息-->
+						</td>
+						<td class="lastTd" rowspan="2">
+							英文字母或阿拉伯数字组合，英文区分大小写，长度为6-20位
+						</td>
+					</tr>
+					<tr>
+						<td class="fristTd">
+							验证密码:
+						</td>
+						<td>
+							<input type="password" name="relPassword" id="relPassword" value="" onfocus="clearMsg('relPassword_error')" onblur="verifyRelPassword('relPassword_error',value)" />
+						</td>
+						<td colspan="3">
+							<!--提示两次输入密码不一致-->
+							<div id="relPassword_error" class="red">
+
+							</div>
+						</td>
+					</tr>
+
+					<tr>
+						<td colspan="6">
+							<hr class="decorate" />
+						</td>
+					</tr>
+
+					<tr>
+						<td class="fristTd">
+							密码提示问题:
+						</td>
+						<td>
+							<select name="tips">
+								<option value="">您的初恋情人是？</option>
+							</select>
+						</td>
+						<td colspan="3">
+
+						</td>
+						<td class="lastTd" rowspan="2">
+							当你忘记密码时，可以通过密码问题和答案来查询。密码提示答案3-32之间，不能包含特殊字符
+						</td>
+					</tr>
+					<tr>
+						<td class="fristTd">
+							密码提示答案:
+						</td>
+						<td>
+							<input type="text" name="Answer" id="Answer" onfocus="clearMsg('tipsAnswer_error')" onblur="verifyAnswer('tipsAnswer_error',value)" />
+						</td>
+						<td>
+							<div id="tipsAnswer_error" class="red">
+
+							</div>
+							<!--提示信息-->
+						</td>
+					</tr>
+					<tr>
+						<td colspan="6">
+							<hr class="decorate" />
+						</td>
+					</tr>
+					<tr>
+						<td class="fristTd">
+							出生日期:
+						</td>
+						<td>
+							<select name="year">
+								<option value="1990" selected="selected">1990</option>
+								<option value="1991" selected="selected">1991</option>
+							</select>年
+
+							<select name="mouth">
+								<option value="">1</option>
+							</select>月
+
+							<select name="day">
+								<option value="">1</option>
+							</select>日
+						</td>
+
+						<td></td>
+						<td></td>
+						<td></td>
+						<td class="lastTd" rowspan="2">
+							为了方便您的使用，请填写真实信息
+
+						</td>
+					</tr>
+					<tr>
+						<td class="fristTd">
+							性别:
+						</td>
+						<td>
+							<input type="radio" name="sex" value="1" checked="checked" />男
+							<input type="radio" name="sex" value="2" />女
+						</td>
+
+					</tr>
+					<tr>
+						<td class="fristTd">
+							常用邮箱:
+						</td>
+						<td>
+							<input type="text" id="email" onfocus="clearMsg('email_error')" onblur="verifyEmail('email_error',value)" />
+						</td>
+						<td colspan="3">
+							<div id="email_error" class="red"></div>
+							<!--提示邮箱的错误信息-->
+						</td>
+						<td class="lastTd">
+							方便你取得账号相关的重要信息，包括找回密码
+						</td>
+					</tr>
+					<tr>
+						<td colspan="6">
+							<hr class="decorate" />
+						</td>
+					</tr>
+
+					<tr>
+						<td class="fristTd">
+							请输入验证码:
+						</td>
+						<td>
+							<input type="text" name="validateCode" id="validateCode" onfocus="clearMsg('validateCode_error')" onblur="verifyValidateCode('validateCode_error',value)" />
+						</td>
+						<td>
+							<div id="validate">
+
+							</div>
+							<!--验证码的显示区域-->
+						</td>
+						<td>
+							<input type="button" id="refresh" value="刷新" onclick="getValidateCode()" />
+						</td>
+						<td>
+							<div id="validateCode_error" class="red">
+
+							</div>
+							<!--提示信息-->
+						</td>
+						<td>
+							请将系统产生的四位验证码数字输入到系统验证码的输入框中
+						</td>
+					</tr>
+				</tbody>
+
+				<tfoot>
+
+					<tr>
+
+						<td colspan="4" class="tf">
+							<input type="checkbox" name="agree" id="agree" value="" onblur="checkAccept('agree_error','agree')" /> 我已阅读并接收
+							<a href="#">服务条款</a>
+						</td>
+						<td>
+							<div id="agree_error" class="red">
+
+							</div>
+						</td>
+						<td class="lastTd">
+							选择此项服务前，请仔细阅读服务条款
+						</td>
+					</tr>
+					<tr>
+						<td colspan="6" class="tf">
+							<input type="button" name="btn" id="btn" value="提交" onclick="verifyInput()" />
+						</td>
+					</tr>
+
+				</tfoot>
+
+			</table>
+
+		</form>
+
+	</body>
+
+</html>

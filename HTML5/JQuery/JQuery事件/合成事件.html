@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>合成事件</title>
+		<!--
+        jQuery 有两个合成事件hover()方法和toggle()方法，类似前面讲过的ready（）方法，
+        hover()方法和toggle（）方法都属于jQuery 自定义的方法。
+        1.hover（）方法
+        hover()方法用于模拟光标悬停事件。方法格式：hover(enter,leave)。
+        当光标移动到元素上时，会触发指定的第1 个函数(enter);
+        当光标移出这个元素时，会触发指定的第2 个函数(leave) 。
+
+        2.toggle()方法
+        toggle()方法可以切换元素的可见状态。方法格式：toggle(fun1,fun2,...,funN);
+        如果元素是可见的， 切换后则为隐藏；如果元素是隐藏的，切换后则为可见的。
+        -->
+		<script src="../js/jquery-3.1.1.js"></script>
+		<script>
+			$(document).ready(function() {
+				//hover方法 鼠标移入和移出
+				$("div").hover(function() {
+					$(this).css("color", "red");
+				}, function() {
+					$(this).css("color", "green");
+				})
+
+				// toggle方法(显示和隐藏)
+				$("#btnShow").click(function() {
+					$(this).prev().toggle(1000)
+				})
+
+			});
+		</script>
+	</head>
+
+	<body>
+		<h3>hover方法</h3>
+		<div>鼠标移入、移出</div>
+		<h3>toggle方法</h3>
+		<button id="btnShow">显示\隐藏</button>
+
+	</body>
+
+</html>

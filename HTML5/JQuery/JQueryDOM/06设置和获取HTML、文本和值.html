@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>设置和获取HTML、文本和值</title>
+    <!--
+        1.html()方法获得或设置某个元素的html元素。方法如下:$(selector).html();
+          $("p").html();该示例获得元素p的html内容。
+      $("p").html("<strong>添加html内容</strong>");该示例设置p的html内容为”<strong>添加html内容</strong>“;
+
+         2.text()方法获得或设置某个元素的文本值。方法如下:$(selecotr).text();例：
+          $("p").text();该示例获得元素p的text文本内容。
+      $("p").text("重新设置的文本内容");该示例设置元素p的text文本为"重新设置的文本内容";
+
+        3.val()方法获得或设置某个元素的值，如果元素值是多选则以数组形式返回，方法如下：$(selector).val();
+          例:文本元素 <input type="text" id="userName" value="请输入用户名" />
+             $("#userName").val();获得input元素的值。
+             $("#userName").val('zhangsan');设置input元素的值为'zhangsan'。
+          val()方法的不仅能操作input，最重要的一个用途用于select、checkbox、radio。
+
+          例：在下拉框下的多选赋值应用
+            <select id="fruits" multiple="multiple">
+             <option>苹果</option>
+             <option>香蕉</option>
+             <option>西瓜</option>
+            </select>
+          $("#fruits").val(['苹果','香蕉']);该示例使select中苹果和香蕉两项被选中。
+        -->
+    <style>
+        .login {
+            width: 500px;
+            height: 200px;
+            margin: 10px auto;
+            border: 1px solid black;
+        }
+
+        .register {
+            width: 500px;
+            height: 200px;
+            margin: 0px auto;
+            border: 1px solid black;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        .field {
+            width: 400px;
+            height: 30px;
+            margin: 10px auto;
+            text-align: center;
+        }
+
+        label {
+            display: inline-block;
+            width: 70px;
+        }
+    </style>
+    <script src="../js/jquery-3.1.1.js"></script>
+    <script>
+        $(function () {
+          	//设置html(h3)、获取html
+          	
+          	//设置text、获取text
+          	
+          	//设置val、获取val
+          	
+          	
+          	//设置当输入用户名焦点时,文本框中显示空，当失去焦点时则反之
+          	$("#userName").focus(function (){
+          		if($(this).val()=="请输入用户名"){
+          			$(this).val("");
+          		}
+          	}).blur(function(){
+          		if($(this).val()==""){
+          			$(this).val("请输入用户名");
+          		}
+          	})
+
+           
+          	//选中苹果和香蕉两个选项
+          	 $("#btnShow").click(function () {
+          	 	$("#fruits").val([1,2]);
+            });
+          	
+        });
+    </script>
+</head>
+<body>
+    <div class="login">
+        <p id="title">
+
+        </p>
+        <form>
+            <div class="field">
+                <label for="userName">账号:</label>
+                <input type="text" name="username" id="userName" />
+            </div>
+            <div class="field">
+                <label for="userPwd">密码:</label>
+                <input type="password" name="userpwd" id="userPwd" />
+            </div>
+            <div class="field">
+                <input type="submit" name="submit" id="btnSubmit" value="登录" />
+                <input type="submit" name="reset" id="btnReset" value="重置" />
+            </div>
+        </form>
+    </div>
+    <div class="register">
+        <select id="fruits" multiple="multiple">
+            <option value="1">苹果</option>
+            <option value="2">香蕉</option>
+            <option value="3">西瓜</option>
+        </select>
+        <button id="btnShow">选中</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>DOM样式操作</title>
+    <!--
+        1.设置样式和获取样式
+        class 也是节点元素的属性，因此获取class 和设置class 都可以使用attr()方法来完成。
+
+        2.追加样式
+        直接使用attr()方法设置class属性，会将原来的class属性替换掉。
+        如果在添加新的样式时，还需要保留原有样式，可以使用addClass()方法。
+        注意：当一个节点元素包含了多个class样式时，将按照以下方式进行处理：
+        (1) 如果给一个元素添加了多个 class 值， 那么就相当于合并了它们的样式。
+        (2) 如果有不同的 class 设定了同一样式属性， 则后者覆盖前者。
+
+        3.移除样式
+        如果要删除class某个值，可以使用removeClass()方法完成，
+        它的作用是从匹配的元素中删除全部或者指定的class。
+        不传递参数时，删除所有；给定参数时只删除指定的class。
+
+        4.判断是否含有某个样式
+        hasClass()方法可以用来判断元素中是否包含某个class，如果有则返回true，否则返回false。
+
+        -->
+    <script src="../js/jquery-3.1.1.js"></script>
+    <script>
+        $(document).ready(function () {
+			//设置和获取样式p2			p_content
+			$("#btn1").click(function(){
+				$("#p2").attr("class","p_content");
+				$("#p2").attr("class","border");
+				
+			});
+			
+			//追加样式（在p1中追加样式）		p_bg
+			$("#btn2").click(function(){
+				
+				
+				$("#p1").addClass("border");
+			});
+			
+			//移除样式(移除p1的全部样式)
+			//在p2中添加样式p_bg移除样式p_content
+			$("#btn3").click(function(){
+				
+				//$("#p1").removeClass("p_content");
+				$("#p1").removeClass();
+				
+			});
+			
+			//判断样式
+			$("#btn4").click(function(){
+				var isHas1=$("#p1").hasClass("p_content");
+				var isHas2=$("#p2").hasClass("Class1");
+				alert(isHas1);
+				alert(isHas2);
+			});
+           
+        });
+    </script>
+    <style>
+        .p_content {
+            color: red;
+            font-size: 15px;
+        }
+
+        .p_bg {
+            background-color: red;
+            color: yellow;
+            font-weight: bold;
+        }
+        
+        .border{
+        	border:1px solid yellowgreen;
+        	font-size: 60px;
+        }
+    </style>
+</head>
+<body>
+    <p id="p1" class="p_content">你最喜欢的水果?</p>
+    <ul>
+        <li title="苹果">苹果</li>
+        <li title="桔子">桔子</li>
+        <li title="香蕉">香蕉</li>
+    </ul>
+
+    <p id="p2">你最喜欢的运动是？</p>
+    <ul>
+        <li>游泳</li>
+        <li>篮球</li>
+        <li>足球</li>
+    </ul>
+
+    <button id="btn1">设置和获取样式</button>
+    <button id="btn2">追加样式</button><br /><br />
+    <button id="btn3">移除样式</button>
+    <button id="btn4">判断样式</button><br /><br />
+</body>
+</html>

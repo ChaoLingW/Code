@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>兄弟选择器</title>
+    <!--+相邻兄弟选择器可选择紧接在另一元素后的元素，且二者有相同父元素。-->
+    <!--~作用是查找某一个指定元素的后面的所有兄弟结点。-->
+    <meta charset="utf-8" />
+    <style>
+        p + p{
+        	color: red;
+        }
+        
+        h1 ~ p{
+        	color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="test1">
+        <h1>山东省景点</h1>
+        <p id="p1">五岳独尊-泰山</p>
+        <p>孔孟之乡-济宁</p>
+        <p class="p2">江北水城-聊城</p>
+        <p class="p2">人间仙境-蓬莱</p>
+        <div>
+        	<p>今天是星期一</p>
+        </div>
+    </div>
+</body>
+</html>

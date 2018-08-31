@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>属性选择器</title>
+		<!--属性选择器:对带有指定属性的 HTML 元素设置样式
+        可以为拥有指定属性的 HTML 元素设置样式，而不仅限于 class 和 id 属性。
+        -->
+
+		<meta charset="utf-8" />
+
+		<style>
+			a[href="#"] {
+				color: red;
+			}
+			
+			img[title="小狗"] {
+				border: 1px solid yellow;
+			}
+			
+			input[type="text"] {
+				font-size: 20px;
+			}
+			
+			input[type="button"]{
+				background-color: orange;
+			}
+		</style>
+	</head>
+
+	<body>
+		<a href="http://www.baidu.com" title="百度">百度一下</a><br />
+		<a href="#" title="百度">百度一下</a><br />
+		<img src="#" alt="Alternate Text" /><br />
+		<img id="img1" src="../image/1.jpg" alt="dog" title="小狗" width="70" height="70" />
+		<form name="input" action="" method="get">
+			<div class="div_Info">
+				<input type="text" name="UserName" value="zhangsan" size="20" />
+				<input type="text" name="UserName" value="lisi" size="20" />
+				<input type="button" value="submit" />
+			</div>
+		</form>
+	</body>
+
+</html>

@@ -1,5 +1,0 @@
-package com.hpe.util;
-
-public class JdbcUtil {
-
-}

@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>JavaScript对象</title>
+
+		<!--在 JavaScript 中，对象是拥有属性和方法的数据。
+        1.属性和方法
+		        属性是与对象相关的值。
+		        方法是能够在对象上执行的动作。
+		        举例：汽车就是现实生活中的对象。
+		        汽车的属性：名称、型号、重量、颜色。
+		        汽车的方法：启动、驾驶、刹车。
+
+        2.JavaScript中的对象
+	        例:var  message="Hello World!"
+	        实际上已经创建了一个JavaScript字符串的对象，字符串对象拥有内建的属性length。length=5
+	        属性：txt.length=5;
+	        方法:txt.indexof()
+             txt.replace()
+        3.创建JavaScript对象
+          JavaScript 中的几乎所有事务都是对象：字符串、数字、数组、日期、函数，等等。
+          例:创建名为 "person" 的对象，并为其添加了三个属性：
+
+    -->
+		<script>
+			
+			var str = "123";
+			
+			//alert(str.length);
+			//创建对象
+
+			//1.使用字面量表示法(字面量表示如何表达这个值,一般除去表达式,给变量赋值时,等号右边都可以认为是字面量。 )
+			//方法：将成员信息写到{}中，并赋值给一个变量，此时这个变量就是一个对象
+			//如果{}中为空，则创建一个空对象。
+			var person1 = {}; 
+
+			//可以给对象的成员进行赋值，也可以获取对象的成员信息。
+			var person2 = {
+				//属性名:属性值 逗号隔开
+				name:"张三",
+				sex:"男",
+				age:11,
+				//方法名:function(参数)
+				msg:function(){
+					document.write(this.name + ":" + this.age);
+				}
+			};
+			
+			//调用对象的属性
+			alert(person2.age);
+			// 调用对象中的方法
+			person2.msg();
+			
+			person2.age = 100;
+			alert(person2.age);
+			
+			person2.id = "11111";
+			alert(person2.id);
+			
+			//2.通过构造函数方式创建(使用对象构造器)
+			//方法:var obj=new 函数名();
+			var person3 = new Object();
+			
+			person3.age = 10;
+			person3.name = "lisi";
+			person3.sex = "男";
+			person3.hoobys = ["篮球","足球","乒乓球"];
+			
+			person3.msg = function(){
+				document.write(person3.hoobys);
+			}
+			//访问对象的属性
+			alert(person3.sex);
+			person3.msg();
+		</script>
+	</head>
+
+	<body>
+
+	</body>
+
+</html>

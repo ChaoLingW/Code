@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!--
+			把 JSON 文本转换为 JavaScript 对象
+			JavaScript 函数 eval() 可用于将 JSON 文本转换为 JavaScript 对象。
+			eval() 函数使用的是 JavaScript 编译器，可解析 JSON 文本，然后生成 JavaScript 对象。
+			必须把文本包围在括号中
+			例：var obj = eval ("(" + txt + ")"); 
+		-->
+		<script>
+			var txt='{"users":['+
+					'{"account":"admin","pwd":"admin"},'+
+					'{"account":"user","pwd":"user"}]}';
+			var obj=eval("("+txt+")");
+			document.write(obj.users[0].account);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

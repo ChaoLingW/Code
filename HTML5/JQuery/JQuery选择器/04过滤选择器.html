@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>过滤选择器</title>
+    <!--
+       过滤选择器主要是通过特定的过滤规则来筛选出所需的DOM 元素，
+       过滤规则与css 中的伪类选择器语法相同，即选择器都以一个冒号（：）开头。
+       按照不同的过滤规则，过滤选择器可以分为基本过滤、内容过滤、可见性过滤、
+       属性过滤、子元素过滤和表单对象属性过滤选择器。
+
+        基本过滤选择器： 
+        1. :first
+        示例:$("p:first")  选取第一个<p>元素
+        2. :last
+        示例：$("p:last") 选取最后一个<p>元素
+        3.:even
+        示例:$("tr:even") 所有偶数<tr>元素
+        4.:odd
+        示例:$("tr:odd") 所有奇数 <tr> 元素
+        5.eq(index)
+        示例:$("ul li:eq(3)")  列表中第四个元素(index从0开始)
+        6.:gt(no)
+        示例:$("ul li:gt(3)") 列出 index 大于 3 的元素
+        7.:hidden
+        示例: $("p:hidden") 所有隐藏的 <p> 元素
+        8.:visible
+        示例:$("table:visible")所有可见的表格
+        9.[attribute]
+        示例:$([href]) 所有带有href属性的元素
+        10.[attribute=value]
+        示例:$([href='#']) 所有 href 属性的值等于 "#" 的元素
+        11.[attribute!=value]
+
+        可视化过滤选择器： 
+        $("div:hidden") 选择所有的被hidden的div元素 
+        $("div:visible") 选择所有的可视化的div元素 
+       
+        属性过滤选择器： 
+        $("div[id]")  选择所有含有id属性的div元素 
+        $("input[name='newsletter']")  选择所有的name属性等于'newsletter'的input元素 
+        $("input[name!='newsletter']") 选择所有的name属性不等于'newsletter'的input元素  
+        $("input[name^='news']") 选择所有的name属性以'news'开头的input元素 
+        $("input[name$='news']") 选择所有的name属性以'news'结尾的input元素 
+        $("input[name*='man']")  选择所有的name属性包含'news'的input元素 
+        $("input[id][name$='man']") 可以使用多个属性进行联合选择，
+        该选择器是得到所有的含有id属性并且那么属性以man结尾的元素 
+ 
+        -->
+    <style>
+        .container {
+            margin: 0px auto;
+            width: 800px;
+        }
+
+        .one, .two {
+            margin-left: 200px;
+            float: left;
+        }
+    </style>
+    <script src="../js/jquery-3.1.1.js"></script>
+    <script>
+		$(document).ready(function(){
+			$("#btn1").click(function(){
+				//1.第一个
+				$(".one p:first").css("color","red");
+				//2.最后一个
+				$(".one p:last").css("color","red");
+				//3.偶数行//对应索引
+				$(".two p:even").css("color","greenyellow");
+				//4.奇数行
+				$(".two p:odd").css("color","aliceblue");
+				//5.设置第三行
+				$(".two p:eq(3)").css("color","yellow");
+				//6.设置H1-H6
+				$(":header").css("border","1px solid yellow");
+				//7.隐藏元素
+				$("p:hidden").show().css("color","aqua");
+				//8.[attribute=value]
+				$("a[href = '#a1'][target='_blank']").css("border","1px solid red");
+				
+				
+			});
+		});
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="one">
+            <h2>登鹳雀楼</h2>
+            <span>白居易</span>
+            <p>白日依山尽,</p>
+            <p>黄河入海流,</p>
+            <p>欲穷千里目,</p>
+            <p>更上一层楼。</p>
+            <p hidden>这首诗不错</p>
+            <a href="#a1" target="_blank">引入一</a>
+            <a href="#a2" target="_parent">引入二</a>
+            <div class="input_content">
+                <input type="text" name="username" value="" /><br />
+                <input type="password" name="userpwd" value="" /><br />
+                <input type="button" name="btnSubmit" value="提交" />
+            </div>
+            <button id="btn1">过滤选择器1</button>
+        </div>
+        <div class="two">
+            <h2>茅屋为秋风所破歌</h2>
+            <span>杜甫</span>
+            <p>安得广厦千万间，</p>
+            <p>大庇天下寒士俱欢颜，</p>
+            <p>风雨不动安如山！</p>
+            <p>呜呼！</p>
+            <p>何时眼前突兀见此屋，</p>
+            <p>吾庐独破受冻死亦足！</p>
+            <button id="btn2">过滤选择器2</button>
+        </div>
+    </div>
+</body>
+</html>

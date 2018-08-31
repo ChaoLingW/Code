@@ -1,9 +1,0 @@
-package com.hp.dao;
-
-import com.hp.po.Admin;
-
-public interface AdminDao {
-
-	public boolean login();
-	public Admin select(Admin admin);
-}

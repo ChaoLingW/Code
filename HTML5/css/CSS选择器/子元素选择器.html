@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>子元素选择器</title>
+		<!--子代选择器和后代选择器很像，不过只选择匹配元素中的直接后代
+        目标元素为匹配第一个选择器的元素的直接后代,且匹配第二个选择器
+        用于选择指定标签元素的第一代子元素
+        语法：第一个选择器>第二个选择器
+        总结：>作用于元素的第一代后代，空格作用于元素的所有后代。-->
+		<style>
+			div>p:last-child{
+				color: red;
+			}
+		</style>
+		<meta charset="utf-8" />
+	</head>
+
+	<body>
+		<h1>食物</h1>
+		<ul class="food">
+			<li>
+				水果
+
+				<ul>
+					<li>香蕉</li>
+					<li>苹果</li>
+					<li>梨</li>
+				</ul>
+			</li>
+			<li>
+				蔬菜
+				<ul>
+					<li>白菜</li>
+					<li>油菜</li>
+					<li>卷心菜</li>
+				</ul>
+			</li>
+		</ul>
+
+		<p>这个段落是其父元素（body）的首个子元素。</p>
+
+		<h1>欢迎访问我的主页</h1>
+		<p>这个段落不是其父元素的首个子元素。</p>
+
+		<div>
+			<p>这个段落是其父元素（div）的首个子元素。</p>
+			<p>这个段落不是其父元素的首个子元素。</p>
+			<section>
+				<p>今天是星期一</p>
+			</section>
+			<p>这个段落不是其父元素的首个子元素。</p>
+		</div>
+
+	</body>
+
+</html>

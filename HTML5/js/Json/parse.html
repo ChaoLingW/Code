@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 
+			JSON 通常用于与服务端交换数据。
+		  	在接收服务器数据时一般是字符串。
+		 	我们可以使用 JSON.parse() 方法将数据转换为 JavaScript 对象。
+		 	语法：JSON.parse(text[, reviver])
+		 	参数说明：text:必需， 一个有效的 JSON 字符串。
+		 		   reviver: 可选，一个转换结果的函数， 将为对象的每个成员调用此函数。
+
+		  -->
+		<script>
+			//JSON 解析实例
+			var msg = '{"username":"zhangsan","password":"123"}';
+
+			var msgJson = JSON.parse(msg)
+			document.write(msgJson.username)
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

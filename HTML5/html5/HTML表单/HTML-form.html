@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        form表单的属性
+        Name:表单的识别名称。通过表单的名称来辨认页面提交的是哪个表单的数据。
+        Action:处理表单程序的地址。action="index.html"
+        Method:将表单中的数据提交到服务器的方法。Method是常用的两个取值get和post
+        get方法：默认的一种传递数据的方法
+        特点:
+        1.通过地址来传递表单中的数据
+        2.不能传递敏感的数据,如:密码
+        3.不能传递大量的数据,每次只能传递1024字节
+        4.不能上传附件。
+        post方法:不是通过地址传递数据,数据传给文件处理程序。
+        特点:
+        1.相对安全
+        2.可以传递海量的数据
+        3.能上传附件
+        何时使用get和post?
+        1.如果表单提交是被动的(比如搜索引擎查询),并没有敏感信息。
+          当你使用get时,表单数据在页面地址栏中是可见的。比如：search.html?name=john&age=25
+          注：get最适合少量数据的提交，浏览器会设定容量限制。
+        2.如果表单正在更新数据，或者包含敏感信息。如：密码
+        则使用Post的安全性更好，因为在页面地址栏中被提交的数据时不可见的。    
+    -->
+    
+    <form action="../Htmlblock.html" method="post" name="from1">
+    	
+    	用户名:<input type = "text" name = "username" id = "name"  /><br />  
+    	
+    	密  码:<input type = "text" name = "password" id = "pwd"  />  
+    	
+    	<input type="submit" value="登录" />
+    	
+    	
+    </form> 
+</body>
+</html>

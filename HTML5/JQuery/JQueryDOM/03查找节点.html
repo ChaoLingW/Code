@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>DOM查找节点</title>
+		<!--
+        查找元素节点
+        通过jQuery选择器，直接可以获取到节点元素。
+        例1：查找元素节点p返回p内的文本内容$("p").text(); innerText
+
+        查找节点属性
+        获取到需要的元素节点后，可以使用attr()方法来获取它的各种属性值。prop()
+        attr()方法的参数可以是一个，也可以是两个，当参数为一个时，是要查询的属性名字。
+        例2：查找元素节点p的属性返回属性名称对应的属性值$("p").attr("title"),返回p的属性title的值。
+        -->
+		<script src="../js/jquery-3.1.1.js"></script>
+		<script>
+			$(document).ready(function() {
+				//查找节点元素
+				// 获取p节点的html
+				//获取<ul>中的第1个<li>节点并显示文本内容
+				$("#btn1").click(function() {
+					alert($("p").html());
+					alert($("ul li:first").html());
+
+				});
+
+				//查找节点属性
+				//获取P元素的title属性
+				//设置图片的高度和宽度
+				$("#btn2").click(function() {
+					alert($("p").attr("title"));
+					$("input[type = 'image']").attr("height","200px");
+					
+				});
+
+			});
+		</script>
+	</head>
+
+	<body>
+		<h3>DOM树</h3>
+		<p title="水果">你喜欢的水果是？</p>
+		<ul>
+			<li title="apple">苹果</li>
+			<li title="orange">桔子</li>
+			<li title="banana">香蕉</l>
+		</ul>
+		<input type="image" name="name" alt="图片" value="" />
+		<button id="btn1">查找元素节点</button>
+		<button id="btn2">查找节点属性</button>
+	</body>
+
+</html>

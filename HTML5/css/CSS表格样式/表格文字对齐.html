@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>表格文字对齐</title>
+	<meta charset="utf-8" />
+    <!--text-align 和 vertical-align 属性设置表格中文本的对齐方式。
+    text-align 属性设置水平对齐方式，比如左对齐、右对齐或者居中：
+    vertical-align 属性设置垂直对齐方式，比如顶部对齐、底部对齐或居中对齐：-->
+    <style>
+           table, th, td {
+            border: 1px solid #666; /*设置表格边框*/
+        
+        }
+
+        table {
+            border-collapse: collapse; /*折叠边框*/
+            width: 300px;
+            height: auto;
+        }
+
+        td {
+            height: 30px;
+        }
+
+        .left{
+        	text-align: center;
+        	vertical-align: center;
+        }
+    </style>
+</head>
+<body>
+    <table cellpadding="2" cellspacing="2" align="center">
+        <caption><h2>学生信息表</h2></caption>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>爱好</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="left">
+                <td>张三</td>
+                <td>男</td>
+                <td>游泳</td>
+            </tr>
+            <tr class="center">
+                <td>李四</td>
+                <td>女</td>
+                <td>上网</td>
+            </tr>
+            <tr class="right">
+                <td>王五</td>
+                <td>男</td>
+                <td>篮球</td>
+            </tr>
+            <tr class="justify">
+                <td>赵六</td>
+                <td>男</td>
+                <td>足球</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

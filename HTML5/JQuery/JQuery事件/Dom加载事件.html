@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>DOM加载事件</title>
+    <!--事件是用户操作页面时或页面加载时引发的用来完成javascript和HTML之间的交互操作。
+    常见的元素点击事件、鼠标事件、键盘输入事件等，
+    较Javascript相比JQuery增加并扩展了基本的事件处理机制，极大的增强了事件处理的能力。-->
+
+    <!--
+        DOM加载事件
+        页面加载完毕后浏览器会通过javascript为Dom元素加载事件，
+        使用Javascript时候使用的是window.onload方法，而Jquery使用的是$(document).ready()方法
+        
+        $（document).ready方法是事件模块中最重要的一个函数，可以极大地提高Web 应用程序的响应速度。
+        jQuery 就是用$（document) .ready（）方法来代替传统JavaScript 的window.onload 方法的。
+        通过使用该方法，可以在DOM 载入就绪时就对其进行操纵并调用执行它所绑定的函数。
+        在使用过程中，需要注意$（document) .ready（）方法和window.onload 方法之间的细微区别：
+        1.执行时间 
+        window.onload必须等到页面内包括图片的所有元素加载完毕后才能执行。 
+        $(document).ready()是DOM结构绘制完毕后就执行，不必等到加载完毕。
+
+        2.编写个数不同 
+        window.onload不能同时编写多个，如果有多个window.onload方法，只会执行一个 
+        $(document).ready()可以同时编写多个，并且都可以得到执行 
+
+        3.简化写法 
+        window.onload没有简化写法
+        $(document).ready(function(){})可以简写成$(function(){});	
+        -->
+    <script src="../js/jquery-3.1.1.js"></script>
+    <script>
+
+    /*	window.onload=function(){
+    		alert("Servlet");
+    	}
+    	window.onload=function(){
+    		alert("JSP");
+    	}*/
+    	/*$(document).ready(function(){
+    		alert("Servlet");
+    	});
+    	$(function(){
+    		alert("Bootstrap");
+    	})*/
+    	function show(obj){
+    		alert(obj.innerText);
+    	}
+    	
+    	$(function(){
+    		$("#btnSubmit").click(function(){
+    			alert($(this).text());
+    		});
+    	})
+    </script>
+</head>
+<body>
+	<button id="btnOK" onclick="show(this);">提交</button>
+	<button id="btnSubmit">确定</button>
+</body>
+</html>

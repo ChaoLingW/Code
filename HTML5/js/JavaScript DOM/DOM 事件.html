@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title> DOM 事件</title>
+		<!--
+        HTML DOM 使 JavaScript 有能力对 HTML 事件做出反应。
+        我们可以在事件发生时执行 JavaScript，比如当用户在 HTML 元素上点击时。
+        如需在用户点击某个元素时执行代码，请向一个 HTML 事件属性添加 JavaScript 代码：
+        HTML 事件的例子：
+	        当用户点击鼠标时
+	        当网页已加载时
+	        当图像已加载时
+	        当鼠标移动到元素上时
+	        当输入字段被改变时
+	        当提交 HTML 表单时
+	        当用户触发按键时
+         -->
+		<script>
+			//1.当用户在 <h1> 元素上点击时，会改变其内容
+			function changeText(obj) {
+
+				obj.innerText = "北京欢迎你";
+
+			}
+			//2.使用 JavaScript 来向 HTML 元素分配事件（注册事件）
+			window.onload = function(){
+				document.getElementById("btnCheck").onclick = function(){
+					var num = document.getElementsByName("name")[0].value;
+					if(isNaN(num)){
+						alert("不是数字");
+					}else{
+						alert("数字");
+					}
+				}
+			}
+			//3.onmouseover 和 onmouseout 事件
+			function mouseOver(obj){
+				obj.innerText = "北京";
+				obj.style.backgroundColor = "green";
+			}
+			
+			function mouseOut(obj){
+				obj.innerText = "上海";
+				obj.style.backgroundColor = "yellow";
+			}
+			//onmouseover 和 onmouseout 事件可用于在用户的鼠标移至 HTML 元素上方或移出元素时触发函数。
+		</script>
+		<style>
+			#divContent {
+				width: 200px;
+				height: 100px;
+				background-color: red;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1 onclick="changeText(this)">点击改变文本</h1>
+		<label>请输入数字:</label>
+		<input type="text" name="name" value="" />
+		<input type="button" id="btnCheck" value="检查是否为数字" /><br />
+
+		<div id="divContent" onmouseover="mouseOver(this);" onmouseout="mouseOut(this);">
+		</div>
+		<p id="p1" onmouseover="this.style.color='red'" onmouseout="this.style.color='blue'"> 慧与济宁产业基地</p>
+
+	</body>
+
+</html>

@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>DOM插入节点</title>
+		<!--
+        在jQuery 中还提供了其他几种插入节点的方法：
+        1.append() 向每个匹配的元素内部追加内容
+
+        2.appendTo()将所有匹配的元素追加到指定的元素中。
+          实际上，使用该方法是颠倒了常规的$(A).append(B）的操作，
+          即不是将B 追加到A 中，而是将A 追加到B 中。
+
+        3.prepend() 向每个匹配的元素内部前置内容
+
+        4.prependTo() 将所有匹配的元素前置到指定的元素中。
+          实际上，使用该方法是颠倒了常规的 $(A).prepend(B）的操作，
+          即不是将B 前置到 A 中，而是将A 前置到B 中
+
+        5.after() 在每个匹配的元素之后插入内容
+
+        6.insertAfter() 将所有匹配的元素插入到指定元素的后面。
+          实际上，使用该方法是颠倒了常规的$(A).after(B）的操作，
+          即不是将B 插入到A后面，而是将A 插入到B 后面
+
+        7.before() 在每个匹配元素之前插入内容
+
+        8.insertBefore()将所有匹配的元素插入到指定的元素的前面，
+          实际上，使用该方法是颠倒了常规的$(A).before(B）的操作，
+          即不是将B 插入到A前面，而是将A 插入到B 前面
+
+        -->
+		<script src="../js/jquery-3.1.1.js"></script>
+		<script>
+			$(document).ready(function() {
+				//1.append()方法
+				$("#btn1").click(function() {
+					$("ul").append("<li title='葡萄'>葡萄</li>")
+
+				});
+				//2.appendTo()方法
+
+				$("#btn2").click(function() {
+					$("<li title='橘子'>橘子</li>").appendTo($("ul"));
+
+				});
+				//3.prepend()方法
+				$("#btn3").click(function() {
+					$("ul").prepend("<li title='葡萄'>葡萄</li>")
+				});
+
+				//4.prependTo()方法
+				$("#btn4").click(function() {
+					$("<li title='橘子'>橘子</li>").prependTo($("ul"));
+				});
+
+				//5.after()方法
+				$("#btn5").click(function() {
+					//查找节点id=p1,然后将新建的元素id=p2添加到p1的兄弟节点。
+					$("#p1").after("<p id = 'p2'>After</p>");
+				});
+
+				//6.insertAfter()方法
+				$("#btn6").click(function() {
+					//新建p元素添加到p1元素后面，做为目标元素的兄弟节点。
+					$("<p id = 'p3'>insertAfter</p>").insertAfter($("#p1"));
+				});
+				//7.before()方法
+				$("#btn7").click(function() {
+					//新建p元素添加p1元素之前，做为p的前一个兄弟节点。
+					$("#p1").before("<a href='#'>百度</a>");
+
+				});
+				//8.insertBefore()方法
+				$("#btn8").click(function() {
+					//将新建的a元素添加到元素p之前，作为p元素前一个兄弟节点。
+					("<a href='#'>百度</a>").insertBefore($("#p1"));
+				});
+
+			});
+		</script>
+	</head>
+
+	<body>
+		<h3>DOM树</h3>
+		<p title="水果">你喜欢的水果是？</p>
+		<ul>
+			<li title="苹果">苹果</li>
+			<li title="桔子">桔子</li>
+			<li title="香蕉">香蕉</li>
+		</ul>
+		<div id="software">
+			<h4>开发语言</h4>
+			<p id="p1">C#</p>
+		</div>
+		<button id="btn1">append()方法</button>
+		<button id="btn2">appendTo()方法</button><br />
+		<button id="btn3">prepend()方法</button>
+		<button id="btn4">prependTo()方法</button><br />
+		<button id="btn5">after()方法</button>
+		<button id="btn6">insertAfter()方法</button><br />
+		<button id="btn7">before()方法</button>
+		<button id="btn8">insertBefore()方法</button><br />
+	</body>
+
+</html>

@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>层次选择器</title>
+    <script src="../js/jquery-3.1.1.js"></script>
+    <!--
+        如果想通过DOM 元素之间的层次关系来获取特定元素，
+        例如后代元素、子元素、相邻元素和同辈元素等，那么层次选择器是一个非常好的选择。
+        1.$("ancestor descendant") 选取ancestor元素里的所有后代元素
+          例：$("div span") 返回div里所有<span>元素
+              $(".container p")返回class为container的所有p元素。
+
+        2.$("parent>child") 选取parent元素下的child子元素
+          例:$("div>span")选取<div>元素下的元素名是<span>的子元素。
+             $("#main> *")选择id值为main的所有子元素。
+
+        3.$("prev+next")选取紧接在prev元素后的next元素
+          例:$(".one+div")选取class为one的下一个<div>同辈元素。
+             $("label + input")选择所有label元素的下一个input元素。
+
+        4.$("prev~siblings")选取prev元素之后的所有siblings元素
+          例:$("#two~div")选取id为two的元素后面的所有<div>同辈元素。
+             $("#prev~#div1 ")选择id为prev的元素后面所有id为div1的div同辈元素。
+
+        注意:注意$("div span")和$("div>span")是有区别的
+             $("div span")会选取div里所有的<span>元素。
+             而$("div>span")只会选取<div>直属的<span>子元素。
+        -->
+    <script>
+      	$(document).ready(function(){
+      		// 选择header中的所有ul元素
+      		$("#btn1").click(function(){
+      			$(".header ul").css("border","1px solid red");
+      			
+      		});
+      		
+      		//选择header中的子元素ul
+      		$("#btn2").click(function(){
+      			
+      			$(".header>ul").css("border","1px solid yellow");
+     
+      		});
+      		
+      		//选择#menu1中子元素ul
+      		$("#btn3").click(function(){
+      			$("#menu1>ul").css("border","1px solid pink");
+      			
+      		});
+      		
+      		//选择menu1中的下一个li元素(2中方式)
+      		$("#btn4").click(function(){
+      			
+      			//$("#menu1+li").css("border","1px solid blue");
+      			$("#menu1").next().css("border","1px solid blue");
+      			//next关心的是下一个，"#menu1+li关心的是下一个，且必须是li的元素
+      		});
+      		
+      		// 选择menu2中的同级li元素
+      		$("#btn5").click(function(){
+      			//$("#menu2~li").css("border","1px solid black");
+      			//$("#menu2").nextAll().css("border","1px solid black");
+      			$("#menu2").prev().css("border","1px solid black")
+      		});
+      		
+      		//重置 removeAttr()
+      		$("#btn").click(function(){
+      			$("*").removeAttr("style");
+      			
+      		});
+      		
+      	});
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h3 id="title">层次选择器</h3>
+            <ul>
+                <li id="menu1">
+             		  菜单一
+                    <ul>
+                    	<li>0</li>
+                        <li id="menu2">1</li>
+                        <li>2</li>
+                        <li>3</li>
+                    </ul>
+                </li>
+                <li >
+                 	   菜单二
+                    <ul>
+                        <li>1</li>
+                        <li>2</li>
+                    </ul>
+                </li>
+                <li>
+                   	 菜单三
+                    <ul>
+                        <li>1</li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="focus">
+                <ul>
+                    <li>收藏本站</li>
+                    <li>设为主页</li>
+                    <li>联系我们</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <button id="btn1">选择.header中的所有ul元素</button>
+    <button id="btn2">选择.header中的子元素ul</button>
+    <button id="btn3">选择#menu1中子元素ul</button>
+    <button id="btn4">选择#menu1中的下一个li元素</button>
+    <button id="btn5">选择#menu2中同级li元素</button>
+    <button id="btn">重置</button>
+</body>
+</html>

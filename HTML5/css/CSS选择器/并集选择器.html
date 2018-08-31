@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>并集选择器</title>
+    <!--并集选择器:创建由逗号分隔的多个选择器可以将样式应用到单个选择器匹配的所有元素
+        或者理解成将多个相同样式定义的选择器以逗号进行分组。
+        语法：选择器，选择器，选择器{}-->
+    
+    <meta charset="utf-8" />
+    
+    <style type="text/css">
+    	p,h1{
+    		border: 1px solid red;
+    	}
+    	
+    	.small{
+    		font-size: 10px;
+    	}
+    	
+    </style>
+</head>
+<body>
+    
+    <p class="small">今天是星期一</p>
+    <h1>今天是星期二</h1>
+    <p>今天是星期三</p>
+    <span class="small">今天是星期四</span>
+    
+    
+</body>
+</html>

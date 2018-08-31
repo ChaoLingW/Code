@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Document</title>
+	</head>
+
+	<body>
+		<!--
+        colspan:跨列(合并列）
+        rowspan:跨行(合并行)
+    -->
+		<table border="1" width="500" align="center" cellspacing="0" cellpadding="10">
+
+			<caption>员工信息表</caption>
+			<thead>
+
+				<tr>
+					<th>姓名</th>
+					<th>性别</th>
+					<th>年龄</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td width="33%">张三</td>
+					<td width="33%">男</td>
+					<td>11</td>
+				</tr>
+
+				<tr>
+					<td>李四</td>
+					<td>女</td>
+					<td>12</td>
+				</tr>
+
+				<tr>
+					<td>王五</td>
+					<td>男</td>
+					<td>13</td>
+				</tr>
+				
+			</tbody>
+
+			<tfoot align="right">
+				<tr>
+					<td rowspan="2" align="right">
+						平均年龄
+					</td>
+					<td colspan="2">
+						12
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">2018.8.6</td>
+				</tr>
+			</tfoot>
+		</table>
+	</body>
+
+</html>

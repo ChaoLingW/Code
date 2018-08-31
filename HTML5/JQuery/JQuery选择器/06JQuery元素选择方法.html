@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>JQuery元素选择方法</title>
+    <!--
+        在层次选择器中，第1 个和第2 个选择器比较常用，而后面两个因为在jQuery 里可以用更加简单的方法代替，
+        所以使用的几率相对少些。
+        可以使用next（）方法来代替$（＇prev + next＇）选择器，
+        nextAll（）方法来代替$（＇prev～siblings’）选择。
+        siblings()方法来补充nextAll()方法的不足。
+
+        选择方法:
+        1.next() 等价于$(“prev + next”)。
+        2.nextAll() 等价于$(“prev～siblings”)
+        3.siblings() 类似$(“prev～siblings”)，但无关前后，选择所有同辈节点
+        4.children() 获取匹配元素的所有子元素
+        5.parent()  获取匹配元素的父元素
+        6.parents() 获取匹配元素的所有父元素
+
+        -->
+    <script src="../js/jquery-3.1.1.js"></script>
+    <script>
+        $(document).ready(function () {
+         	$("#btn5").click(function(){
+         		
+//       		#menu2  siblings() 
+         		$("#menu2").siblings().css("color","red"); 
+         	});
+         	
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h3 id="title">层次选择器</h3>
+            <ul>
+                <li id="menu1">
+                    菜单一
+                    <ul>
+                        <li>0</li>
+                        <li id="menu2">1</li>
+                        <li>2</li>
+                        <li>3</li>
+                    </ul>
+                </li>
+                <li>
+                    菜单二
+                    <ul>
+                        <li>1</li>
+                        <li>2</li>
+                    </ul>
+                </li>
+                <li>
+                    菜单三
+                    <ul>
+                        <li>1</li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="focus">
+                <ul>
+                    <li>收藏本站</li>
+                    <li>设为主页</li>
+                    <li>联系我们</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <button id="btn1">$("#menu1+li")</button>
+    <button id="btn2">$("#menu1")next()</button>
+    <button id="btn3">$("#menu2~li")</button>
+    <button id="btn4">nextAll()</button>
+    <button id="btn5">siblings()</button>
+    <button id="btn">重置</button>
+</body>
+</html>

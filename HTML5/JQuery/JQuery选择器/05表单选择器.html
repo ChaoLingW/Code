@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>表单选择器</title>
+    <!--
+        为了使用户能够更加灵活地操作表单，jQuery中专门加入了表单选择器。
+        利用表单选择器，能够极其方便地获取到表单的某个或某些类型的元素。
+        表单选择器：
+        :input	$(":input")	所有 <input> 元素
+        :text	$(":text")	所有 type="text" 的 <input> 元素
+        :password	$(":password")	所有 type="password" 的 <input> 元素
+        :radio	$(":radio")	所有 type="radio" 的 <input> 元素
+        :checkbox	$(":checkbox")	所有 type="checkbox" 的 <input> 元素
+        :submit	$(":submit")	所有 type="submit" 的 <input> 元素
+        :reset	$(":reset")	所有 type="reset" 的 <input> 元素
+        :button	$(":button")	所有 type="button" 的 <input> 元素
+        :image	$(":image")	所有 type="image" 的 <input> 元素
+        :file	$(":file")	所有 type="file" 的 <input> 元素
+
+        -->
+    <style>
+        .container {
+            margin: 0px auto;
+            width: 500px;
+        }
+
+        h3 {
+            text-align: center;
+        }
+    </style>
+    <script src="../js/jquery-3.1.1.js"></script>
+    <script>
+        $(document).ready(function () {
+        	// 设置账号为admin 密码为123456
+         	$("form input:text").val("admin");
+         	$("form input:password").val("123456");
+          	// 点击radio获取具体值
+          	$("input:radio").click(function(){
+          		alert($(this).val());
+          	})
+          	
+          	// 获取checkbox及长度
+          	alert($(":checkbox").length);
+          
+          	//提交表单事件
+          	$(":submit").click(function(){
+          		alert("提交成功");
+          	})
+          	
+          	
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h3>表单选择器</h3>
+        <form >
+            <p>账号:<input type="text" name="username" value="" /> </p>
+            <p>密码:<input type="password" name="userpwd" value="" /></p>
+            <p>
+                性别:<input type="radio" name="gender" id="male" value="男" />男
+                <input type="radio" name="gender" id="male" value="女" />女
+            </p>
+            <p>
+                爱好:
+                <input type="checkbox"  name="hobby" value="游泳" />游泳
+                <input type="checkbox" name="hobby" value="唱歌" />唱歌
+                <input type="checkbox" name="hobby" value="上网" />上网
+                <input type="checkbox" name="hobby" value="台球   " />台球
+            </p>
+            <p>
+                <input type="submit" name="btnSubmit" value="提交" />&nbsp;&nbsp;
+                <input type="reset" name="btnReset" value="重置" />
+            </p>
+        </form>
+    </div>
+</body>
+</html>

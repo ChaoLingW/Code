@@ -1,0 +1,12 @@
+﻿body {
+    background-color: #ebe2e2;
+}
+
+p {
+    width: 200px;
+    color: white;
+    background-color: grey;
+    font-size: 12pt;
+    font-family: 隶书;
+    font-weight: bold;
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!--
+			为什么使用 JSON？
+			对于 AJAX 应用程序来说，JSON 比 XML 更快更易使用
+		-->
+		<script>
+			
+			window.onload = function(){
+				var json = {
+					"name":"新浪",
+					"url":"http://www.baidu.com"
+				}
+				
+				document.getElementById("name").innerText = json.name;
+				document.getElementById("url").innerText = json.url;
+			}
+			
+		</script>
+	</head>
+	<body>
+		<p>
+			网站名称: <span id="name"></span><br /> 
+			网站地址: <span id="url"></span><br />  
+		</p>
+	</body>
+</html>

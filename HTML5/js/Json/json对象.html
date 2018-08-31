@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!--
+			1.对象语法
+			实例:{ "name":"zhangsan", "age":20, "sex":"男" }
+			JSON 对象使用在大括号({})中书写。
+			对象可以包含多个 key/value（键/值）对。
+			key 必须是字符串，value 可以是合法的 JSON 数据类型（字符串, 数字, 对象, 数组, 布尔值或 null）。
+			key 和 value 中使用冒号(:)分割。
+			每个 key/value 对使用逗号(,)分割。
+			2.访问对象值
+			①可以使用点号（.）来访问对象的值
+			②也可以使用中括号（[]）来访问对象的值
+			3.循环对象
+			可以使用 for-in 来循环对象的属性
+			4.嵌套 JSON 对象
+			JSON 对象中可以包含另外一个 JSON 对象
+			5.json 对象和 json 字符串的区别：
+			json 对象:var str1 = { "name": "zhangsan", "sex": "man" };
+			json字符串:var str2 = '{ "name": "wangwu", "sex": "man" }';
+		-->
+		<script>
+			var user = {
+				"name": "zhangsan",
+				"sex": "男",
+				"age": 1
+			}
+
+			document.write(user.name);
+			document.write(user["sex"]);
+
+			//嵌套 JSON 对象
+			var user1 = {
+				"name": "lisi",
+				"sex": "男",
+				"age": 12,
+				"account": {
+					"taobao": "taobao1",
+					"jingdong": "jingdong1"
+				}
+			}
+
+			//访问对象值
+			document.write(user1.account.taobao);
+
+			//循环对象
+			for(var x in user) {
+				alert(user[x]);
+			}
+		</script>
+	</head>
+
+	<body>
+		<p id="p1"></p>
+	</body>
+
+</html>

@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>DOM元素的属性操作</title>
+    <!--
+        Dom元素的其他操作:属性操作、样式操作、设置和获取HTML,文本和值、遍历节点操作、Css-Dom操作。
+        1、属性操作attr()和removeAttr()
+         (1)attr()方法能够获取元素属性，也能能够设置元素属性。
+           方法如下，当attr(para1)方法有个参数时候用于获得当前元素的para1的属性值，
+           当attr(para1,attrValue)有两个参数时候设置当前元素的属性名为para1的属性值为attrValue;例：
+           $("p").attr("title");该示例用于获得p元素的title属性值
+           $("p").attr("title","你最喜欢的水果");该示例设置p元素的title属性值为"你最喜欢的水果";
+           如果一次设置多个属性值可以使用“名/值”对形式，例：
+           $("p").attr({"title":"你最喜欢的水果","name":"水果"})。该示例一次设置两个属性值。
+
+         (2) removeAttr()方法用于删除特定的属性，方法是在参数中指定属性名。例：
+             $("p").removeAttr("name");该方法就是移除p元素的name属性。
+        -->
+    <script src="../js/jquery-3.1.1.js"></script>
+    <script>
+        $(document).ready(function () {
+			//获取或设置属性attr
+			//获取ul中第一个li的title
+			// 设置p元素的title属性 ,设置div的多个属性(title id)
+			$("#btn1").click(function(){
+				alert($("ul li[title]:first").attr("title"));
+				$("p").attr("title","你最喜欢的水果");
+				$("div").attr({"title":"div","id":"div1"});
+			});
+			
+			//移除属性  removeAttr
+			// 移除p的title属性 ,移除div的title属性
+			$("#btn2").click(function(){
+				
+				$("p").removeAttr("title");
+				$("div").removeAttr("title");
+			});
+        });
+    </script>
+</head>
+<body>
+    <p>你最喜欢的水果?</p>
+    <ul>
+        <li title="苹果">苹果</li>
+        <li title="桔子">桔子</li>
+        <li title="香蕉">香蕉</li>
+    </ul>
+    <div>
+        你最喜欢的运动
+        <ul>
+            <li>游泳</li>
+            <li>篮球</li>
+            <li>足球</li>
+        </ul>
+    </div>
+
+    <button id="btn1">获取设置属性</button>
+    <button id="btn2">移除属性</button><br /><br />
+</body>
+</html>

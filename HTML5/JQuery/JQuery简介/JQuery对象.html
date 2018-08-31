@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="../js/jquery-3.1.1.js"></script>
+    <!--
+        JQuery对象：
+        jQuery 对象就是通过 jQuery()或者$() 包装 DOM 对象后产生的对象---//将DOM对象转换为Jquery对象
+        jQuery 对象是 jQuery 独有的. 如果一个对象是 jQuery 对象, 
+        那么它就可以使用 jQuery 里的方法: $(“#persontab”).html();
+        jQuery 对象无法使用 DOM 对象的任何方法, 同样 DOM 对象也不能使用 jQuery 里的任何方法
+        约定：如果获取的是 jQuery 对象, 那么要在变量前面加上 $.
+        var $variable = jQuery 对象
+        var variable = DOM 对象
+
+        JQuery 对象转成 DOM 对象：
+        jQuery 对象不能使用 DOM 中的方法, 但如果 jQuery 没有封装想要的方法, 
+        不得不使用 DOM 对象的时候, 有如下两种处理方法:
+        (1) jQuery 对象是一个数组对象, 可以通过 [index] 的方法得到对应的 DOM对象.  
+        (2) 使用 jQuery 中的 get(index) 方法得到相应的 DOM 对象                    
+     -->
+    <script>
+      	
+      	$(function(){
+      		
+      		var p1 = document.getElementById("p1");//Dom对象
+      		alert(p1.innerText);
+      		
+      		var $p1 = $("#p1");//jQuery对象
+      		alert($p1.html());
+      		
+      		//如何将jQuery对象转换为dom对象
+      		//(1) jQuery 对象是一个数组对象, 可以通过 [index] 的方法得到对应的 DOM对象.  
+      		alert($p1[0].innerText + "!");
+      		//(2) 使用 jQuery 中的 get(index) 方法得到相应的 DOM 对象 
+      		alert($p1.get(0).innerText + "@");
+      		
+      		//如何将dom对象转换为jQuery对象jQuery()或者$()
+      		var $p4 = $(p1);
+      		alert($p4.html() + "#");
+      		
+      	})
+      	
+    </script>
+    
+</head>
+<body>
+    <div id="div1">时间
+        <p id="p1">昨天</p>
+        <p id="p2">今天</p>
+        <p id="p3">明天</p>
+    </div>
+</body>
+</html>

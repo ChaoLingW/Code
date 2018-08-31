@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!--
+			json数组
+			JSON 数组在中括号中书写。
+			JSON 中数组值必须是合法的 JSON 数据类型（字符串, 数字, 对象, 数组, 布尔值或 null）。
+			1.数组作为 JSON 对象
+			实例：[ "Google", "Tengxun", "Taobao" ]
+			2.JSON 对象中的数组
+			{
+			"name":"zhangsan",
+			"age":20,
+			"hobby":[ "swimming", "running", "playgame" ]
+			}
+			我们可以使用索引值来访问数组：
+			
+			x = myObj.hobby[0];
+			
+			可以使用for循环或者 for-in 来访问数组
+			
+		-->
+		<script>
+			//数组作为json对象
+			var browers = ["Chrom","360","fire fox"];
+			//json对象中的数组
+			var user = {
+				"name": "zhangsan",
+				"sex": "男",
+				"hobby": ["篮球", "足球"]
+			}
+			
+			alert(user.hobby[0]);
+			alert(user["hobby"][0]);
+			// 使用for循环数组
+			var hobby = user.hobby;
+			for(i = 0; i<hobby.length;i++){
+				alert(hobby[i]+ "!");
+			}
+			for(var i in hobby){
+				alert(hobby[i] + "2");
+			}
+			//修改数组值
+			user.hobby[0]="羽毛球";
+			
+			
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>

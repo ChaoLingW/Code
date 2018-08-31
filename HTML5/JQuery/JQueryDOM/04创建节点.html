@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>DOM创建节点</title>
+     <!--
+         1.创建元素节点
+         创建元素节点并且把节点作为<ul>元素的子节点添加到DOM节点树上。
+         先创建元素点，创建元素节点使用Jquery的工厂函数$()来完成，
+         格式如下：$(html),该方法会根据传入的html字符串返回一个DOM对象，
+         并将DOM对象包装成一个JQuery对象后返回。创建一个元素节点JQuery代码如下：
+         $li1=$("<li></li>")
+         代码返回$li1就是一个由DOM对象包装成的JQuery对象。把新建节点添加到DOM树中JQuery代码如下：
+         $("ul").append($li1); 
+         添加后页面中只能看到<li>元素默认的"·",由于没有为节点添加文本所以只显示默认符号，下面创建文本节点。
+         
+         2.创建文本节点
+         使用JQuery的$()同样能够创建文本节点，创建文本节点的JQuery代码如下：
+　　　　  $li2=$("<li>菠萝</li>");
+         代码返回$li2就是一个由DOM对象包装成JQuery对象，把新建的文本节点添加到DOM树中JQuery代码如下：
+         $("ul").append($li2);
+
+         3.创建属性节点
+         $li3=$("<li title='榴莲'>榴莲</li>");　
+         代码返回$li3也是一个由DOM对象包装成JQuery对象，把新建的属性节点添加到DOM树中JQuery代码如下：
+         $("ul").append($li3);
+         -->
+    <script src="../js/jquery-3.1.1.js"></script>
+    <script>
+        $(function () {
+           //创建一个li元素菠萝
+           //创建一个li元素梨子并设置title属性
+          $("#btn1").click(function(){
+          	
+          	//var $li = $("<li title='葡萄' style='color:red;'>葡萄</li>");
+          	//$("ul").append($li);
+          	//$li.appendTo("ul");
+          	$("<li title='葡萄' style='color:red;'>葡萄</li>").appendTo("ul");
+          });
+        });
+    </script>
+</head>
+<body>
+    <h3>DOM树</h3>
+    <p title="水果">你喜欢的水果是？</p>
+    <ul>
+        <li title="苹果">苹果</li>
+        <li title="桔子">桔子</li>
+        <li title="香蕉">香蕉</li>
+    </ul>
+    <button id="btn1">创建元素节点</button>
+</body>
+</html>

@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>后代选择器(包含选择器)</title>
+		<!--多个选择器以空格分开，组合成包含关系，且右边的选择器从属于左边
+        即右边的选择器只能在左边的选择器范围内选择-->
+
+		<meta charset="utf-8" />
+
+		<style type="text/css">
+			div ul li {
+				color: red;
+			}
+			
+			#div1 #div2 p{
+				color: green;
+			}
+			
+		</style>
+
+	</head>
+
+	<body>
+
+		<div>
+			<ul>
+				<li>苹果</li>
+				<li>桃子</li>
+				<li>葡萄</li>
+				<li>
+					<ul>
+						<li>1</li>
+						<li>2</li>
+					</ul>
+				</li>
+			</ul>
+
+		</div>
+
+		<ul>
+			<li>茄子</li>
+			<li>黄瓜</li>
+			<li>土豆</li>
+		</ul>
+
+		<div id="div1">
+			<div id="div2">
+				<p>今天是星期一</p>
+				<div id="div3">
+					<p>今天是星期四</p>
+				</div>
+			</div>
+			<p>今天是星期二</p>
+		</div>
+	</body>
+
+</html>
