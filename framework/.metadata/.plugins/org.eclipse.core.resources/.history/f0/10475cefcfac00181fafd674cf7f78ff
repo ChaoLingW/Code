@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.1.xsd">
+	<!-- 
+		使用bean标签：创建bean
+		id: bean的唯一标识
+		class: bean类的全路径
+		name: bean名字，可以设置多个，用,分割
+	 -->
+	<bean id="user" name = "" class="hpe.bean.User">
+		<!-- 使用property
+			1 .通过属性注入（DI）调用公开的setter方法
+				name : 类中的属性名
+				value : 属性值
+		 -->
+		<property name="name" value=""></property>
+		<property name="pwd" value=""></property>
+	</bean>
+	
+	<bean id="user1" class="hpe.bean.User">
+		<!-- 使用property
+			2 .通过构造器(DI)
+				index:索引，指定参数的顺序，从0开始
+				name: 属性名 作用同index
+				value: 属性值
+		 -->
+		<constructor-arg index="" value="李四"></constructor-arg>
+		<constructor-arg index="" value="123"></constructor-arg>
+	</bean>
+	
+	<!-- util:list
+		标志
+	
+	 -->
+	<util:list id="mylist" value-type="java.lang.String">
+		<value>aaa</value>
+		<value>bbb</value>
+	</util:list>
+	
+	<bean id="order" class="hpe.bean.Order">
+		<property name="orderId" value="order1"></property>
+		<!-- DI （依赖注入） -->
+		<!-- ref: 指向bean配置文件中的现有资源 -->
+		<property name="list" ref="mylist"></property>
+	
+	
+	</bean>
+
+</beans>

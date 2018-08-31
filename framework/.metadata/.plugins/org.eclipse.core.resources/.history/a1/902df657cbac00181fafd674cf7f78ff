@@ -1,0 +1,26 @@
+package hpe.test;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import hpe.bean.Order;
+import hpe.bean.User;
+
+public class TestUserOrder {
+
+	@Test
+	public void test() {
+		Order order = new Order();
+		User user = new User();
+		user.setName("user1");
+		user.setPwd("123");
+		order.setOrderId("order1");
+		order.setUser(user);
+	}
+
+	@Test
+	public void test2() {
+		
+	}
+}

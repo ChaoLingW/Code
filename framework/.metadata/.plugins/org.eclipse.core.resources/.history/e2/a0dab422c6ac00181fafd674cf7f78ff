@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- 
+		使用bean标签：创建bean
+		id: bean的唯一标识（1种）
+		class: bean类的全路径
+	 -->
+	<bean id="user" class="hpe.po.User">
+		<!-- 使用property
+			1 .通过属性注入（DI）调用公开的setter方法
+		 -->
+		<property name="name" value=""></property>
+		<property name="pwd" value=""></property>
+	</bean>
+
+</beans>

@@ -1,0 +1,74 @@
+package hpe.service;
+
+import java.util.List;
+
+import hpe.po.User;
+
+/**
+ * TODO user业务的接口
+ * @author chaoling 
+ * 2018年8月27日
+ */
+public interface IUserService {
+
+	/**
+	 * 根据id查询用户记录
+	 * @param id 待查询用户的id
+	 * @return	符合id的记录对应的实体类对象
+	 */
+	User selectUserById(int id);
+	
+	/**
+	 * 根据username查询用户记录
+	 * @param username 待查询用户的username
+	 * @return	符合username的记录对应的实体类对象
+	 */
+	User selectUserByUsername(String username);
+
+	/**
+	 *  查询所有的用户
+	 * @return user表中所有的记录
+	 * @throws Exception
+	 */
+	List<User> selectUserAll();
+
+	/**
+	 * 查询密码带”1”的女生并显示
+	 * @return 符合的所有记录
+	 * @throws Exception
+	 */
+	List<User> selectUserByPasswordAndSex();
+	
+	/**
+	 *  根据用户名密码查询
+	 * @param user
+	 * @return 符合条件的记录
+	 * @throws Exception
+	 */
+	User selectUserByUsernameAndPassword(User user);
+	
+	/**
+	 * 添加记录
+	 * @param user 待添加的信息（不包括id）
+	 * @return 受影响的行数
+	 * @throws Exception
+	 */
+	int insertUser(User user);
+	
+	/**
+	 *  根据用户名删除用户
+	 * @param username 待删除用户的用户名
+	 * @return 受影响的行数
+	 * @throws Exception
+	 */
+	int deleteUserByUsername(String username);
+	
+	/**
+	 *  根据用户id修改记录
+	 * @param user 待修改用户的信息
+	 * @return 受影响的行数
+	 * @throws Exception
+	 */
+	int updateUserById(User user);
+	
+}

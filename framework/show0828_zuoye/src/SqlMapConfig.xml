@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+	
+<configuration>
+	<!-- 引入属性配置文件 -->
+	<properties resource="db.properties"></properties>
+
+	<!-- 【掌握】 别名声明 -->
+	<typeAliases>
+		<typeAlias type="hpe.po.User" alias="user"/>
+	</typeAliases>
+
+	<!-- 【了解】 -->
+	<environments default="development">
+		<environment id="development">
+		<!--  -->
+			<transactionManager type="JDBC" />
+			
+			<!-- 连接池 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driver}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.pwd}" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+
+	
+	<!-- 映射：resource文件/class类
+		package
+	 -->
+	<mappers>
+		<mapper resource="UserMapper.xml" />
+	</mappers>
+</configuration>

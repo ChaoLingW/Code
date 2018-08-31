@@ -1,0 +1,125 @@
+package hpe.utils;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+/**
+ * 工具类:对mybatis的再次封装，借助泛型，简化操作
+ * 
+ * @author chaoling 2018年8月28日
+ */
+public class DBUtils {
+
+	private static SqlSessionFactory sessionFactory; // 创建工厂对象
+
+	static {
+		try {
+			// 初始化 工厂对象
+			sessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("SqlMapConfig.xml"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 *  查询一条记录
+	 * @param id mapper.xml中sql对应的id
+	 * @param obj 查询条件
+	 * @return 查询成功  对象  查询失败 null
+	 */
+	public <T> T selectOne(String id, Object obj) {
+
+		// 获取sql连接
+		SqlSession session = sessionFactory.openSession();
+		// 执行
+		T t = session.selectOne(id, obj);
+		// 关闭，释放资源
+		session.close();
+		return t;
+	}
+
+	/**
+	 *  查询一条或多条记录
+	 * @param id mapper.xml中sql对应的id
+	 * @param obj 查询条件数组
+	 * @return 查询成功  对象列表  查询失败 null
+	 */
+	public <T> List<T> selectList(String id, Object...obj) {
+
+		List<T> t  = null;
+		// 获取sql连接
+		SqlSession session = sessionFactory.openSession();
+		// 执行
+		if (obj.length == 0){
+			// obj 不存在
+			t = session.selectList(id);
+		} else {
+			// obj 有一个元素
+			t = session.selectList(id, obj[0]);
+		}
+		// 关闭，释放资源
+		session.close();
+		return t;
+	}
+	
+	/**
+	 *  插入一条记录
+	 * @param id mapper.xml中sql对应的id
+	 * @param obj 记录信息
+	 * @return 受影响的行数   查询成功  1  查询失败 0
+	 */
+	public int insert(String id, Object obj) {
+
+		// 获取sql连接
+		SqlSession session = sessionFactory.openSession();
+		// 执行
+		int row = session.insert(id, obj);
+		session.commit();
+		// 关闭，释放资源
+		session.close();
+		return row;
+
+	}
+	
+	/**
+	 *  修改一条记录
+	 * @param id mapper.xml中sql对应的id
+	 * @param obj 修改信息
+	 * @return 受影响的行数   查询成功  1  查询失败 0
+	 */
+	public int update(String id, Object obj) {
+
+		// 获取sql连接
+		SqlSession session = sessionFactory.openSession();
+		// 执行
+		int row = session.update(id, obj);
+		session.commit();
+		// 关闭，释放资源
+		session.close();
+		return row;
+	}
+	
+	/**
+	 *  删除一条记录
+	 * @param id mapper.xml中sql对应的id
+	 * @param obj 删除条件
+	 * @return 受影响的行数   查询成功  1  查询失败 0
+	 */
+	public int delete(String id, Object obj) {
+
+		// 获取sql连接
+		SqlSession session = sessionFactory.openSession();
+		// 执行
+		int row = session.delete(id, obj);
+		session.commit();
+		// 关闭，释放资源
+		session.close();
+		return row;
+	}
+	
+}

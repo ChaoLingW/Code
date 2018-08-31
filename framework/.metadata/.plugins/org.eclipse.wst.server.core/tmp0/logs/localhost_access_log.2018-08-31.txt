@@ -1,0 +1,17 @@
+127.0.0.1 - - [31/Aug/2018:23:29:38 +0800] "GET / HTTP/1.1" 404 992
+127.0.0.1 - - [31/Aug/2018:23:29:43 +0800] "GET /mybatis_servlet_0830/success.jsp HTTP/1.1" 302 -
+127.0.0.1 - - [31/Aug/2018:23:29:43 +0800] "GET /mybatis_servlet_0830/login.jsp;jsessionid=9520015E54EE9A6B1CED5B3313EAE916 HTTP/1.1" 200 571
+127.0.0.1 - - [31/Aug/2018:23:31:57 +0800] "GET /mybatis_servlet_0830/login.jsp HTTP/1.1" 200 571
+127.0.0.1 - - [31/Aug/2018:23:32:05 +0800] "POST /mybatis_servlet_0830/userServlet?action=login HTTP/1.1" 302 -
+127.0.0.1 - - [31/Aug/2018:23:32:05 +0800] "GET /mybatis_servlet_0830/success.jsp HTTP/1.1" 200 6441
+127.0.0.1 - - [31/Aug/2018:23:32:05 +0800] "GET /mybatis_servlet_0830/js/jquery-3.1.1.min.js HTTP/1.1" 200 86713
+127.0.0.1 - - [31/Aug/2018:23:32:16 +0800] "GET /mybatis_servlet_0830/success.jsp HTTP/1.1" 302 -
+127.0.0.1 - - [31/Aug/2018:23:32:16 +0800] "GET /mybatis_servlet_0830/login.jsp;jsessionid=5C9381388481FFE5B800660C23922C01 HTTP/1.1" 200 571
+127.0.0.1 - - [31/Aug/2018:23:32:16 +0800] "GET /favicon.ico HTTP/1.1" 404 1014
+127.0.0.1 - - [31/Aug/2018:23:32:21 +0800] "POST /mybatis_servlet_0830/userServlet?action=login HTTP/1.1" 302 -
+127.0.0.1 - - [31/Aug/2018:23:32:21 +0800] "GET /mybatis_servlet_0830/success.jsp HTTP/1.1" 200 6441
+127.0.0.1 - - [31/Aug/2018:23:32:21 +0800] "GET /mybatis_servlet_0830/js/jquery-3.1.1.min.js HTTP/1.1" 304 -
+127.0.0.1 - - [31/Aug/2018:23:35:42 +0800] "GET /mybatis_servlet_0830/success.jsp HTTP/1.1" 200 6092
+127.0.0.1 - - [31/Aug/2018:23:37:33 +0800] "GET /mybatis_servlet_0830/success.jsp HTTP/1.1" 200 6094
+127.0.0.1 - - [31/Aug/2018:23:38:10 +0800] "GET /mybatis_servlet_0830/success.jsp HTTP/1.1" 200 6103
+127.0.0.1 - - [31/Aug/2018:23:40:27 +0800] "GET /mybatis_servlet_0830/success.jsp HTTP/1.1" 200 6171
