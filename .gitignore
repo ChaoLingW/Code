@@ -2,3 +2,7 @@
 /homeWork/.gitignore
 /homeWork/.project
 others
+/framework/.metadata
+/framework/.recommenders
+/framework/mybatis_servlet_0830/.svn
+/framework/mybatis_servlet_0830/WebContent/WEB-INF/lib

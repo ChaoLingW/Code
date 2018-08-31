@@ -1,5 +1,0 @@
-package hpe.dao;
-
-public class IUserOption_jdbc {
-
-}
