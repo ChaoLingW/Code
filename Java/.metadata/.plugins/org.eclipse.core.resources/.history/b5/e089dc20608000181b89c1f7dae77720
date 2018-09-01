@@ -1,0 +1,20 @@
+package com.hpe1.java;
+
+import java.util.Scanner;
+
+public class ChaoLing {
+
+	public static void main(String[] args) {
+		
+		Scanner inputa = new Scanner(System.in);
+		System.out.println("请输入a：");
+		int a = inputa.nextInt();
+		int b = inputa.nextInt();
+		
+		System.out.println(a);
+		System.out.println(b);
+		
+		
+	}
+	
+}

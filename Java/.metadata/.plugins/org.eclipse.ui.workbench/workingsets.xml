@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1531124985855_1" label="date" name="date">
+<item elementID="=date20180710" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/date20180725" type="4"/>
+<item elementID="=date20180802" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/date20180730-1" type="4"/>
+<item elementID="=date20180711" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/date20180719" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/date20180730-2" type="4"/>
+<item elementID="=date20180731-1" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=date20180705" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=date20180709" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=date20180712" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=date20180716" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/date20180723" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/date20180727" type="4"/>
+<item elementID="=date20180804" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=date20180731-2" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=date20180706" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=date20180713" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/date20180717" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/date20180720" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/date20180724" type="4"/>
+<item elementID="=date20180731" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=date20180801" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=date20180731-3" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1531219404055_3" label="practice" name="practice"/>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1532840192382_5" label="homework" name="homework">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0719" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0711" type="4"/>
+<item elementID="=Copy of asset" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0716" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0712" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0709" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0705" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0723" type="4"/>
+<item elementID="=homework0730" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=asset" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0728" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0724" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0720" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0717" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0713" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0706" type="4"/>
+<item elementID="=homework0731" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0725" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0714" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0710" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1532920959101_5" label="project" name="project">
+<item elementID="=assets" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1530772430381_0" label="Window Working Set" name="Aggregate for window 1530772430381"/>
+<mruList name="date"/>
+</workingSetManager>

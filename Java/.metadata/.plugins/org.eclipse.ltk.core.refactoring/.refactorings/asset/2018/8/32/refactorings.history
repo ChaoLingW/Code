@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;DBUtil.java&apos; to &apos;com.hpe.util.DBUtil.java&apos;&#x0D;&#x0A;- Original project: &apos;asset&apos;&#x0D;&#x0A;- Destination element: &apos;com.hpe.util.DBUtil.java&apos;&#x0D;&#x0A;- Original element: &apos;com.hpe.util.DBUtil.java&apos;" description="Copy compilation unit" destination="=Copy of asset/src&lt;com.hpe.util{DBUtil.java" element1="/src&lt;com.hpe.util{DBUtil.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1533457483772" units="1" version="1.0"/>
+</session>

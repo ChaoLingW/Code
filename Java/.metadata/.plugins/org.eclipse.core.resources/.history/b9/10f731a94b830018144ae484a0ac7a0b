@@ -1,0 +1,70 @@
+package com.hpe.java;
+
+import java.util.Scanner;
+
+public class BreakTest {
+
+	public static void main(String[] args) {
+
+		//test1();
+		test2();
+		
+	}
+	
+	//break：跳出当前整个循环
+	public static void test1(){
+		
+		for(int i = 0; i <3; i++){
+			
+			for(int j = 0; j < 3; j++){
+				
+				if(j == 1)
+					break;
+				
+				System.out.println("i:" + i + "j:" + j);
+				
+			}
+			
+		}
+		
+	}
+	
+	/*循环录入5个人的年龄，
+	并计算平均年龄，
+	如果录入的数据出现负数
+	或者大于130的数，
+	立即停止输出报错*/
+	public static void test2(){
+		
+		double sum = 0;
+		Scanner sc = new Scanner(System.in);
+		int age;
+		
+		for(int i = 1; i < 6; i++){
+			
+			System.out.println("请输入第" + i + "个人的年龄");
+			
+			age = sc.nextInt();
+			
+			if(age < 0 || age > 130){
+				
+				System.out.println("输入错误");
+				break;
+				
+			}
+			else{
+				sum += age;
+			}
+			
+			if(i == 5){
+				System.out.println("平均年龄为" + (sum/5));
+			}
+			
+		}
+		
+		
+	}
+	
+
+
+}

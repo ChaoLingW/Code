@@ -1,0 +1,33 @@
+package com.hpe1.java;
+
+import java.util.Scanner;
+
+public class ChaoLing {
+
+	public static void main(String[] args) {
+		
+		/*Scanner input = new Scanner(System.in);
+		System.out.println("请输入a和b");
+		int a = input.nextInt();
+		int b = input.nextInt();
+		
+		if(a >= b)
+			System.out.println(a);
+		else
+			System.out.println(b);*/
+		
+		Scanner input = new Scanner(System.in);
+		System.out.println("请输入a");
+		int a = input.nextInt();
+		
+		if(a >= 80)
+			System.out.println("成绩优秀");
+		else if(a < 80 && a>= 60)
+			System.out.println("成绩合格");
+		else if(a < 60)
+			System.out.println("成绩不合格");
+		else
+			System.out.println("输入不正确");
+	}
+	
+}

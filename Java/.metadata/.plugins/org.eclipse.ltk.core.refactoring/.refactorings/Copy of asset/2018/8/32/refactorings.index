@@ -1,0 +1,6 @@
+1533455437754	Infer generic type arguments
+1533456408569	Move compilation unit
+1533478794006	Rename package 'com.hpe.dao.t'
+1533480099892	Rename package 'com.hpe.service.t'
+1533480838220	Rename type 'ILogin'
+1533480983350	Rename type 'ISelectAndUpdate'

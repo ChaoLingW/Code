@@ -1,0 +1,50 @@
+package com.hpe.java;
+
+/**
+ * 
+ * @author chaoling
+ * @date 2018年7月9日下午4:00:34
+ * @Description
+ */
+public class ContinueTest {
+
+	// continue:结束当前循环，继续下次循环
+	public static void main(String[] args) {
+
+		//test1();
+		test2();
+
+	}
+
+	public static void test1() {
+
+		//
+		for (int i = 0; i < 3; i++) {
+
+			if (i == 1)
+				continue;
+
+			System.out.println(i);
+
+		}
+
+	}
+
+	public static void test2() {
+
+		for (int i = 0; i < 3; i++) {
+
+			for(int j = 0; j < 3; j++){
+				
+				if (j == 1)
+					continue;
+				
+				System.out.println("i:" + i + ",j:" + j  );
+			
+			}
+			
+		}
+
+	}
+	
+}
