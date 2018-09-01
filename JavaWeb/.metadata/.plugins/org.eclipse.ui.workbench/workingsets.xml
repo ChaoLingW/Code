@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workingSetManager>
 <workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1534475721702_1" label="day" name="day">
-<item elementID="=servlet01" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=servlet02" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=servlet03" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=servlet04" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=servlet06" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=Servlet05" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=ajax" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/servlet01" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/servlet02" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/servlet03" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/servlet04" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/servlet06" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Servlet05" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ajax" type="4"/>
 </workingSet>
 <workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1534485925339_3" label="homework" name="homework">
-<item elementID="=homework0814" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/homework0814" type="4"/>
 </workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1534131673460_0" label="Window Working Set" name="Aggregate for window 1534131673460"/>
 <mruList name="day"/>

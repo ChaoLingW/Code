@@ -3,6 +3,7 @@
 	<item value="false" key="J2EE_EXPORT_OVERWRITE"/>
 	<item value="true" key="J2EE_EXPORT_SOURCE"/>
 	<list key="J2EE_IMPORT_null">
+		<item value="G:\apache-tomcat-8.0.9\webapps\LoginDemo.war"/>
 		<item value="G:\apache-tomcat-8.0.9\webapps\Login.war"/>
 	</list>
 	<list key="MRU_RUNTIME_STORE">

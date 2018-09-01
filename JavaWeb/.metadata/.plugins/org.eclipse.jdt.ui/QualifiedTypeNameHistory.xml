@@ -31,7 +31,6 @@
 <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
 <fullyQualifiedTypeName name="java.time.format.DateTimeFormatter"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="com.hpe.bean.User"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
 <fullyQualifiedTypeName name="javax.servlet.http.Cookie"/>
@@ -43,4 +42,6 @@
 <fullyQualifiedTypeName name="javax.servlet.ServletRegistration"/>
 <fullyQualifiedTypeName name="javax.servlet.ServletRequestListener"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSessionAttributeListener"/>
+<fullyQualifiedTypeName name="com.hpe.bean.User"/>
+<fullyQualifiedTypeName name="com.hpe.util.MybatisDBUtil"/>
 </qualifiedTypeNameHistroy>

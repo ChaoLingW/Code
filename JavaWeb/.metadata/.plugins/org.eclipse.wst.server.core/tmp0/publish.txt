@@ -1,3 +1,4 @@
 #Tomcat publish data
-#Sat Sep 01 00:22:39 GMT+08:00 2018
-org.eclipse.jst.jee.server\:loginDemo=G\:\\apache-tomcat-8.0.9\\webapps\\loginDemo
+#Sat Sep 01 11:28:45 GMT+08:00 2018
+org.eclipse.jst.jee.server\:LoginDemo=G\:\\apache-tomcat-8.0.9\\webapps\\LoginDemo
+org.eclipse.jst.jee.server\:/binary\:D\:\\lib\\java\\jar\\mybatis\\log4j-core-2.0-rc1.jar=G\:\\apache-tomcat-8.0.9\\webapps\\LoginDemo\\WEB-INF\\lib\\log4j-core-2.0-rc1.jar
