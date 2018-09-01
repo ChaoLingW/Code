@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hpe.dao.IUserDao">
+
+	<!-- 根据用户名和密码查询 -->
+	<select id="login" parameterType="user" resultType="user">
+		select * from
+		t_user where username = #{username} and pwd = #{pwd}
+
+	</select>
+	<!-- 添加一条记录 -->
+	<insert id="saveUser" parameterType="user" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into t_user
+		(username,pwd,sex,love,birthday,address,email,createDate,updateDate)
+		values(#{username}, #{pwd}, #{sex}, #{love}, #{birthday}, #{address},
+		#{email}, #{createDate}, #{updateDate})
+	</insert>
+
+
+	<!-- 分页处理 -->
+	<!-- 查询user表中的所有用户 -->
+	<select id="searchUser" parameterType="page" resultType="user">
+		select * from t_user
+		<where>
+			<if test="user.username != null and user.username != ''">
+				and username like "%${user.username}"
+			</if>
+			<if test="user.address != null and user.address != ''">
+				and address like "%${user.address}"
+			</if>
+			<if test="user.createDate != null and user.createDate != ''">
+				and createDate like "%${user.createDate}"
+			</if>
+			<if test="user.sex!= null and user.sex!= ''">
+				and sex = #{user.sex }
+			</if>
+		</where>
+		limit #{rows}, #{pageNumber}
+	</select>
+	
+	<select id="selectCount" parameterType="user" resultType="java.lang.Integer">
+		select count(*) from t_user
+		<where>
+			<if test="username != null and username != ''">
+				and username like "%${username}"
+			</if>
+			<if test="address != null and address != ''">
+				and address like "%${address}"
+			</if>
+			<if test="createDate != null and createDate != ''">
+				and createDate like "%${createDate}"
+			</if>
+			<if test="sex!= null and sex!= ''">
+				and sex = #{sex }
+			</if>
+		</where>
+	</select>
+
+	<!-- 根据id查询用户 -->
+	<select id="findUserById" parameterType="int" resultType="user">
+		select * from t_user where id=#{id}
+	</select>
+
+	<!-- 根据id修改用户 -->
+	<update id="updateUserById" parameterType="user">
+		update t_user set
+		username=#{username},pwd=#{pwd},sex=#{sex},love=#{love},birthday=#{birthday},address=#{address},
+		email=#{email},createDate=#{createDate},updateDate=#{updateDate} where id=#{id}
+	</update>
+
+	<delete id="deleteUserById" parameterType="int">
+		delete from t_user where id = #{id}
+	</delete>
+
+</mapper>
