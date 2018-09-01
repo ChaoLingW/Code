@@ -4,12 +4,21 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hpe.dao.IUserDao">
 
+	<!-- 从t_user查询 -->
+	<sql id="select_t_user">
+		select * from t_user
+	</sql>
+	<!-- id条件 -->
+	<sql id="id">
+		where id = #{id}
+	</sql>
+	
 	<!-- 根据用户名和密码查询 -->
 	<select id="login" parameterType="user" resultType="user">
-		select * from
-		t_user where username = #{username} and pwd = #{pwd}
-
+		<include refid="select_t_user"></include>
+		where username = #{username} and pwd = #{pwd}
 	</select>
+	
 	<!-- 添加一条记录 -->
 	<insert id="saveUser" parameterType="user" useGeneratedKeys="true"
 		keyProperty="id">
@@ -19,20 +28,18 @@
 		#{email}, #{createDate}, #{updateDate})
 	</insert>
 
-
-	<!-- 分页处理 -->
-	<!-- 查询user表中的所有用户 -->
+	<!-- 查询符合查询条件的信息 -->
 	<select id="searchUser" parameterType="page" resultType="user">
-		select * from t_user
+		<include refid="select_t_user"></include>
 		<where>
 			<if test="user.username != null and user.username != ''">
-				and username like "%${user.username}"
+				and username like "%${user.username}%"
 			</if>
 			<if test="user.address != null and user.address != ''">
-				and address like "%${user.address}"
+				and address like "%${user.address}%"
 			</if>
 			<if test="user.createDate != null and user.createDate != ''">
-				and createDate like "%${user.createDate}"
+				and createDate like "%${user.createDate}%"
 			</if>
 			<if test="user.sex!= null and user.sex!= ''">
 				and sex = #{user.sex }
@@ -41,17 +48,18 @@
 		limit #{rows}, #{pageNumber}
 	</select>
 	
+	<!-- 查询符合查询条件的记录数 -->
 	<select id="selectCount" parameterType="user" resultType="java.lang.Integer">
 		select count(*) from t_user
 		<where>
 			<if test="username != null and username != ''">
-				and username like "%${username}"
+				and username like "%${username}%"
 			</if>
 			<if test="address != null and address != ''">
-				and address like "%${address}"
+				and address like "%${address}%"
 			</if>
 			<if test="createDate != null and createDate != ''">
-				and createDate like "%${createDate}"
+				and createDate like "%${createDate}%"
 			</if>
 			<if test="sex!= null and sex!= ''">
 				and sex = #{sex }
@@ -61,18 +69,22 @@
 
 	<!-- 根据id查询用户 -->
 	<select id="findUserById" parameterType="int" resultType="user">
-		select * from t_user where id=#{id}
+		<include refid="select_t_user"></include>
+		<include refid="id"></include>
 	</select>
 
 	<!-- 根据id修改用户 -->
 	<update id="updateUserById" parameterType="user">
 		update t_user set
 		username=#{username},pwd=#{pwd},sex=#{sex},love=#{love},birthday=#{birthday},address=#{address},
-		email=#{email},createDate=#{createDate},updateDate=#{updateDate} where id=#{id}
+		email=#{email},createDate=#{createDate},updateDate=#{updateDate}
+		<include refid="id"></include>
 	</update>
 
+	<!-- 根据id删除记录 -->
 	<delete id="deleteUserById" parameterType="int">
-		delete from t_user where id = #{id}
+		delete from t_user
+		<include refid="id"></include>
 	</delete>
 
 </mapper>

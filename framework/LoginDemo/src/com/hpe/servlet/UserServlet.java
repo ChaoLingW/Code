@@ -16,22 +16,28 @@ import com.hpe.service.impl.UserServiceImpl;
 import com.hpe.util.Page;
 import com.hpe.util.ToolUtil;
 
+/**
+ * User业务控制
+ * 
+ * @author chaoling 2018年9月1日
+ */
+
 @WebServlet("/user/UserServlet")
 public class UserServlet extends BaseServlet {
 
 	private static final long serialVersionUID = 1L;
-	private IUserService userService = new UserServiceImpl();
+	private IUserService userService = new UserServiceImpl(); // userService对象
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		// 得到查询条件
+		// 获取查询条件
 		String username = request.getParameter("username");
 		String sex = request.getParameter("sex");
 		String address = request.getParameter("address");
 		String createDate = request.getParameter("createDate");
 
-		// 构建封装了查询条件的User
+		// 封装查询条件User
 		User user = new User();
 		user.setUsername(username);
 		user.setAddress(address);
@@ -44,15 +50,16 @@ public class UserServlet extends BaseServlet {
 		if (curPage == null || "".equals(curPage.trim())) {
 			curPage = "1";
 		}
+
 		// 构建Page---》第几页、一页几条
 		Page page = new Page();
-
 		page.setCurPage(Integer.parseInt(curPage));
 		page.setPageNumber(2);
-		
-		page.setUser(user);
-		// 调用UserService中searchUser
 
+		// 将查询条件封装到page
+		page.setUser(user);
+
+		// 调用UserService中searchUser
 		page = userService.searchUser(page);
 
 		// 将users设置到reqeust域中
@@ -64,30 +71,46 @@ public class UserServlet extends BaseServlet {
 
 	}
 
+	/**
+	 * 修改控制
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	public void modify(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		// 1.得到用户id
+		// 得到用户id
 		String userId = request.getParameter("userId");
 
-		// 2.调用Userservice --findUserById方法，接收返回值
+		// 调用Userservice --findUserById方法，接收返回值
 		User modUser = userService.findUserById(Integer.parseInt(userId));
 
-		// 3.设置到request中
+		// 设置到request中
 		request.setAttribute("modUser", modUser);
 
-		// 4.请求转发到modify.jsp
-
+		// 请求转发到modify.jsp
 		request.getRequestDispatcher("/user/modify.jsp").forward(request, response);
 
 	}
 
-	public void update(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
+	/**
+	 * 修改控制的实际操作
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		// 获取修改信息
 		String username = request.getParameter("username");
 		String pwd = request.getParameter("pwd");
 		String sex = request.getParameter("sex");
 		String[] loves = request.getParameterValues("love");
-
+		// 获取 love
 		String love = "";
 		if (loves != null && loves.length > 0) {
 			for (String s : loves) {
@@ -103,7 +126,7 @@ public class UserServlet extends BaseServlet {
 		String id = request.getParameter("id");
 		LocalDateTime now = LocalDateTime.now();
 
-		// 构造User
+		// 构造User 封装修改信息
 		User user = new User();
 		user.setAddress(address);
 		user.setBirthday(birthday);
@@ -115,32 +138,39 @@ public class UserServlet extends BaseServlet {
 		user.setUpdateDate(ToolUtil.getStrDate(now));
 		user.setUsername(username);
 		user.setId(Integer.parseInt(id));
-		
-		//调用Userservice中的方法
+
+		// 调用Userservice中的方法
 		boolean isUpdate = userService.updateUserById(user);
-		if(isUpdate)
-		{
-			response.sendRedirect(request.getContextPath()+"/user/UserServlet");
-		}
-		else
-		{
-			request.setAttribute("modUser",user);
+		if (isUpdate) {
+			// 修改成功
+			response.sendRedirect(request.getContextPath() + "/user/UserServlet");
+		} else {
+			// 修改失败
+			request.setAttribute("modUser", user);
 			request.getRequestDispatcher("/user/modify.jsp").forward(request, response);
 		}
 	}
-	
-	public void deleteById(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		// 1.得到用户id
+	/**
+	 * 根据id删除用户的控制方法
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public void deleteById(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		// 得到用户id
 		String userId = request.getParameter("userId");
-		//调用Userservice中的方法
+		// 调用Userservice中的方法
 		boolean idDelete = userService.deleteUserById(Integer.parseInt(userId));
-		if(idDelete)
-		{
-			response.sendRedirect(request.getContextPath()+"/user/UserServlet");
-		}
-		else
-		{
+		if (idDelete) {
+			// 删除成功
+			response.sendRedirect(request.getContextPath() + "/user/UserServlet");
+		} else {
+			// 删除失败
 			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		}
 

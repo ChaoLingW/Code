@@ -10,10 +10,15 @@ import com.hpe.service.IUserService;
 import com.hpe.util.MybatisDBUtil;
 import com.hpe.util.Page;
 
+/**
+ * user业务类
+ * 
+ * @author chaoling 2018年9月1日
+ */
 public class UserServiceImpl implements IUserService {
 
-	private IUserDao userDao; 
-	
+	private IUserDao userDao;
+
 	@Override
 	public User login(User user) {
 
@@ -43,12 +48,11 @@ public class UserServiceImpl implements IUserService {
 			session.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-
 		}
 
 		return flag;
 	}
-	
+
 	@Override
 	public Page searchUser(Page page) {
 
@@ -65,26 +69,26 @@ public class UserServiceImpl implements IUserService {
 		}
 		int curPage = page.getCurPage();
 		// 每页开始的位置
-		int limitStart = (curPage-1)*pageNumber;
-		// 设置到 curPage中 
+		int limitStart = (curPage - 1) * pageNumber;
+		// 设置到 curPage中
 		page.setRows(limitStart);
 		// 执行
 		List<User> users = userDao.searchUser(page);
-		
+
 		// 处理页数问题
 		// 总记录数
 		int rows = userDao.selectCount(page.getUser());
-		int totalPages = 0;	// 页数
-		if(rows % pageNumber ==0){
+		int totalPages = 0; // 页数
+		if (rows % pageNumber == 0) {
 			totalPages = rows / pageNumber;
-		}else{
+		} else {
 			totalPages = rows / pageNumber + 1;
 		}
 		// 封装page
 		page.setRows(rows);
 		page.setData(users);
-		page.setTotalPage(totalPages); 
-		
+		page.setTotalPage(totalPages);
+
 		// 关闭sql连接
 		MybatisDBUtil.closeSession(session);
 		return page;
@@ -128,7 +132,7 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public boolean deleteUserById(int id) {
-		
+
 		boolean flag = false;
 		// 获取Sql连接
 		SqlSession session = MybatisDBUtil.getSession();
@@ -146,5 +150,5 @@ public class UserServiceImpl implements IUserService {
 		}
 		return flag;
 	}
-	
+
 }
