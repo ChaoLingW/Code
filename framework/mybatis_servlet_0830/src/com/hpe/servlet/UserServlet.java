@@ -1,4 +1,4 @@
-package com.hpe.servlet;
+﻿package com.hpe.servlet;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -153,19 +153,26 @@ public class UserServlet extends HttpServlet {
 		List<Integer> ids = new ArrayList<>();
 		// 获取传递过来的id组成的字符串
 		String idStr = request.getParameter("id");
-		//  字符串不为空，且长度大于0
-		if( idStr !=null && idStr.length() != 0) {
+		//  字符串不为空，且长度大于
+		if( idStr !=null && idStr.length() >0) {
 			// 分割字符串
 			String[] idsArr = idStr.split(",");
-			// 遍历赋值  最后一位为''
-			for(int i = 0 ; i < idsArr.length; i++) {
-				if(!"".equals(idsArr[i])){
-					int id = Integer.parseInt(idsArr[i]);
-					ids.add(id);
+			//  数组不为空，且长度大于0
+			if (idsArr !=null && idsArr.length >0){
+				// 遍历赋值 
+				for(int i = 0 ; i < idsArr.length; i++) {
+					if(!"".equals(idsArr[i])){
+						int id = Integer.parseInt(idsArr[i]);
+						ids.add(id);
+					}
 				}
 			}
+			//  数组不为空，且长度大于0
+			if (ids !=null && ids.size() >0){
 			// 调用方法
 			userService.deleteById(ids);
+			}
+			
 		}
 		select(request, response);
 	}
