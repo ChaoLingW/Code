@@ -26,28 +26,39 @@
 		<table class="condition">
 			<tr>
 				<td>用户名</td>
-				<td><input type="text" name="username"
-					value="${formUser.username }" /></td>
-				<td>id</td>
-				<td><input type="text" name="id" value="${formUser.id }" /></td>
-				<td>性别</td>
-				<td><select name="sex">
+				<td>
+					<input type="text" name="username" value="${formUser.username }" />
+				</td>
+				<td>
+					id
+				</td>
+				<td>
+					<input type="text" name="id" value="${formUser.id }" />
+				</td>
+				<td>
+					性别
+				</td>
+				<td>
+					<select name="sex">
 						<option value="">请选择</option>
 						<option value="男">男</option>
 						<option value="女">女</option>
-				</select></td>
-
+					</select>
+				</td>
 			</tr>
+			
 			<tr>
-				<td><input type="reset" value="重置" /> <input type="button"
-					value="查询" /></td>
+				<td>
+					<input type="reset" value="重置" /> 
+					<input type="button" name = "select" value="查询" />
+				</td>
 			</tr>
 		</table>
 	</form>
 
 	<table>
 		<tr>
-			<td><input type="checkbox" id = "selectAll"></td>
+			<td><input type="checkbox" id="selectAll"></td>
 			<td>id</td>
 			<td>用户名</td>
 			<td>密码</td>
@@ -57,26 +68,36 @@
 		</tr>
 		<c:forEach items="${users }" var="user" varStatus="num">
 			<tr class="userInfo">
-				<td><input type="checkbox"></td>
-				<td class = "id">${user.id }</td>
+				<td><input type="checkbox" class = "check"  name= '${user.id}' onclick='checkAll()'></td>
+				<td class="id">${user.id }</td>
 				<td>${user.username }</td>
 				<td>${user.password }</td>
-				<td><c:if test="${user.sex == '男'}">男</c:if> <c:if
-						test="${user.sex == '女'}">女</c:if></td>
+				<td>
+					<c:if test="${user.sex == '男'}">男</c:if> 
+					<c:if test="${user.sex == '女'}">女</c:if>
+				</td>
 				<td>${user.realName }</td>
-				<td><a href="javascript:updateUser(${user.id })">修改</a> <a
-					href="deleteUser(${user.id })">删除</a></td>
+				<td>
+					<a href="javascript:updateUser(${user.id })">修改</a> 
+					<a href="deleteUserOne(${user.id })">删除</a></td>
 			</tr>
 		</c:forEach>
+		<tr>
+			<td>
+				<input type="button" name = "deleteMore" value = "删除所选" >
+			</td>
+		</tr>
+		
 	</table>
 
 </body>
 
 <script type="text/javascript">
-//全选按钮
+
 $().ready(function() {
 	
-	$(".condition input[type='button']").click(
+	// 查询功能
+	$(".condition input[name='select']").click(
 		function() {
 		
 			document.form.action = "<%=request.getContextPath()%>/userServlet?action=select";
@@ -84,17 +105,30 @@ $().ready(function() {
 		}		
 	)
 	
+	//全选按钮
 	$("#selectAll").click(
 		function() {
-		
 			cheak = $(this).prop("checked"); 
-			$(".userInfo input[type='checkbox']").prop("checked",cheak); 
-			//alert(cheak);
-			
+			$(".check").prop("checked",cheak); 
 		}		
 	)
 	
-	
+	// 删除多个
+	$("input[name='deleteMore']").click(function(){
+		
+		var ids = [];
+
+		$(".check").each(function() {
+			if($(this).prop("checked")) {
+				var id = $(this).prop("name");
+				ids.push(id);
+			}
+		})
+		;
+		document.form.action = "<%=request.getContextPath()%>/userServlet?action=deleteById"+ "&id=" + ids.toString();
+		document.form.submit();
+	})
+
 	
 })
 
@@ -105,13 +139,30 @@ function updateUser(userId){
 		document.form.submit();
 	}
 	
-// 删除方法
+// 删除一个方法
+function deleteUserOne(userId){
+	
+	document.form.action = "<%=request.getContextPath()%>/userServlet?action=deleteById"
+				+ "&id=" + userId;
+	document.form.submit();
+}
 
-function deleteUser(userId){
-
-	document.form.action = "<%=request.getContextPath()%>/userServlet?action=deleteOne" + "&id=" + userId;
-
-		document.form.submit();
+//选择检查
+function checkAll() {
+	var i = 0;
+	$(".check").each(function() {
+		if($(this).prop("checked")) {
+			i++;
+		}
+	})
+	if(i == $(".check").length) {
+		$("#selectAll").prop("checked", true);
+	} else {
+		$("#selectAll").prop("checked", false);
 	}
+}
+
+
+
 </script>
 </html>

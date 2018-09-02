@@ -49,15 +49,15 @@
 			</if>
 			<if test="sex !=null and sex!=''">
 				gender = #{sex}
-		</if>
+			</if>
 		</set>
 		where id = #{id}
 	</update>
 
 	<!-- 根据id删除 -->
-	<delete id="deleteByid" parameterType="list">
-		delete from user where i in
-		<foreach collection="list" item="id" index="index">
+	<delete id="deleteById" parameterType="list">
+		delete from user where id in
+		<foreach collection="list" item="id" index="index" open="(" separator="," close=")">
 			#{id}
 		</foreach>
 	</delete>

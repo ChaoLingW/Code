@@ -18,6 +18,7 @@ import com.hpe.service.UserServiceImpl;
 
 @WebServlet("/userServlet")
 public class UserServlet extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
 	private IUserService userService = new UserServiceImpl();
 	private static int count = 0;
@@ -107,18 +108,18 @@ public class UserServlet extends HttpServlet {
 		// 获取修改条件
 		String username = request.getParameter("username");
 		String id = request.getParameter("id");
-		//String id = (String) request.getAttribute("id");
+		// String id = (String) request.getAttribute("id");
 		System.out.println(id);
 		String sex = request.getParameter("sex");
 		String realName = request.getParameter("realName");
 		String password = request.getParameter("password");
 		// 未设置修改条件直接返回sucess.jsp
 		// 判断 mapper文件中<set>中<if>不能都是否，否则会导致异常
-		if( sex== null && username==""&& password =="" && realName ==""){
+		if (sex == null && username == "" && password == "" && realName == "") {
 			response.setContentType("text/html;charset=utf-8");
 			response.sendRedirect(request.getContextPath() + "/success.jsp");
 			return;
-			
+
 		}
 		if (username != null && !"".equals(username)) {
 			user.setUsername(username);
@@ -144,22 +145,29 @@ public class UserServlet extends HttpServlet {
 		httpSession.setAttribute("res", row);
 		select(request, response);
 	}
-	
-	protected void deleteOne(HttpServletRequest request, HttpServletResponse response)
+
+	protected void deleteById(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		String idStr = request.getParameter("id");
-		int id = Integer.parseInt(idStr);
+		// 传递数据
 		List<Integer> ids = new ArrayList<>();
-		ids.add(id);
-		// 调用函数 获取返回值
-		int row = userService.deleteById(ids);
-		// 获取session
-		HttpSession httpSession = request.getSession();
-		// 设置属性 返回
-		httpSession.setAttribute("res", row);
+		// 获取传递过来的id组成的字符串
+		String idStr = request.getParameter("id");
+		//  字符串不为空，且长度大于0
+		if( idStr !=null && idStr.length() != 0) {
+			// 分割字符串
+			String[] idsArr = idStr.split(",");
+			// 遍历赋值  最后一位为''
+			for(int i = 0 ; i < idsArr.length; i++) {
+				if(!"".equals(idsArr[i])){
+					int id = Integer.parseInt(idsArr[i]);
+					ids.add(id);
+				}
+			}
+			// 调用方法
+			userService.deleteById(ids);
+		}
 		select(request, response);
 	}
-	
-	
+
 }
