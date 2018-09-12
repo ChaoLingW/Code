@@ -3,6 +3,8 @@ package com.hpe.service.impl;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.hpe.bean.User;
 import com.hpe.dao.IUserDao;
@@ -18,18 +20,14 @@ import com.hpe.util.Page;
 public class UserServiceImpl implements IUserService {
 
 	private IUserDao userDao;
-
+	private ApplicationContext atx = new ClassPathXmlApplicationContext("applicationContext.xml");
+	
 	@Override
 	public User login(User user) {
 
-		// 获取Sql连接
-		SqlSession session = MybatisDBUtil.getSession();
-		// 动态代理对象
-		userDao = session.getMapper(IUserDao.class);
+		userDao = (IUserDao) atx.getBean("iUserDao");
 		// 执行
 		User res = userDao.login(user);
-		// 关闭sql连接
-		MybatisDBUtil.closeSession(session);
 		return res;
 	}
 

@@ -23,8 +23,8 @@
 		<selectKey keyProperty="id" order="AFTER" resultType="int">
 			select LAST_INSERT_ID()
 		</selectKey>
-		insert into user(username,pwd,birthday,sex,address)
-		 values(#{username},#{pwd},#{birthday},#{sex},#{address}) 
+		insert into user(username,pwd)
+		 values(#{username},#{pwd}) 
 	</insert>
 
 </mapper>

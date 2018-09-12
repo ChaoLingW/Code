@@ -5,6 +5,7 @@
 <mapper namespace="com.hpe.dao.IUserDao">
 
 	<resultMap type="com.hpe.po.User" id="userMap">
+	
 		<result column="gender" property="sex" />
 	</resultMap>
 

@@ -9,8 +9,9 @@
 		id: bean的唯一标识
 		class: bean类的全路径
 		name: bean名字，可以设置多个，用,分割
+		scope: 作用域（singleton(默认，单例)，prototype（每次提供一个新的bean））
 	 -->
-	<bean id="user" name = "" class="hpe.bean.User">
+	<bean id="user"  class="hpe.bean.User" scope="prototype">
 		<!-- 使用property
 			1 .通过属性注入（DI）调用公开的setter方法
 				name : 类中的属性名
@@ -24,7 +25,7 @@
 		<!-- 使用property
 			2 .通过构造器(DI)
 				index:索引，指定参数的顺序，从0开始
-				name: 属性名 作用同index
+				name: 属性名 作用同index  参数名
 				value: 属性值
 		 -->
 		<constructor-arg index="" value="李四"></constructor-arg>
