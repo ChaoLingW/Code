@@ -45,6 +45,7 @@ public class ItemServiceImpl implements ItemService {
 		// 设置模糊查询
 		Example example = new Example(Item.class);
 		Criteria criteria = example.createCriteria();
+		
 		// itemTitle
 		if (item != null && item.getItemTitle() != null && item.getItemTitle().equals("")) {
 			criteria.andLike("itemTitle", "%" + item.getItemTitle() + "%");
@@ -76,29 +77,37 @@ public class ItemServiceImpl implements ItemService {
 		// order by
 		example.setOrderByClause(" itemId desc ");
 		
-		// 查询商品信息
+		// 数据表中的商品信息
 		List<Item> itemList = itemMapper.selectByExample(example);
-		// 查询商品分类
+		// 查询商品分类信息
 		List<Category> categoryList = cateMapper.select(null);
-		// 商品信息
+		//  前端界面需要的商品信息
 		List<ItemInfo> list = new ArrayList();
-		// 分类名称 kay=categoryId value=categoryName
+		// 分类的处理 
 		Map<Integer, String> categoryName = new HashMap<Integer, String>();
+		
 		// 不为null 且size大于0
 		if(categoryList != null && categoryList.size() > 0) {
+			// 分类id与分类名映射为map kay=categoryId value=categoryName
 			for(Category category : categoryList) {
 				categoryName.put(category.getCategoryId(), category.getCategoryName());
 			}
 		}
+		
 		// 不为null 且size大于0
 		if(itemList != null && itemList.size() > 0) {
-			// 封装商品信息
+			// 封装前端所需商品信息
 			for (int i = 0; i < itemList.size(); i++) {
-				
+				// 获取商品信息
 				Item itemJoin = itemList.get(i);	
+				// 前端所需商品信息
 				ItemInfo itemInfo = new ItemInfo();
 				
-				itemInfo.setCategoryName(categoryName.get(itemJoin.getCategoryId()));	// 设置分类名称
+				// 判断分类关系是否存在及是否存在数据  防止空指针异常与无数据的情况
+				if (categoryName != null && categoryName.size() > 0) {
+					itemInfo.setCategoryName(categoryName.get(itemJoin.getCategoryId()));	// 设置分类名称
+				}
+					
 				itemInfo.setItemTitle(itemJoin.getItemTitle());		// 设置商品名称
 				itemInfo.setItemImg(itemJoin.getItemImg());    		// 设置商品图片
 				itemInfo.setItemDesc(itemJoin.getItemDesc());		// 设置商品描述
@@ -112,6 +121,7 @@ public class ItemServiceImpl implements ItemService {
 				
 			}
 		}
+		
 		// 封装分页信息
 		PageInfo<ItemInfo> pageInfo = new PageInfo<ItemInfo>(list);
 		// 返回信息封装
