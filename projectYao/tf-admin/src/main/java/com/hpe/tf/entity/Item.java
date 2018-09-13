@@ -16,6 +16,12 @@ import javax.persistence.Table;
  * @data  2018年9月12日
  * @version v1.0
  */
+/**
+ *  修改 item_img-->itemImg
+ * @author chaoling
+ * @data  2018年9月12日
+ * @version v1.1
+ */
 @Table(name="item")
 public class Item {
 
@@ -27,7 +33,7 @@ public class Item {
 	@Column(name="item_title")
 	private String itemTitle;	// 商品名称
 	@Column(name="item_img")
-	private String item_img;	// 商品图片
+	private String itemImg;	// 商品图片
 	@Column(name="item_desc")	
 	private String itemDesc;	// 商品详细描述
 	private String price;		// 商品价格
@@ -75,16 +81,16 @@ public class Item {
 		this.itemTitle = itemTitle;
 	}
 	/**
-	 * @return the item_img
+	 * @return the itemImg
 	 */
-	public String getItem_img() {
-		return item_img;
+	public String getItemImg() {
+		return itemImg;
 	}
 	/**
-	 * @param item_img the item_img to set
+	 * @param itemImg the itemImg to set
 	 */
-	public void setItem_img(String item_img) {
-		this.item_img = item_img;
+	public void setItemImg(String itemImg) {
+		this.itemImg = itemImg;
 	}
 	/**
 	 * @return the itemDesc

@@ -2,6 +2,7 @@
  * 保证可以获取item.html页面中的dom元素
  */
 $(function() {
+	
 	// 获取项目的路径，给baseURL赋值；因为common中已经定义baseURL
 	baseURL = $("#baseURL").val();
 	tableInit();
@@ -13,54 +14,64 @@ $(function() {
 function tableInit() {
 	// 获取table元素，调用jqGrid Ui函数
 	$("#jqGrid").jqGrid({
-		url : baseURL + "/item/list",		// 请求的地址
+		url : baseURL + "/item/list",	// 请求的地址
 		datatype : "json",					// 服务器返回的数据类型，可以在后台指定
 		mtype : "POST",						// 请求方式
 		postData : {},						// 请求数据
 		colModel : [						// 展示的数据 数组
 			// 需要指定一列为主列 一般是把数据库表的主键设为主列
 			{
-				label:"分类名称",			// 分类名称
-				name:'categoryId',			// 数据库表中的列名
+				label:"分类名称",			//分类名称
+				name:'categoryName',		// 数据库表中的列名
 				width:50,					
 				key:true					// 主列
 			},
 			{
-				label:"商品名称",			// 分类名称
-				name:'categoryName',		
+				label:"商品名称",			// 商品名称
+				name:'itemTitle',		
 				width:100
 			},
 			{
-				label:"商品图片",			// 分类级别
-				name:'level',				
+				label:"商品图片",			// 商品图片
+				name:'itemImg',				
+				width:100,
+				
+			},
+			{
+				label:"商品详细描述",		// 商品详细描述
+				name:'itemDesc',				
+				width:100,
+				
+			},
+			{
+				label:"商品价格",			// 商品价格
+				name:'price',				
+				width:100,
+				
+			},
+			{
+				label:"销量",				// 销量
+				name:'sales',				
+				width:100,
+				
+			},
+			{
+				label:"创建时间",			// 创建时间
+				name:'createTime',				
+				width:100,
+				
+			},
+			{
+				label:'是否推荐',			// 是否推荐
+				name:'isRecommend',
 				width:100,
 				formatter:function(value, opt, row) {
 					if (value == 1) {
-						return "一级分类";
-					} else if (value == 2) {
-						return "二级分类";
+						return "是";
+					} else {
+						return "否";
 					}
 				}
-			},
-			{
-				label:'商品详细描述',			// 创建时间
-				name:'createTime',
-				width:100
-			},
-			{
-				label:'销量',			// 创建时间
-				name:'createTime',
-				width:100
-			},
-			{
-				label:'创建时间',			// 创建时间
-				name:'createTime',
-				width:100
-			},
-			{
-				label:'是否推荐',			// 创建时间
-				name:'createTime',
-				width:100
 			}
 		],
 		viewrecords:true,		// 定义是否要显示多少行

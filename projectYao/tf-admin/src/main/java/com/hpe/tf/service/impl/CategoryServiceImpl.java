@@ -19,7 +19,7 @@ import com.hpe.tf.entity.Category;
 import com.hpe.tf.service.CategoryService;
 
 /**
- * 商品类业务实现类
+ * 商品类别业务实现类
  * 
  * @author chaoling
  * @data  2018年9月11日
@@ -39,27 +39,27 @@ public class CategoryServiceImpl implements CategoryService {
 		PageHelper.startPage(pageNum, pageSize);
 		// 模糊查询实现
 		Example example = new Example(Category.class);
-		Criteria c = example.createCriteria();
+		Criteria criteria = example.createCriteria();
 		
 		// pId
 		if (category != null && category.getpId() != null && !category.getpId().equals("")) {
-			c.andEqualTo("pId", category.getpId());
+			criteria.andEqualTo("pId", category.getpId());
 		}
 		// categoryName
 		if (category != null && category.getCategoryName() != null && !category.getCategoryName().equals("")) {
-			c.andLike("categoryName", "%" + category.getCategoryName() + "%");
+			criteria.andLike("categoryName", "%" + category.getCategoryName() + "%");
 		}
 		// categoryPath
 		if (category != null && category.getCategoryPath() != null && !category.getCategoryPath().equals("")) {
-			c.andLike("categoryPath", "%" + category.getCategoryPath() + "%");
+			criteria.andLike("categoryPath", "%" + category.getCategoryPath() + "%");
 		}
 		// level
 		if (category != null && category.getLevel() != null && !category.getLevel().equals("")) {
-			c.andEqualTo("level", category.getLevel());
+			criteria.andEqualTo("level", category.getLevel());
 		}
 		// createTime
 		if (category != null && category.getCreateTime() != null && !category.getCreateTime().equals("")) {
-			c.andLike("createTime", "%" + category.getCreateTime() + "%");
+			criteria.andLike("createTime", "%" + category.getCreateTime() + "%");
 		}
 		// order by
 		example.setOrderByClause(" pId desc ");

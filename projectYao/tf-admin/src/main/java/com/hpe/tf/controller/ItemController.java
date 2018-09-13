@@ -13,31 +13,30 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hpe.sys.util.R;
-import com.hpe.tf.entity.Category;
-import com.hpe.tf.service.CategoryService;
+import com.hpe.tf.entity.Item;
+import com.hpe.tf.service.ItemService;
 
 /**
- * 商品类别管理  控制类
+ * 商品信息管理类
  * 
  * @author chaoling
- * @data 2018年9月11日
+ * @data  2018年9月12日
  * @version v1.0
  */
 @Controller
-@RequestMapping("/category")
-public class CategoryController {
-
+@RequestMapping("/item")
+public class ItemController {
+	
 	@Autowired
-	private CategoryService categoryService;
-
+	private ItemService itemService;
 	@RequestMapping(
 			value="list", 	// 映射路径
 			method=RequestMethod.POST, 	// 请求方式
 			produces="application/json;charset=utf-8")	// 指定返回数据类型与编码格式
 	@ResponseBody
-	public R catagoryList(Category category, int pageNum, int pageSize) {
+	public R itemList(Item item, int pageNum, int pageSize) {
 		
-		Map<String, Object> map = categoryService.selectCategoryList(category, pageNum, pageSize);
+		Map<String, Object> map = itemService.selectItemList(item, pageNum, pageSize);
 		// 把map封装到R类（简单封装，目的就是为了方便异步框架内处理已成，同时规范化）
 		if (((List)map.get("rows")).isEmpty()) {
 			// 模拟
@@ -46,5 +45,5 @@ public class CategoryController {
 		
 		return R.ok(map).put("page", map);
 	}
-	
+
 }
