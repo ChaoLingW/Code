@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hpe.tf.dao.CategoryMapper">
+	<!-- 根据id修改商品类别信息 -->
+	<update id="updateCategoryById" parameterType="com.hpe.tf.entity.Category">
+		update category
+		<set>
+			<if test="categoryId !=null and categoryId !=''">
+				category_id = #{categoryId}
+			</if>
+			<if test="pId !=null and pId !=''">
+				p_id = #{pId}
+			</if>
+			<if test="categoryName !=null and categoryName !=''">
+				category_name = #{categoryName}
+			</if>
+			<if test="level !=null and level !=''">
+				level = #{level}
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<!-- 根据id删除商品类别 list -->
+	<delete id="deleteCategoryById">
+		delete from category where category_id in
+		<foreach collection="list" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+	
+</mapper>

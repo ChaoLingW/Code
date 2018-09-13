@@ -49,18 +49,6 @@ public class CategoryServiceImpl implements CategoryService {
 		if (category != null && category.getCategoryName() != null && !category.getCategoryName().equals("")) {
 			criteria.andLike("categoryName", "%" + category.getCategoryName() + "%");
 		}
-		// categoryPath
-		if (category != null && category.getCategoryPath() != null && !category.getCategoryPath().equals("")) {
-			criteria.andLike("categoryPath", "%" + category.getCategoryPath() + "%");
-		}
-		// level
-		if (category != null && category.getLevel() != null && !category.getLevel().equals("")) {
-			criteria.andEqualTo("level", category.getLevel());
-		}
-		// createTime
-		if (category != null && category.getCreateTime() != null && !category.getCreateTime().equals("")) {
-			criteria.andLike("createTime", "%" + category.getCreateTime() + "%");
-		}
 		// order by
 		example.setOrderByClause(" categoryId asc ");
 		
@@ -79,6 +67,24 @@ public class CategoryServiceImpl implements CategoryService {
 		map.put("rows", pageInfo.getList());
 
 		return map;
+	}
+
+	@Override
+	public boolean addCategory(Category category) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updateCategory(Category category) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean deleteCategory(List<Integer> category) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
