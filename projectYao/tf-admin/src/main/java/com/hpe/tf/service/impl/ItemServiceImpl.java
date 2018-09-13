@@ -107,7 +107,8 @@ public class ItemServiceImpl implements ItemService {
 				if (categoryName != null && categoryName.size() > 0) {
 					itemInfo.setCategoryName(categoryName.get(itemJoin.getCategoryId()));	// 设置分类名称
 				}
-					
+				
+				// 返回商品信息封装
 				itemInfo.setItemTitle(itemJoin.getItemTitle());		// 设置商品名称
 				itemInfo.setItemImg(itemJoin.getItemImg());    		// 设置商品图片
 				itemInfo.setItemDesc(itemJoin.getItemDesc());		// 设置商品描述

@@ -2,10 +2,42 @@
  * 保证可以获取item.html页面中的dom元素
  */
 $(function() {
+	debugger;
 	// 获取项目的路径，给baseURL赋值；因为common中已经定义baseURL
 	baseURL = $("#baseURL").val();
 	tableInit();
+	// 渲染下拉列表数据
+	getFirstCategoryList() ;
 })
+var vm;			// Vue对象
+// 列表区显示，新增和修改区不显示
+$(function() {
+	vm = new Vue({
+		el:"#myapp",
+		data:{
+			show:true,	// show 是否隐藏的值绑定
+			categoryList:[]	 // 商品以及类别 数据集合
+		}
+	})
+})
+
+// 下拉列表的展示，先通过vm绑定数据集
+function getFirstCategoryList() {
+	// 通过ajax获取商品以及类别
+	$.ajax({
+		url: baseURL + "/category/list?pageNum=1&&pageSize=5",
+		type:'POST',
+		contentType:'application/json',
+		data:{},
+		dataType:'json',	// ajax如何实现跨域 ，jsonp
+		success:function(data){
+			// 需要把data json结果给vm.categoryList赋值
+			if(data.code == 0) {
+				vm.categoryList = data.page.rows;
+			}
+		}
+	})
+}
 
 /**
  * jqgird 加载方法
@@ -13,25 +45,25 @@ $(function() {
 function tableInit() {
 	// 获取table元素，调用jqGrid Ui函数
 	$("#jqGrid").jqGrid({
-		url : baseURL + "/item/list",		// 请求的地址
+		url : baseURL + "/category/list",		// 请求的地址
 		datatype : "json",					// 服务器返回的数据类型，可以在后台指定
 		mtype : "POST",						// 请求方式
 		postData : {},						// 请求数据
 		colModel : [						// 展示的数据 数组
 			// 需要指定一列为主列 一般是把数据库表的主键设为主列
 			{
-				label:"分类名称",			// 分类名称
+				label:"分类ID",				// 分类id
 				name:'categoryId',			// 数据库表中的列名
 				width:50,					
 				key:true					// 主列
 			},
 			{
-				label:"商品名称",			// 分类名称
+				label:"分类名称",			// 分类名称
 				name:'categoryName',		
 				width:100
 			},
 			{
-				label:"商品图片",			// 分类级别
+				label:"分类级别",			// 分类级别
 				name:'level',				
 				width:100,
 				formatter:function(value, opt, row) {
@@ -43,22 +75,7 @@ function tableInit() {
 				}
 			},
 			{
-				label:'商品详细描述',			// 创建时间
-				name:'createTime',
-				width:100
-			},
-			{
-				label:'销量',			// 创建时间
-				name:'createTime',
-				width:100
-			},
-			{
 				label:'创建时间',			// 创建时间
-				name:'createTime',
-				width:100
-			},
-			{
-				label:'是否推荐',			// 创建时间
 				name:'createTime',
 				width:100
 			}

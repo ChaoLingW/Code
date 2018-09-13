@@ -10,7 +10,7 @@
 <body>
 	<div id="myapp">
 		<!-- 列表区 -->
-		<div>
+		<div v-show="show">
 			<!-- 条件查询区 -->
 			<form class="form-horizontal">
 				<div class="form-group" style="margin-top: 15px">
@@ -22,7 +22,7 @@
 					 <div class="col-sm-3">
 						<select class="form-control" id="myselect">
 							<option value="0">--未选择--</option>
-							<option></option>
+							<option v-for="c in categoryList" v-bind:value="c.categoryId">{{c.categoryName}}</option>>
 						</select>
 					</div> 
 					<div class="col-sm-1" style="text-align: center;">
@@ -42,7 +42,7 @@
 			<div id="jqGridPager"></div>
 		</div>
 		<!-- 新增和修改 区 -->
-		<div class="panel panel-default">
+		<div v-show="!show" class="panel panel-default">
 			<form class="form-horizontal">
 				<div class="form-group">
 					<div class="col-sm-2 control-label">分类名称</div>
@@ -57,7 +57,7 @@
 					<div class="col-sm-10">
 						<select class="form-control">
 							<option value="0" >--未选择--</option>
-							<option></option>
+							<option v-for="c in categoryList" v-bind:value="c.categoryId">{{c.categoryName}}</option>
 						</select>
 					</div>
 				</div>

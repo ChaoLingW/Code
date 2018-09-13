@@ -62,7 +62,7 @@ public class CategoryServiceImpl implements CategoryService {
 			criteria.andLike("createTime", "%" + category.getCreateTime() + "%");
 		}
 		// order by
-		example.setOrderByClause(" pId desc ");
+		example.setOrderByClause(" categoryId asc ");
 		
 		// 调用方法查询
 		List<Category> list = categoryMapper.selectByExample(example);
